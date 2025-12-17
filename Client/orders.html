@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>สถานะคำสั่งซื้อ | Med E-Commerce</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+<body>
+ 
+<div class="topbar">
+  <div class="container topbar__inner" id="authBar"></div>
+</div>
+
+ 
+  <header class="header container">
+    <a class="logo" href="index.html"><div class="logo__box">HOME</div></a>
+
+    <!-- <div class="search">
+      <input class="search__input" placeholder="ค้นหาสินค้า อุปกรณ์การแพทย์…" />
+      <span class="search__icon">🔍</span>
+    </div> -->
+
+    <div class="header-icons">
+     
+      <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
+        <span class="icon-transport">🚚</span>
+        <span id="statusBadge" class="badge">0</span>
+      </a>
+
+     
+      <a id="cartButton" class="header-icon" role="button" title="ตะกร้า">
+        🛒 <span id="cartCount" class="badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="section__title" style="margin:16px 0 8px">สถานะคำสั่งซื้อ</h1>
+    <div id="ordersList"></div>
+  </main>
+
+
+  <script src="./assets/js/cart.js"></script>
+  <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/orders.js"></script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Med E-Commerce | Home</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+<style>
+
+  .container{max-width:1280px;margin:0 auto;}
+
+
+  .home-grid{
+    max-width:1280px;
+    margin:24px auto;
+    padding:0 16px;
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:24px
+  }
+  @media (max-width:1024px){
+    .home-grid{grid-template-columns:1fr}
+  }
+
+ 
+  .sidecard{
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+    box-shadow:0 8px 24px rgba(0,0,0,.06)
+  }
+  .sidecard__title{
+    font-weight:800;
+    font-size:18px;
+    padding:16px 18px;
+    border-bottom:1px solid #e5e7eb
+  }
+  .catlist{list-style:none;margin:0;padding:8px}
+  .catitem{border-radius:12px}
+  .cathead{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 12px;
+    border-radius:12px;
+    text-decoration:none;
+    color:#1f2937
+  }
+  .cathead:hover{background:#f3f4f6}
+
+
+  .ph{
+  width:100px;
+  height:100px;
+  border-radius:8px;
+  background-size:contain !important;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:#fff;
+}
+
+  .catname{flex:1 1 auto;font-weight:700}
+  .caret{
+    width:16px;
+    height:16px;
+    flex:0 0 auto;
+    transform:rotate(-90deg);
+    opacity:.55
+  }
+  .catitem.open .caret{transform:rotate(0)}
+
+  .sub{display:none;padding:6px 0 10px 24px;list-style:none}
+  .catitem.open > .sub{display:block}
+  .sub .subrow{
+    display:flex;align-items:center;gap:10px;
+    padding:8px 4px;border-radius:8px;color:#1f2937;text-decoration:none
+  }
+  .sub .subrow:hover{background:#f8fafc}
+
+
+  .subph{
+  width:50px;
+  height:40px;
+  border-radius:6px;
+  background-size:contain !important;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:#fff;
+}
+  .subname{line-height:1.25}
+
+  .home-main section{margin-bottom:28px}
+
+
+.cat__img{
+  width:150px;
+  height:150px;
+  border-radius:10px;
+  background-size:contain !important;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-color:#fff;
+}
+.cat {
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+}
+
+</style>
+
+
+</head>
+<body>
+  
+  <div class="topbar">
+    <div class="container topbar__inner" id="authBar"></div>
+  </div>
+
+  
+  <header class="header container">
+    <a class="logo" href="index.html"><div class="logo__box">HOME</div></a>
+
+    <!-- <div class="search">
+      <input type="text" class="search__input" placeholder="ค้นหาสินค้า อุปกรณ์การแพทย์..." />
+      <span class="search__icon">🔍</span>
+    </div> -->
+
+    <div class="header-icons">
+      <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
+        <span class="icon-transport">🚚</span>
+        <span id="statusBadge" class="badge">0</span>
+      </a>
+      <a id="cartButton" class="header-icon" role="button" title="ตะกร้า">
+        🛒 <span id="cartCount" class="badge">0</span>
+      </a>
+    </div>
+  </header>
+
+ 
+  <section class="banner">
+    <div class="container">
+      <h1 class="banner__title">เครื่องมือทางการแพทย์</h1>
+    </div>
+  </section>
+
+ 
+  <main class="home-grid">
+    <!-- Sidebar -->
+    <aside class="sidecats">
+      <div class="sidecard">
+        <div class="sidecard__title">หมวดหมู่สินค้า</div>
+        <ul id="sideCats" class="catlist"></ul>
+      </div>
+    </aside>
+
+
+    <div class="home-main">
+   
+      <section class="container section" style="padding:0">
+        <div id="category-row" class="cat-row"></div>
+      </section>
+
+      <section class="container section" style="padding:0">
+        <h2 class="section__title">สินค้ายอดนิยม</h2>
+        <div id="popular-grid" class="card-grid"></div>
+      </section>
+
+      <section class="container section" style="padding:0">
+        <h2 class="section__title">สินค้าใหม่</h2>
+        <div id="newest-grid" class="card-grid"></div>
+      </section>
+
+    
+      <section class="container section" style="padding:0">
+        <h2 class="section__title">About us</h2>
+        <p class="about">
+          ร้านอุปกรณ์การแพทย์ออนไลน์ จำหน่ายสินค้ามาตรฐานสำหรับสถานพยาบาลและผู้ใช้งานทั่วไป
+        </p>
+      </section>
+    </div>
+  </main>
+
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Med E-Commerce</div>
+  </footer>
+
+  <a class="float-chat" href="#" title="LINE">LINE</a>
+
+  
+  <div id="cartOverlay" class="overlay hidden"></div>
+  <aside id="cartDrawer" class="cart-drawer hidden" aria-labelledby="cartTitle">
+    <div class="cart-header">
+      <h3 id="cartTitle">รถเข็นของฉัน</h3>
+      <button id="cartClose" class="icon-btn" aria-label="ปิด">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">รวมทั้งหมด: <b id="cartTotal">฿0.00</b></div>
+      <a id="goCheckout" class="btn-primary w-full" href="checkout.html">สั่งซื้อสินค้า</a>
+    </div>
+  </aside>
+
+  
+  <script src="./assets/js/cart.js"></script>
+  <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/home.js"></script>
+</body>
+</html>

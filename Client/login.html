@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>เข้าสู่ระบบ | Med E-Commerce</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+<body>
+  
+  <div class="topbar">
+    <div class="container topbar__inner" id="authBar"></div>
+  </div>
+
+  <header class="header container">
+    <a class="logo" href="index.html"><div class="logo__box">HOME</div></a>
+    <!-- <div class="search"><input class="search__input" placeholder="ค้นหาสินค้า..." /><span class="search__icon">🔍</span></div> -->
+  </header>
+
+  <main class="container">
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="tab active" data-tab="login">เข้าสู่ระบบ</button>
+        <button class="tab" data-tab="signup">สมัครสมาชิก</button>
+      </div>
+
+      
+      <form id="loginForm" class="auth-form show">
+        <div class="form-group">
+          <label>อีเมล</label>
+          <input type="email" id="loginEmail" required placeholder="name@example.com" />
+        </div>
+        <div class="form-group">
+          <label>รหัสผ่าน</label>
+          <input type="password" id="loginPassword" required placeholder="••••" />
+        </div>
+        <button type="submit" class="btn-primary w-full">เข้าสู่ระบบ</button>
+        <p class="auth-msg" id="loginMsg"></p>
+      </form>
+
+      
+      <form id="signupForm" class="auth-form">
+        <div class="form-group">
+          <label>ชื่อ-นามสกุล</label>
+          <input type="text" id="signupName" required placeholder="ชื่อของคุณ" />
+        </div>
+        <div class="form-group">
+          <label>อีเมล</label>
+          <input type="email" id="signupEmail" required placeholder="name@example.com" />
+        </div>
+          <div class="form-group">
+            <label>เบอร์โทรศัพท์</label>
+            <input
+              type="tel"
+              id="signupPhone"
+              placeholder="เช่น 0891234567"
+            />
+          </div>
+        <div class="form-group">
+          <label>รหัสผ่าน</label>
+          <input type="password" id="signupPassword" required minlength="4" placeholder="อย่างน้อย 4 ตัวอักษร" />
+        </div>
+        <button type="submit" class="btn-primary w-full">สมัครสมาชิก</button>
+        <p class="auth-msg" id="signupMsg"></p>
+      </form>
+    </div>
+  </main>
+
+  <script src="./assets/js/auth.js"></script>
+  <script>
+    
+    const tabs = document.querySelectorAll('.auth-card .tab');
+    const forms = {
+      login: document.getElementById('loginForm'),
+      signup: document.getElementById('signupForm')
+    };
+    tabs.forEach(b=>{
+      b.addEventListener('click', ()=>{
+        tabs.forEach(t=>t.classList.remove('active'));
+        b.classList.add('active');
+        Object.values(forms).forEach(f=>f.classList.remove('show'));
+        forms[b.dataset.tab].classList.add('show');
+      });
+    });
+
+    const params = new URLSearchParams(location.search);
+    const nextUrl = params.get("next") || "index.html";
+
+    
+    document.getElementById('loginForm').addEventListener('submit', async e=>{
+      e.preventDefault();
+      const email = loginEmail.value.trim();
+      const pass  = loginPassword.value;
+
+      const { ok, reason } = await window.Auth.login(email, pass);
+      const msg = loginMsg;
+
+      if(ok){
+        msg.textContent = "เข้าสู่ระบบสำเร็จ กำลังพาไปยังหน้าก่อนหน้า…";
+        msg.className = "auth-msg ok";
+        setTimeout(()=> location.href = nextUrl, 600);
+      }else{
+        msg.textContent = reason || "อีเมลหรือรหัสผ่านไม่ถูกต้อง";
+        msg.className = "auth-msg err";
+      }
+    });
+
+    
+    signupForm.addEventListener('submit', async e=>{
+      e.preventDefault();
+
+      const name  = signupName.value.trim();
+      const email = signupEmail.value.trim();
+      const phone = signupPhone.value.trim();   
+      const pass  = signupPassword.value;
+
+      const { ok, reason } = await window.Auth.signup({
+        name,
+        email,
+        password: pass,
+        phone,           
+      });
+
+      const msg = signupMsg;
+
+      if(ok){
+        msg.textContent = "สมัครสมาชิกสำเร็จ! เข้าสู่ระบบแล้ว…";
+        msg.className = "auth-msg ok";
+        setTimeout(()=> location.href = nextUrl, 600);
+      }else{
+        msg.textContent = reason || "สมัครสมาชิกไม่สำเร็จ";
+        msg.className = "auth-msg err";
+      }
+    });
+
+  </script>
+
+</body>
+</html>

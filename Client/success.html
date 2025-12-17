@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>สั่งซื้อสำเร็จ | Med E-Commerce</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+<body data-require-auth>
+  
+<div class="topbar">
+  <div class="container topbar__inner" id="authBar"></div>
+</div>
+
+<header class="header container">
+  <a class="logo" href="index.html"><div class="logo__box">HOME</div></a>
+
+  <!-- <div class="search">
+    <input type="text" class="search__input" placeholder="ค้นหาสินค้า อุปกรณ์การแพทย์..." />
+    <span class="search__icon">🔍</span>
+  </div> -->
+
+  <div class="header-icons">
+   
+    <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
+      <span class="icon-transport">🚚</span>
+      <span id="statusBadge" class="badge">0</span>
+    </a>
+   
+    <a id="cartButton" class="header-icon" role="button" title="ตะกร้า">
+      🛒 <span id="cartCount" class="badge">0</span>
+    </a>
+  </div>
+</header>
+
+  
+  <div class="container stepper">
+    <div class="step" data-step="1">สั่งซื้อสินค้า</div>
+    <div class="step" data-step="2">ชำระเงิน</div>
+    <div class="step active" data-step="3">เสร็จสิ้น</div>
+  </div>
+
+  <main class="success-center container">
+    <div class="success-icon">✔</div>
+    <h1 class="success-title">การสั่งซื้อเสร็จสมบูรณ์</h1>
+    <p class="success-text">หมายเลขคำสั่งซื้อ <b id="orderId">ORD693729</b></p>
+    <a class="btn-primary" id="viewStatusBtn" href="orders.html">ดูสถานะคำสั่งซื้อ</a>
+
+  </main>
+
+  <script src="./assets/js/cart.js"></script>
+  <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/guard.js"></script>
+  <script src="./assets/js/success.js"></script>
+</body>
+</html>

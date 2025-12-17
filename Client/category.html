@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>หมวดหมู่ | Med E-Commerce</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <style>
+
+    .ss{position:relative;width:100%;font-size:16px}
+    .ss-trigger{width:100%;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:#fff;border:1px solid #e5e7eb;cursor:pointer}
+    .ss-trigger:focus{outline:2px solid #bfdcff}
+    .ss-icon{flex:0 0 32px;width:32px;height:32px;aspect-ratio:1/1;border-radius:50%;background:#e5e7eb center/cover no-repeat}
+    .ss-label{flex:1 1 auto;color:#0f172a;text-align:left}
+    .ss-caret{opacity:.6}
+    .ss-list{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);max-height:260px;overflow:auto;margin:0;padding:6px;list-style:none;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 8px 24px rgba(15,23,42,.08);display:none}
+    .ss.open .ss-list{display:block}
+    .ss-item{min-height:40px;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;cursor:pointer}
+    .ss-item:hover{background:#f1f5f9}
+    .ss-item.active{background:#eaf3ff}
+    .visually-hidden-select{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;pointer-events:none}
+    #mainCatUI{margin-bottom:12px}
+
+
+    .field{margin-bottom:14px}
+    .field-label{font-weight:600;color:#0f172a;margin-bottom:6px;font-size:14px}
+    .helptext{color:#64748b;font-size:12px;margin:6px 0 10px}
+
+  
+    .sub-strip-wrap{margin-bottom:12px}
+    .sub-strip-head{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+    .sub-strip-title{font-weight:700;color:#0f172a}
+    .sub-of-main{color:#64748b}
+    .sub-strip{display:flex;gap:8px;flex-wrap:wrap}
+    .pill{min-height:40px;display:inline-flex;align-items:center;gap:8px;border:1px solid #dbe3ef;background:#fff;border-radius:999px;padding:8px 12px;font-size:14px;color:#0f172a;cursor:pointer}
+    .pill:hover{background:#f1f5f9}
+    .pill.active{background:#eaf3ff;border-color:#bfdbfe}
+    .pill-icon{flex:0 0 32px;width:32px;height:32px;aspect-ratio:1/1;border-radius:50%;background:#e5e7eb center/cover no-repeat}
+
+
+    .category-title{font-size:18px;font-weight:700;color:#0f172a;margin:0 0 12px}
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container topbar__inner" id="authBar"></div>
+  </div>
+
+
+  <header class="header container">
+    <a class="logo" href="index.html"><div class="logo__box">HOME</div></a>
+    <!-- <div class="search">
+      <input type="text" class="search__input" placeholder="ค้นหาสินค้า อุปกรณ์การแพทย์..." />
+      <span class="search__icon">🔍</span>
+    </div> -->
+    <div class="header-icons">
+      <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
+        <span class="icon-transport">🚚</span><span id="statusBadge" class="badge">0</span>
+      </a>
+      <a id="cartButton" class="header-icon" role="button" title="ตะกร้า">
+        🛒 <span id="cartCount" class="badge">0</span>
+      </a>
+    </div>
+  </header>
+
+
+  <div class="breadcrumb">
+    <div class="container">
+      คุณอยู่ที่:
+      <b id="crumb-main">-</b> <span id="crumb-sub"></span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <main class="container category-layout">
+
+    <aside>
+      <div class="filter-card">
+        <div style="margin-bottom:8px;color:#334155;font-weight:600">ตัวกรองหมวดหมู่</div>
+
+        <div class="field">
+          <label for="mainCat" class="field-label">หมวดหมู่หลัก</label>
+          <div class="helptext">เลือกหมวดหมู่หลัก</div>
+          <select id="mainCat" class="select visually-hidden-select" aria-label="หมวดหมู่หลัก"></select>
+          <div id="mainCatUI"></div>
+        </div>
+
+        <div class="field" id="field-sub">
+          <label for="subCat" class="field-label">หมวดหมู่ย่อย</label>
+          <div class="helptext">เลือกหมวดหมู่ย่อย</div>
+          <select id="subCat" class="select visually-hidden-select" aria-label="หมวดหมู่ย่อย"></select>
+          <div id="subCatUI"></div>
+        </div>
+
+  
+        <div class="field" id="field-sub2">
+          <label for="subSubCat" class="field-label">หมวดหมู่ย่อยของหมวดหมู่ย่อย</label>
+          <div class="helptext" id="subSubHelp">เลือกหมวดหมู่ย่อยระดับที่ 2</div>
+          <select id="subSubCat" class="select visually-hidden-select" aria-label="หมวดหมู่ย่อยระดับที่ 2"></select>
+          <div id="subSubCatUI"></div>
+        </div>
+      </div>
+    </aside>
+
+  
+    <section>
+  
+      <div class="sub-strip-wrap" id="subStripWrap">
+        <div class="sub-strip-head">
+          <div class="sub-strip-title">หมวดหมู่ย่อยของ</div>
+          <div id="subOfMain" class="sub-of-main">-</div>
+        </div>
+        <div id="subStrip" class="sub-strip"></div>
+      </div>
+
+    
+      <div class="sub-strip-wrap" id="subStripWrap2">
+        <div class="sub-strip-head">
+          <div class="sub-strip-title">หมวดหมู่ย่อยของ</div>
+          <div id="subOfSub" class="sub-of-main">-</div>
+        </div>
+        <div id="subStrip2" class="sub-strip"></div>
+      </div>
+
+     
+      <h2 id="pageTitle" class="category-title">-</h2>
+
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+  </main>
+
+ 
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Med E-Commerce</div>
+  </footer>
+
+  
+  <div id="cartOverlay" class="overlay hidden"></div>
+  <aside id="cartDrawer" class="cart-drawer hidden" aria-labelledby="cartTitle">
+    <div class="cart-header">
+      <h3 id="cartTitle">รถเข็นของฉัน</h3>
+      <button id="cartClose" class="icon-btn" aria-label="ปิด">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">รวมทั้งหมด: <b id="cartTotal">฿0.00</b></div>
+      <a id="goCheckout" class="btn-primary w-full" href="checkout.html">สั่งซื้อสินค้า</a>
+    </div>
+  </aside>
+
+  <a class="float-chat" href="#" title="LINE">LINE</a>
+
+  
+  <script src="./assets/js/cart.js"></script>
+  <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/category.js" type="module"></script>
+</body>
+</html>

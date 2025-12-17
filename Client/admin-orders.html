@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <title>จัดการคำสั่งซื้อ (Admin)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/admin.css">
+  <script src="assets/js/auth.js" defer></script>
+  <script src="assets/js/guard.js" defer></script>
+  <script src="assets/js/admin-orders.js" defer></script>
+  <style>
+    .mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+    .filters { display:flex; gap:8px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+    .filters input[type="date"] { padding:6px 8px; border-radius:8px; border:1px solid #e5e7eb }
+    .no-print{white-space:nowrap}
+  </style>
+</head>
+<body data-require-admin>
+  <header class="topbar">
+    <div id="authBar"></div>
+  </header>
+
+  <main class="container">
+    <h1>จัดการคำสั่งซื้อ</h1>
+    <div class="row" style="margin-bottom: 16px;">
+      <button class="btn" onclick="location.href='index.html'">🏠 กลับหน้า Home</button>
+    </div>
+
+    <section class="card">
+      <!-- single-date filter -->
+      <div class="filters">
+        <label>วันที่ <input id="ordersFilterDate" type="date"></label>
+        <button class="btn" id="ordersFilterBtn">กรอง</button>
+        <button class="btn" id="ordersClearFilter">ล้างกรอง</button>
+      </div>
+
+      <table class="table" id="ordersTable">
+        <thead>
+          <tr>
+            <th>เลขออร์เดอร์</th>
+            <th>วันที่</th>
+            <th>ลูกค้า / ที่อยู่ / โทร</th>
+            <th>ยอดรวม</th>
+            <th>สถานะ</th>
+            <th>Tracking</th>
+            <th>จัดการ</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

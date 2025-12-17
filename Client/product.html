@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>รายละเอียดสินค้า | Med E-Commerce</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+<body>
+ 
+<div class="topbar">
+  <div class="container topbar__inner" id="authBar"></div>
+</div>
+
+
+<header class="header container">
+  <a class="logo" href="index.html"><div class="logo__box">HOME</div></a>
+
+  <!-- <div class="search">
+    <input type="text" class="search__input" placeholder="ค้นหาสินค้า อุปกรณ์การแพทย์..." />
+    <span class="search__icon">🔍</span>
+  </div> -->
+
+
+  <div class="header-icons">
+
+    <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
+      <span class="icon-transport">🚚</span>
+      <span id="statusBadge" class="badge">0</span>
+    </a>
+   
+    <a id="cartButton" class="header-icon" role="button" title="ตะกร้า">
+      🛒 <span id="cartCount" class="badge">0</span>
+    </a>
+  </div>
+</header>
+
+
+
+
+<div class="breadcrumb">
+  <div class="container breadcrumb__inner">
+    <a href="javascript:history.back()" class="back-link">
+      <span class="back-link__icon">ย้อนกลับ</span>
+    </a>
+
+    <span class="breadcrumb-text">
+      คุณอยู่ที่: <b id="crumb-main"></b><span id="crumb-sub"></span>
+    </span>
+  </div>
+</div>
+
+
+
+
+  <main class="container product-layout">
+  
+    <div class="product-img">
+      <div class="img-box">
+        <img id="product-image" src="./assets/img/placeholder.png" alt="product image" />
+      </div>
+
+    
+      <div id="product-thumbs" class="thumb-row"></div>
+    </div>
+
+
+ 
+    <div class="product-info">
+      <div class="info-card">
+        <h1 id="product-name" class="prod-title"></h1>
+
+        <div class="prod-meta">
+          <span class="label">รหัสสินค้า:</span>
+          <span id="product-code"></span>
+        </div>
+
+        <div id="product-price" class="prod-price"></div>
+
+        
+        <div id="product-options" class="option-group"></div>
+
+        <div class="buy-row">
+          <div class="qty-group" aria-label="ปรับจำนวน">
+            <button id="minus" type="button" aria-label="ลดจำนวน">−</button>
+            <input id="qty" type="number" value="1" min="1" />
+            <button id="plus" type="button" aria-label="เพิ่มจำนวน">+</button>
+          </div>
+
+          <button id="addCart" class="btn-primary">เพิ่มใส่ตะกร้า</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+ 
+<section class="section bg-lightblue">
+  <div class="container">
+    <div class="product-desc-box">
+      <h3 class="product-desc-title">รายละเอียดสินค้า</h3>
+      <p id="product-desc" class="product-desc-text"></p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Med E-Commerce</div>
+  </footer>
+
+  <!-- Cart Drawer -->
+<div id="cartOverlay" class="overlay hidden"></div>
+<aside id="cartDrawer" class="cart-drawer hidden" aria-labelledby="cartTitle">
+  <div class="cart-header">
+    <h3 id="cartTitle">รถเข็นของฉัน</h3>
+    <button id="cartClose" class="icon-btn" aria-label="ปิด">✕</button>
+  </div>
+
+  <div id="cartItems" class="cart-items"></div>
+
+<div class="cart-footer">
+  <div class="cart-total">
+    รวมทั้งหมด: <b id="cartTotal">฿0.00</b>
+  </div>
+  <a id="goCheckout" class="btn-primary w-full" href="checkout.html">สั่งซื้อสินค้า</a>
+</div>
+    <!-- ปุ่มไปเช็คเอาท์ (อนาคต) -->
+    <!-- <a class="btn-primary w-full" href="checkout.html">ชำระเงิน</a> -->
+  </div>
+</aside>
+
+<!-- ใส่ cart.js ก่อนสคริปต์เฉพาะหน้าเสมอ -->
+<script src="./assets/js/cart.js"></script>
+<script src="./assets/js/auth.js"></script>
+
+  <script type="module" src="./assets/js/product.js"></script>
+</body>
+</html>

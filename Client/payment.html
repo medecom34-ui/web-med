@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ชำระเงิน | Med E-Commerce</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+<body data-require-auth>
+
+  <div class="topbar">
+    <div class="container topbar__inner" id="authBar"></div>
+  </div>
+
+  <header class="header container">
+    <a class="logo" href="index.html"><div class="logo__box">HOME</div></a>
+
+    <!-- <div class="search">
+      <input type="text" class="search__input" placeholder="ค้นหาสินค้า อุปกรณ์การแพทย์..." />
+      <span class="search__icon">🔍</span>
+    </div> -->
+
+    <div class="header-icons">
+      <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
+        <span class="icon-transport">🚚</span>
+        <span id="statusBadge" class="badge">0</span>
+      </a>
+      <a id="cartButton" class="header-icon" role="button" title="ตะกร้า">
+        🛒 <span id="cartCount" class="badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container stepper">
+    <div class="step" data-step="1">สั่งซื้อสินค้า</div>
+    <div class="step active" data-step="2">ชำระเงิน</div>
+    <div class="step" data-step="3">เสร็จสิ้น</div>
+  </div>
+
+  <main class="container pay-grid">
+    <section class="pay-box">
+      <h2>ชำระเงิน</h2>
+      <p>สแกน QR หรือโอนผ่าน PromptPay แล้วกดปุ่มด้านล่างเมื่อชำระเรียบร้อย</p>
+
+
+<div class="qr-card">
+  <div class="qr-header">
+    <span>PromptPay QR Payment</span>
+  </div>
+
+  <div id="qrContainer"></div>
+
+</div>
+
+
+<label>อัปโหลดสลิป</label>
+<input type="file" id="slipFile" accept="image/*,application/pdf" />
+<div id="slipPreview" style="margin-top:8px"></div>
+
+<div style="margin-top:16px">
+  <button id="paidBtn" class="btn-primary">
+    สร้างคำสั่งซื้อและอัปโหลดสลิป
+  </button>
+</div>
+    </section>
+
+    <aside class="pay-summary">
+      <h3>สรุปคำสั่งซื้อ</h3>
+      <div id="sumItems"></div>
+
+      <div class="price-summary">
+        <div class="price-row">
+          <span>ค่าสินค้า</span>
+          <span id="sumSubtotal">฿0.00</span>
+        </div>
+
+        
+        <div class="price-row" id="shipRow">
+          <span>ค่าจัดส่ง</span>
+          <span id="sumShip">฿0.00</span>
+        </div>
+
+        <div class="price-row total">
+          <span>รวมทั้งสิ้น</span>
+          <span id="sumTotal">฿0.00</span>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <script src="./assets/js/cart.js"></script>
+  <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/guard.js"></script>
+  <script src="./assets/js/payment.js"></script>
+</body>
+</html>

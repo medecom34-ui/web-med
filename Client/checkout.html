@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>สั่งซื้อสินค้า | Med E-Commerce</title>
+  <link rel="stylesheet" href="./assets/css/main.css" />
+</head>
+<body data-require-auth>
+
+  <div class="topbar">
+    <div class="container topbar__inner" id="authBar"></div>
+  </div>
+
+
+  <header class="header container">
+    <a class="logo" href="index.html"><div class="logo__box">HOME</div></a>
+    <!-- <div class="search">
+      <input type="text" class="search__input" placeholder="ค้นหาสินค้า อุปกรณ์การแพทย์..." />
+      <span class="search__icon">🔍</span>
+    </div> -->
+    <div class="header-icons">
+      <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
+        <span class="icon-transport">🚚</span>
+        <span id="statusBadge" class="badge">0</span>
+      </a>
+      <a id="cartButton" class="header-icon" role="button" title="ตะกร้า">
+        🛒 <span id="cartCount" class="badge">0</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="container stepper">
+    <div class="step active" data-step="1">สั่งซื้อสินค้า</div>
+    <div class="step" data-step="2">ชำระเงิน</div>
+    <div class="step" data-step="3">เสร็จสิ้น</div>
+  </div>
+
+
+  <main class="checkout-grid container">
+
+    <section class="form-card" aria-labelledby="shippingTitle">
+      <h2 id="shippingTitle">รายละเอียดการจัดส่ง</h2>
+
+      <label for="name">ชื่อ - นามสกุล</label>
+      <input id="name" class="input" type="text" placeholder="กรอกชื่อ-นามสกุล" />
+
+      <label for="phone">เบอร์โทรศัพท์</label>
+      <input id="phone" class="input" type="tel" inputmode="tel" placeholder="0xxxxxxxxx หรือ +66xxxxxxxxx" />
+
+      <label for="address">ที่อยู่</label>
+      <textarea id="address" class="textarea" placeholder="รายละเอียดการจัดส่ง"></textarea>
+
+        <div style="margin-top:24px;">
+          <label for="paymentMethod" style="display:block;margin-bottom:6px;">วิธีการชำระเงิน</label>
+
+          <div style="
+            padding:10px;
+            border-radius:8px;
+            background:#f8fafc;
+            font-weight:400;
+            width:100%;
+            max-width:240px;
+          ">
+            PromptPay
+          </div>
+
+          <input type="hidden" id="paymentMethod" value="promptpay" />
+        </div>
+
+
+
+
+      <div style="margin-top:16px">
+        <button id="toPayment" class="btn-primary">ไปหน้าชำระเงิน</button>
+      </div>
+    </section>
+
+
+    <aside class="pay-summary" aria-labelledby="sumTitle">
+      <h3 id="sumTitle">สินค้าทั้งหมด</h3>
+
+      <div id="orderItems" class="pay-summary__items"></div>
+
+      <div class="price-summary">
+        <div class="price-row">
+          <span>ค่าสินค้า</span>
+          <span id="subtotal">฿0.00</span>
+        </div>
+
+
+        <div class="price-row" id="shipRow" style="display:none;">
+          <span>ค่าจัดส่ง</span>
+          <span id="shipFee">฿0.00</span>
+        </div>
+
+        <div class="price-row total">
+          <span>รวมทั้งหมด</span>
+          <span id="grandTotal">฿0.00</span>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <div id="cartOverlay" class="overlay hidden"></div>
+  <aside id="cartDrawer" class="cart-drawer hidden" aria-labelledby="cartTitle">
+    <div class="cart-header">
+      <h3 id="cartTitle">รถเข็นของฉัน</h3>
+      <button id="cartClose" class="icon-btn" aria-label="ปิด">✕</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">รวมทั้งหมด: <b id="cartTotal">฿0.00</b></div>
+      <a id="goCheckout" class="btn-primary w-full" href="checkout.html">สั่งซื้อสินค้า</a>
+    </div>
+  </aside>
+
+  <script src="./assets/js/cart.js"></script>
+  <script src="./assets/js/auth.js"></script>
+  <script src="./assets/js/guard.js"></script>
+  <script src="./assets/js/checkout.js"></script>
+</body>
+</html>
