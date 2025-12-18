@@ -1,5 +1,5 @@
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://web-med-production.up.railway.app";
 
 
 let products = [];

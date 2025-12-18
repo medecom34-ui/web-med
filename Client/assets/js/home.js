@@ -2,7 +2,7 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://web-med-production.up.railway.app";
 
 function cartSvg() {
   return `

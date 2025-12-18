@@ -1,5 +1,5 @@
 // assets/js/product.js
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://web-med-production.up.railway.app";
 const $ = (s) => document.querySelector(s);
 const fmtTHB = (n) =>
   Number(n).toLocaleString("th-TH", {

@@ -19,7 +19,7 @@
   }
 
   const $ = s => document.querySelector(s);
-  const API_BASE = "http://localhost:5000";
+  const API_BASE = "https://web-med-production.up.railway.app";
   const PROMPTPAY_QR_URL =
   "https://res.cloudinary.com/dan0fftcp/image/upload/v1765960630/QR_Code_%E0%B8%9E%E0%B8%B4%E0%B8%A1%E0%B8%9E%E0%B9%8C%E0%B8%A0%E0%B8%B1%E0%B8%97%E0%B8%A3_2_gzun7m.jpg";
 

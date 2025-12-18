@@ -4,7 +4,7 @@
   const fmtTHB = n =>
     "฿" + Number(n).toLocaleString("th-TH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  const API_BASE = "http://localhost:5000"; 
+  const API_BASE = "https://web-med-production.up.railway.app"; 
 
   const DATA_PLACEHOLDER = "data:image/svg+xml;utf8," + encodeURIComponent(
     `<svg xmlns='http://www.w3.org/2000/svg' width='200' height='160' viewBox='0 0 200 160'>
