@@ -31,11 +31,7 @@ exports.uploadHandler = async (req, res) => {
 
     const result = await uploadStream(req.file.buffer, folder);
     console.log("uploadHandler: uploaded", req.file.originalname, "->", result && (result.secure_url || result.url));
-    console.log("CLOUDINARY ENV CHECK:", {
-  cloud: process.env.CLOUDINARY_CLOUD_NAME,
-  key: process.env.CLOUDINARY_API_KEY?.slice(0,6),
-});
-
+    
     return res.json({ success: true, data: { url: result.secure_url || result.url, raw: result } });
   } catch (err) {
     console.error("uploadHandler error:", err);
