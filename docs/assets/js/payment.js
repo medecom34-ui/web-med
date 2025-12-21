@@ -72,6 +72,20 @@ if (qrContainer && PROMPTPAY_QR_URL) {
     let draft = null;
     try {
       draft = JSON.parse(localStorage.getItem("orderDraft") || "null");
+      // 🔒 HARD GUARANTEE ADDRESS
+if (!draft.address && draft.customer) {
+  draft.address = {
+    fullName: draft.customer.name || "",
+    phone: draft.customer.phone || "",
+    line1: draft.customer.address || "-",
+    countryCode: "TH"
+  };
+  delete draft.customer;
+}
+
+localStorage.setItem("orderDraft", JSON.stringify(draft));
+
+      
     } catch(e) { draft = null; }
 
     if (!draft) {
