@@ -35,7 +35,10 @@ function toNumberIfPossible(v) {
           <div class="order-thumb" style="${i.image ? `background-image:url(${i.image})` : ''}"></div>
           <div style="flex:1; min-width:0;">
             <div class="order-name">${i.name}</div>
-            ${i.code ? `<div class="order-option">รหัส: ${i.code}</div>` : ''}
+            ${(i.code || i.sku || i.skuSnapshot)
+  ? `<div class="order-option">รหัส: ${i.code || i.sku || i.skuSnapshot}</div>`
+  : ''}
+
             <div class="order-option">x${i.qty}</div>
           </div>
           <div class="order-price">${money(i.price * i.qty)}</div>
