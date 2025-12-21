@@ -2,8 +2,6 @@
 (function(){
   const $ = s => document.querySelector(s);
 
-  const API_BASE = "https://web-med-production.up.railway.app"; 
-
   function parseNumber(n) {
     if (n === null || n === undefined) return NaN;
     if (typeof n === 'number') return n;
@@ -110,29 +108,57 @@
 
   const STATUS = ["PENDING","SHIPPED","CANCELED"];
 
-  function apiFetch(path, opts = {}) {
-    const token = localStorage.getItem("auth_token") || (function(){
+function apiFetch(path, opts = {}) {
+  const token =
+    localStorage.getItem("auth_token") ||
+    (() => {
       try {
         const u = JSON.parse(localStorage.getItem("auth_user") || "null");
         return u && u.token ? u.token : null;
-      } catch(e){ return null; }
+      } catch (e) {
+        return null;
+      }
     })();
 
-    opts.headers = Object.assign({ "Content-Type": "application/json" }, opts.headers || {});
-    if (token) opts.headers.Authorization = "Bearer " + token;
+  opts.headers = Object.assign(
+    { "Content-Type": "application/json" },
+    opts.headers || {}
+  );
 
-    return fetch(path, opts).then(async r => {
-      const txt = await r.text().catch(()=>"");
-      let body = null;
-      try { body = txt ? JSON.parse(txt) : null; } catch(e) { body = txt; }
-      const ct = r.headers.get("Content-Type") || "";
-      if (ct.includes("application/json")) return body;
-      try { return JSON.parse(txt); } catch(e) { return { success:false, status:r.status, body: txt }; }
-    });
+  if (token) {
+    opts.headers.Authorization = "Bearer " + token;
   }
 
+  // FIX หลัก: normalize URL
+  const finalUrl =
+    path.startsWith("http://") || path.startsWith("https://")
+      ? path
+      : `${API_BASE}${path.startsWith("/") ? "" : "/"}${path}`;
+
+  return fetch(finalUrl, opts).then(async (r) => {
+    const txt = await r.text().catch(() => "");
+    let body = null;
+
+    try {
+      body = txt ? JSON.parse(txt) : null;
+    } catch (e) {
+      body = txt;
+    }
+
+    const ct = r.headers.get("Content-Type") || "";
+    if (ct.includes("application/json")) return body;
+
+    try {
+      return JSON.parse(txt);
+    } catch (e) {
+      return { success: false, status: r.status, body: txt };
+    }
+  });
+}
+
+
   async function loadOrders(){
-    const res = await apiFetch(`${API_BASE}/api/admin/orders`);
+    const res = await apiFetch("/api/admin/orders");
     if (!res || !res.success) return [];
     return res.data || [];
   }
@@ -196,7 +222,7 @@
   }
 
   async function showDetail(id){
-    const res = await apiFetch(`${API_BASE}/api/admin/orders/${id}`);
+    const res = await apiFetch(`/api/admin/orders/${id}`);
     if (!res || !res.success) return alert("ไม่พบข้อมูลคำสั่งซื้อ");
     const o = res.data;
     const items = (o.items||[]).map(it => `<li>${it.nameSnapshot} (x${it.qty}) - ${money(it.lineTotal)}</li>`).join("");
@@ -248,10 +274,10 @@
 
       if (tracking) {
         const shipPayload = { trackingNo: tracking, carrier: "MANUAL", status: "SHIPPED", setOrderShipped: (status === "SHIPPED") };
-        await apiFetch(`${API_BASE}/api/admin/orders/${id}/shipments`, { method: "POST", body: JSON.stringify(shipPayload) });
+        await apiFetch(`/api/admin/orders/${id}/shipments`, { method: "POST", body: JSON.stringify(shipPayload) });
       }
 
-      await apiFetch(`${API_BASE}/api/admin/orders/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
+      await apiFetch(`/api/admin/orders/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
 
       await refresh();
       showToast("บันทึกเรียบร้อย", "success");

@@ -2,11 +2,6 @@
 (function(){
   const $ = s => document.querySelector(s);
 
-  const API_BASE =
-  location.hostname.includes("github.io")
-    ? "https://web-med-production.up.railway.app"
-    : "";
-
   function apiFetch(path, opts = {}) {
     const token = localStorage.getItem("auth_token") || (function(){
       try { const u = JSON.parse(localStorage.getItem("auth_user") || "null"); return u && u.token ? u.token : null; } catch(e){ return null; }
@@ -31,7 +26,7 @@
   const PAYMENT_STATUS = ["PENDING","VERIFIED","REJECTED"];
 
   async function loadPayments() {
-    const res = await apiFetch(`${API_BASE}/api/admin/payments`);
+    const res = await apiFetch("/api/admin/payments");
     if (!res || !res.success) return [];
     return res.data || [];
   }
@@ -190,7 +185,7 @@
     try {
       const btn = document.querySelector(`button[data-save="${id}"]`);
       if (btn) { btn.disabled = true; btn.textContent = "กำลังบันทึก..."; }
-      const res = await apiFetch(`${API_BASE}/api/admin/payments/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
+      const res = await apiFetch(`/api/admin/payments/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
       if (!res || !res.success) throw new Error(res && res.message ? res.message : "failed");
       showToast("บันทึกสถานะเรียบร้อย", "success");
       await refresh();
