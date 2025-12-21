@@ -2,6 +2,11 @@
 (function(){
   const $ = s => document.querySelector(s);
 
+  const API_BASE =
+  location.hostname.includes("github.io")
+    ? "https://web-med-production.up.railway.app"
+    : "";
+
   function parseNumber(n) {
     if (n === null || n === undefined) return NaN;
     if (typeof n === 'number') return n;
@@ -128,7 +133,7 @@
   }
 
   async function loadOrders(){
-    const res = await apiFetch("/api/admin/orders");
+    const res = await apiFetch(`${API_BASE}/api/admin/orders`);
     if (!res || !res.success) return [];
     return res.data || [];
   }
@@ -255,7 +260,7 @@ function openPrintTabAndPrint(htmlContent) {
 
 
   async function printPickList(orderId){
-    const res = await apiFetch(`/api/admin/orders/${orderId}`);
+    const res = await apiFetch(`${API_BASE}/api/admin/orders/${orderId}`);
     if (!res || !res.success) return alert("ไม่พบคำสั่งซื้อ");
     const html = buildDetailHTML(res.data);
     openPrintTabAndPrint(html);

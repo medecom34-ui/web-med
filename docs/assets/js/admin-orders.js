@@ -2,6 +2,11 @@
 (function(){
   const $ = s => document.querySelector(s);
 
+  const API_BASE =
+  location.hostname.includes("github.io")
+    ? "https://web-med-production.up.railway.app"
+    : "";
+
   function parseNumber(n) {
     if (n === null || n === undefined) return NaN;
     if (typeof n === 'number') return n;
@@ -130,7 +135,7 @@
   }
 
   async function loadOrders(){
-    const res = await apiFetch("/api/admin/orders");
+    const res = await apiFetch(`${API_BASE}/api/admin/orders`);
     if (!res || !res.success) return [];
     return res.data || [];
   }
@@ -194,7 +199,7 @@
   }
 
   async function showDetail(id){
-    const res = await apiFetch(`/api/admin/orders/${id}`);
+    const res = await apiFetch(`${API_BASE}/api/admin/orders/${id}`);
     if (!res || !res.success) return alert("ไม่พบข้อมูลคำสั่งซื้อ");
     const o = res.data;
     const items = (o.items||[]).map(it => `<li>${it.nameSnapshot} (x${it.qty}) - ${money(it.lineTotal)}</li>`).join("");
@@ -246,10 +251,10 @@
 
       if (tracking) {
         const shipPayload = { trackingNo: tracking, carrier: "MANUAL", status: "SHIPPED", setOrderShipped: (status === "SHIPPED") };
-        await apiFetch(`/api/admin/orders/${id}/shipments`, { method: "POST", body: JSON.stringify(shipPayload) });
+        await apiFetch(`${API_BASE}/api/admin/orders/${id}/shipments`, { method: "POST", body: JSON.stringify(shipPayload) });
       }
 
-      await apiFetch(`/api/admin/orders/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
+      await apiFetch(`${API_BASE}/api/admin/orders/${id}`, { method: "PATCH", body: JSON.stringify({ status }) });
 
       await refresh();
       showToast("บันทึกเรียบร้อย", "success");
