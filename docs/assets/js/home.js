@@ -363,12 +363,13 @@ window.addToCart = (keyOrSlug) => {
 
   const key = item.slug || item.id;
   const price = item.priceTHB;
+  const sku = item.sku;
 
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const idx = cart.findIndex((x) => x.key === key);
 
   if (idx > -1) cart[idx].qty += 1;
-  else cart.push({ key, id: key, name: item.name, option: null, qty: 1, price });
+  else cart.push({ key, id: key, name: item.name, option: null, qty: 1, price,sku });
 
   localStorage.setItem("cart", JSON.stringify(cart));
   window.dispatchEvent(new Event("cart:changed"));
