@@ -59,6 +59,7 @@ function mapProduct(p) {
     id: String(p.id),
     name: p.name,
     slug: p.slug,
+    sku: p.sku || p.code || null,
     priceTHB: p.defaultPrice ?? p.price ?? 0,
     imageUrl: p.imageUrl || null,
   };
