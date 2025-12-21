@@ -180,128 +180,76 @@ if (qrContainer && PROMPTPAY_QR_URL) {
       });
     }
 
-    // paid button click -> create order + optional background upload of slip
-    const btn = document.getElementById("paidBtn");
-    if (btn) {
-      btn.addEventListener("click", async () => {
-        btn.disabled = true;
-        const originalText = btn.textContent;
-        btn.textContent = "กำลังสร้างคำสั่งซื้อ...";
+const btn = document.getElementById("paidBtn");
+btn.addEventListener("click", async () => {
+  const fileInput = document.getElementById("slipFile");
+  const file = fileInput.files[0];
 
-        try {
-          // prepare payload for create order
-          const payload = {
-            userId: draft.userId || null,
-            orderNumber: draft.orderNumber || null,
-            customer: draft.customer || { name: "ลูกค้า", address: "-", phone: null },
-            shippingMethod: draft.shippingMethod || null,
-            paymentMethod: "promptpay",
-            subtotal: draft.subtotal,
-            shippingFee: 0, // send zero to be explicit (server should accept missing/0)
-            taxTotal: draft.taxTotal || 0,
-            grandTotal: draft.total,
-            items: (draft.items || []).map(i => ({
-              productId: (i.productId != null && !Number.isNaN(Number(i.productId))) ? Number(i.productId) : null,
-              slug: i.slug || slugify(i.name) || null,
-              variantId: (i.variantId != null && !Number.isNaN(Number(i.variantId))) ? Number(i.variantId) : null,
-              nameSnapshot: i.name || i.nameSnapshot || '',
-              skuSnapshot: i.sku || i.code || i.skuSnapshot || '',
-              qty: Number(i.qty || 1),
-              unitPrice: Number(i.unitPrice || i.price || 0),
-              lineTotal: Number(i.lineTotal || ((i.qty||1) * (i.unitPrice || i.price || 0))),
-              image: i.image || null
-            })),
-            address: {
-              type: "SHIPPING",
-              fullName: (draft.customer && draft.customer.name) || "",
-              phone: (draft.customer && draft.customer.phone) || null,
-              line1: (draft.customer && draft.customer.address) || "-"
-            },
-            payment: {
-              slipUrl: null,
-              payerName: (draft.customer && draft.customer.name) || null,
-              amount: draft.total,
-              status: "PENDING"
-            }
-          };
+  if (!file) {
+    alert("กรุณาเลือกไฟล์สลิป");
+    return;
+  }
 
-          // create order
-          const createRes = await fetch(`${API_BASE}/api/orders`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
+  btn.disabled = true;
+  btn.textContent = "กำลังอัปโหลดสลิป...";
 
-          if (!createRes.ok) {
-            const txt = await createRes.text().catch(()=>"");
-            throw new Error("HTTP " + createRes.status + " " + txt);
-          }
-          const createJson = await createRes.json().catch(()=>null);
-          if (!createJson || !createJson.success || !createJson.data) throw new Error(createJson && createJson.message ? createJson.message : "Invalid response from create order");
-
-          const createdOrder = createJson.data;
-          const orderId = createdOrder.id || createdOrder.orderNumber || null;
-
-         const f = slipInput && slipInput.files && slipInput.files[0];
-
-if (f && orderId) {
   try {
+    // 1) upload slip → Cloudinary
     const fd = new FormData();
-    fd.append("file", f);
+    fd.append("file", file); // ⚠ ต้องชื่อ file เท่านั้น
 
-    const up = await fetch(`${API_BASE}/api/uploads`, {
-      method: "POST",
-      body: fd,
-      headers: token ? { Authorization: "Bearer " + token } : {}
-    });
+    const uploadRes = await fetch(
+      "https://web-med-production.up.railway.app/api/uploads",
+      {
+        method: "POST",
+        body: fd,
+      }
+    );
 
-    const uj = await up.json();
-    if (!uj.success) throw new Error("upload failed");
+    const uploadJson = await uploadRes.json();
+    if (!uploadJson.success) throw new Error("Upload failed");
 
-    const slipUrl = uj.data.url;
+    const slipUrl = uploadJson.data.url;
+    console.log("✅ SLIP URL:", slipUrl);
 
-    await fetch(`${API_BASE}/api/orders/${orderId}/payments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(token ? { Authorization: "Bearer " + token } : {})
-      },
-      body: JSON.stringify({
-        amount: draft.total,
-        payerName: draft.customer?.name || null,
-        slipUrl,
-        status: "PENDING"
-      })
-    });
+    // 2) create order + payment
+    const orderRes = await fetch(
+      "https://web-med-production.up.railway.app/api/orders",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          /* payload order ตามของเดิม */
+        })
+      }
+    );
+
+    const orderJson = await orderRes.json();
+    const orderId = orderJson.data.id;
+
+    await fetch(
+      `https://web-med-production.up.railway.app/api/orders/${orderId}/payments`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: orderJson.data.grandTotal,
+          slipUrl,
+          status: "PENDING"
+        })
+      }
+    );
+
+    // 3) redirect
+    location.href = `success.html?orderNumber=${orderJson.data.orderNumber}`;
 
   } catch (e) {
     console.error(e);
     alert("อัปโหลดสลิปไม่สำเร็จ");
     btn.disabled = false;
-    btn.textContent = originalText;
-    return;
+    btn.textContent = "สร้างคำสั่งซื้อและอัปโหลดสลิป";
   }
-}
+});
 
-location.href = `success.html?orderNumber=${encodeURIComponent(createdOrder.orderNumber)}`;
-
-
-
-          // clear cart/draft and redirect to success
-          localStorage.setItem("lastOrderId", createdOrder.id || createdOrder.orderNumber || "");
-          localStorage.removeItem("cart");
-          localStorage.removeItem("orderDraft");
-          window.dispatchEvent(new Event("cart:changed"));
-          window.dispatchEvent(new Event("orders:changed"));
-
-          location.href = `success.html?orderNumber=${encodeURIComponent(createdOrder.orderNumber || "")}`;
-        } catch (err) {
-          console.error("create order error:", err);
-          alert("ไม่สามารถสร้างคำสั่งซื้อได้ กรุณาลองใหม่ หรือแจ้งผู้ดูแลระบบ");
-          btn.disabled = false;
-          btn.textContent = originalText;
-        }
-      });
-    }
   } // end boot
 })();
