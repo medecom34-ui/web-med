@@ -106,26 +106,54 @@
     } catch(e){ return null; }
   }
 
-  function apiFetch(path, opts = {}) {
-    const token = localStorage.getItem("auth_token") || (function(){
+function apiFetch(path, opts = {}) {
+  const token =
+    localStorage.getItem("auth_token") ||
+    (() => {
       try {
         const u = JSON.parse(localStorage.getItem("auth_user") || "null");
         return u && u.token ? u.token : null;
-      } catch(e){ return null; }
+      } catch (e) {
+        return null;
+      }
     })();
 
-    opts.headers = Object.assign({ "Content-Type": "application/json" }, opts.headers || {});
-    if (token) opts.headers.Authorization = "Bearer " + token;
+  opts.headers = Object.assign(
+    { "Content-Type": "application/json" },
+    opts.headers || {}
+  );
 
-    return fetch(path, opts).then(async r => {
-      const txt = await r.text().catch(()=>"");
-      try {
-        return txt ? JSON.parse(txt) : null;
-      } catch(e) {
-        return { success:false, status: r.status, body: txt };
-      }
-    });
+  if (token) {
+    opts.headers.Authorization = "Bearer " + token;
   }
+
+  //  FIX หลัก: normalize URL
+  const finalUrl =
+    path.startsWith("http://") || path.startsWith("https://")
+      ? path
+      : `${API_BASE}${path.startsWith("/") ? "" : "/"}${path}`;
+
+  return fetch(finalUrl, opts).then(async (r) => {
+    const txt = await r.text().catch(() => "");
+    let body = null;
+
+    try {
+      body = txt ? JSON.parse(txt) : null;
+    } catch (e) {
+      body = txt;
+    }
+
+    const ct = r.headers.get("Content-Type") || "";
+    if (ct.includes("application/json")) return body;
+
+    try {
+      return JSON.parse(txt);
+    } catch (e) {
+      return { success: false, status: r.status, body: txt };
+    }
+  });
+}
+
 
   async function loadOrders(){
     const res = await apiFetch("/api/admin/orders");
