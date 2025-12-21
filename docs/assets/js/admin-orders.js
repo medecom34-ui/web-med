@@ -2,10 +2,7 @@
 (function(){
   const $ = s => document.querySelector(s);
 
-  const API_BASE =
-  location.hostname.includes("github.io")
-    ? "https://web-med-production.up.railway.app"
-    : "";
+  const API_BASE = "https://web-med-production.up.railway.app"; 
 
   function parseNumber(n) {
     if (n === null || n === undefined) return NaN;
