@@ -181,6 +181,7 @@ if (qrContainer && PROMPTPAY_QR_URL) {
     }
 
 const btn = document.getElementById("paidBtn");
+
 btn.addEventListener("click", async () => {
   const fileInput = document.getElementById("slipFile");
   const file = fileInput.files[0];
@@ -194,9 +195,9 @@ btn.addEventListener("click", async () => {
   btn.textContent = "กำลังอัปโหลดสลิป...";
 
   try {
-    // 1) upload slip → Cloudinary
+    // ===== 1) UPLOAD SLIP =====
     const fd = new FormData();
-    fd.append("file", file); // ⚠ ต้องชื่อ file เท่านั้น
+    fd.append("file", file); // ⚠ ต้องชื่อ "file"
 
     const uploadRes = await fetch(
       "https://web-med-production.up.railway.app/api/uploads",
@@ -207,40 +208,39 @@ btn.addEventListener("click", async () => {
     );
 
     const uploadJson = await uploadRes.json();
-    if (!uploadJson.success) throw new Error("Upload failed");
+    if (!uploadJson.success) throw new Error("upload failed");
 
     const slipUrl = uploadJson.data.url;
     console.log("✅ SLIP URL:", slipUrl);
 
-    // 2) create order + payment
+    // ===== 2) CREATE ORDER =====
     const orderRes = await fetch(
       "https://web-med-production.up.railway.app/api/orders",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          /* payload order ตามของเดิม */
-        })
+        body: JSON.stringify(draft) // ใช้ draft ที่มีอยู่แล้ว
       }
     );
 
     const orderJson = await orderRes.json();
     const orderId = orderJson.data.id;
 
+    // ===== 3) CREATE PAYMENT =====
     await fetch(
       `https://web-med-production.up.railway.app/api/orders/${orderId}/payments`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: orderJson.data.grandTotal,
-          slipUrl,
+          amount: orderJson.data.total,
+          slipUrl: slipUrl,
           status: "PENDING"
         })
       }
     );
 
-    // 3) redirect
+    // ===== 4) DONE =====
     location.href = `success.html?orderNumber=${orderJson.data.orderNumber}`;
 
   } catch (e) {
@@ -250,6 +250,7 @@ btn.addEventListener("click", async () => {
     btn.textContent = "สร้างคำสั่งซื้อและอัปโหลดสลิป";
   }
 });
+
 
   } // end boot
 })();
