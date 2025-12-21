@@ -108,43 +108,54 @@
 
   const STATUS = ["PENDING","SHIPPED","CANCELED"];
 
+  
 function apiFetch(path, opts = {}) {
-  const API_BASE = "https://web-med-production.up.railway.app";
-
   const token =
     localStorage.getItem("auth_token") ||
     (() => {
       try {
         const u = JSON.parse(localStorage.getItem("auth_user") || "null");
         return u && u.token ? u.token : null;
-      } catch {
+      } catch (e) {
         return null;
       }
     })();
 
-  const url = path.startsWith("http")
-    ? path
-    : API_BASE + path;  
-
-  opts.headers = {
-    "Content-Type": "application/json",
-    ...(opts.headers || {}),
-  };
+  opts.headers = Object.assign(
+    { "Content-Type": "application/json" },
+    opts.headers || {}
+  );
 
   if (token) {
     opts.headers.Authorization = "Bearer " + token;
   }
 
-  return fetch(url, opts).then(async (r) => {
+  // FIX หลัก: normalize URL
+  const finalUrl =
+    path.startsWith("http://") || path.startsWith("https://")
+      ? path
+      : `${API_BASE}${path.startsWith("/") ? "" : "/"}${path}`;
+
+  return fetch(finalUrl, opts).then(async (r) => {
     const txt = await r.text().catch(() => "");
+    let body = null;
+
     try {
-      return txt ? JSON.parse(txt) : null;
-    } catch {
+      body = txt ? JSON.parse(txt) : null;
+    } catch (e) {
+      body = txt;
+    }
+
+    const ct = r.headers.get("Content-Type") || "";
+    if (ct.includes("application/json")) return body;
+
+    try {
+      return JSON.parse(txt);
+    } catch (e) {
       return { success: false, status: r.status, body: txt };
     }
   });
 }
-
 
 
   async function loadOrders(){
