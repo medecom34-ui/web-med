@@ -242,68 +242,65 @@ if (qrContainer && PROMPTPAY_QR_URL) {
           const createdOrder = createJson.data;
           const orderId = createdOrder.id || createdOrder.orderNumber || null;
 
-          // if slip provided -> upload and attach to order/payment in background
-          const f = slipInput && slipInput.files && slipInput.files[0];
-          if (f && orderId) {
-            (async () => {
-              try {
-                const fd = new FormData();
-                fd.append("file", f);
+         const f = slipInput && slipInput.files && slipInput.files[0];
 
-                // auth token if present
-                const token = localStorage.getItem("auth_token") || (function(){
-                  try { const u = JSON.parse(localStorage.getItem("auth_user")||"null"); return u && u.token ? u.token : null; }
-                  catch(e){ return null; }
-                })();
-                const upHeaders = token ? { Authorization: "Bearer " + token } : {};
+if (f && orderId) {
+  (async () => {
+    try {
+      // ================================
+      // 1. upload slip to cloudinary
+      // ================================
+      const fd = new FormData();
+      fd.append("file", f); // ✅ ใช้ f
 
-                const up = await fetch(`${API_BASE}/api/uploads`, { method: "POST", body: fd, headers: upHeaders });
-                const upText = await up.text().catch(()=>"");
-                let uj = null;
-                try { uj = upText ? JSON.parse(upText) : null; } catch(e){ uj = upText; }
-                if (!up.ok) { console.warn("upload failed:", up.status, upText); return; }
-
-                const slipUrl = (uj && (uj.data && (uj.data.url || uj.data.secure_url) || uj.url || uj.secure_url)) || null;
-                if (!slipUrl) { console.warn("no slip url in upload response", uj); return; }
-
-                // prepare headers for next requests
-                const commonHeaders = Object.assign({ "Content-Type":"application/json" }, token ? { Authorization: "Bearer " + token } : {});
-
-                // try to PATCH existing payment if exists
-                const maybeOrderIdNum = (createdOrder && createdOrder.id) ? (Number(createdOrder.id) || createdOrder.id) : orderId;
-                const orderIdForPath = encodeURIComponent(maybeOrderIdNum);
-
-                const listRes = await fetch(`${API_BASE}/api/orders/${orderIdForPath}/payments`, { method: "GET", headers: commonHeaders });
-                let listJson = null;
-                try { listJson = await listRes.json(); } catch(e){ listJson = null; }
-                const payments = (listJson && listJson.success && Array.isArray(listJson.data)) ? listJson.data
-                                 : (Array.isArray(listJson) ? listJson : []);
-
-                if (payments && payments.length) {
-                  const paymentId = payments[0].id;
-                  await fetch(`${API_BASE}/api/orders/payments/${encodeURIComponent(paymentId)}`, {
-                    method: "PATCH",
-                    headers: commonHeaders,
-                    body: JSON.stringify({ slipUrl, status: "PENDING" })
-                  }).catch(e => console.warn("patch payment failed", e));
-                } else {
-                  // create payment fallback
-                  await fetch(`${API_BASE}/api/orders/${orderIdForPath}/payments`, {
-                    method: "POST",
-                    headers: commonHeaders,
-                    body: JSON.stringify({
-                      amount: draft.total,
-                      payerName: draft.customer.name,
-                      slipUrl,
-                      status: "PENDING"
-                    })
-                  }).catch(e => console.warn("create payment fallback failed", e));
-                }
-              } catch (e) {
-                console.error("background upload/update error:", e);
-              }
-            })();
+      const token =
+        localStorage.getItem("auth_token") ||
+        (() => {
+          try {
+            const u = JSON.parse(localStorage.getItem("auth_user") || "null");
+            return u?.token || null;
+          } catch {
+            return null;
           }
+        })();
+
+      const up = await fetch(`${API_BASE}/api/uploads`, {
+        method: "POST",
+        body: fd,
+        headers: token ? { Authorization: "Bearer " + token } : {}
+      });
+
+      const uj = await up.json();
+      if (!uj.success || !uj.data?.url) {
+        console.error("upload slip failed", uj);
+        return;
+      }
+
+      const slipUrl = uj.data.url;
+
+      // ================================
+      // 2. attach slip to payment
+      // ================================
+      await fetch(`${API_BASE}/api/orders/${orderId}/payments`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: "Bearer " + token } : {})
+        },
+        body: JSON.stringify({
+          amount: draft.total,
+          payerName: draft.customer?.name || null,
+          slipUrl: slipUrl,
+          status: "PENDING"
+        })
+      });
+
+    } catch (e) {
+      console.error("background upload/update error:", e);
+    }
+  })();
+}
+
 
           // clear cart/draft and redirect to success
           localStorage.setItem("lastOrderId", createdOrder.id || createdOrder.orderNumber || "");
