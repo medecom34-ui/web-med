@@ -35,3 +35,5 @@ window.apiFetch = function(path, opts = {}) {
     }
   });
 };
+
+window.apiFetch = apiFetch;
