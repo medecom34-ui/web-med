@@ -213,7 +213,7 @@ btn.addEventListener("click", async () => {
     const slipUrl = uploadJson.data.url;
     console.log("✅ SLIP URL:", slipUrl);
 
-    
+
     const orderRes = await fetch(
   "https://web-med-production.up.railway.app/api/orders",
   {
@@ -232,7 +232,7 @@ const orderJson = await orderRes.json();
 if (!orderJson?.data?.id) {
   throw new Error("ORDER RESPONSE INVALID");
 }
-
+const orderId = orderJson.data.id;
 
     // ===== 3) CREATE PAYMENT =====
     await fetch(
