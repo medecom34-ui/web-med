@@ -122,7 +122,7 @@ function apiFetch(path, opts = {}) {
 
   const url = path.startsWith("http")
     ? path
-    : API_BASE + path;
+    : API_BASE + path;   // ✅ จุดสำคัญ
 
   opts.headers = {
     "Content-Type": "application/json",
@@ -142,6 +142,7 @@ function apiFetch(path, opts = {}) {
     }
   });
 }
+
 
 
   async function loadOrders(){
