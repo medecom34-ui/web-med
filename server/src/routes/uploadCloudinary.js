@@ -9,6 +9,6 @@ const router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-router.post('/', upload.single('file'), uploadController.uploadHandler);
+router.post('/', upload.single('slip'), uploadController.uploadHandler);
 
 module.exports = router;
