@@ -9,7 +9,13 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://medecom34-ui.github.io",
+  ],
+  methods: ["GET", "POST", "PATCH", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 // serve client static

@@ -105,11 +105,16 @@ function toNumberIfPossible(v) {
     const draft = {
       userId: me.id,
         address: {
-    fullName: $("#name").value.trim(),
-    phone: normalizePhone($("#phone").value.trim()),
-    line1: $("#address").value.trim(), 
-    countryCode: "TH"
-  },
+        type: "SHIPPING",
+        fullName: $("#name").value.trim(),
+        phone: normalizePhone($("#phone").value.trim()),
+        line1: $("#address").value.trim(),
+        subdistrict: "",
+        district: "",
+        province: "",
+        postcode: "",
+        countryCode: "TH"
+      },
       shippingMethod: null,
       paymentMethod: "promptpay", 
       items,
