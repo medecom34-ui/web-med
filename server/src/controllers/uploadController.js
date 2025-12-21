@@ -27,7 +27,7 @@ exports.uploadHandler = async (req, res) => {
     const yyyy = today.getFullYear();
     const mm = String(today.getMonth() + 1).padStart(2, '0');
     const dd = String(today.getDate()).padStart(2, '0');
-    const folder = `image_slip/${yyyy}-${mm}-${dd}`;
+    const folder = `Med-ecom/image_slip/${yyyy}-${mm}-${dd}`;
 
     const result = await uploadStream(req.file.buffer, folder);
     console.log("uploadHandler: uploaded", req.file.originalname, "->", result && (result.secure_url || result.url));
