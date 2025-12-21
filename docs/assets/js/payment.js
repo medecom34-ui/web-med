@@ -261,11 +261,7 @@ if (qrContainer && PROMPTPAY_QR_URL) {
                 const upText = await up.text().catch(()=>"");
                 let uj = null;
                 try { uj = upText ? JSON.parse(upText) : null; } catch(e){ uj = upText; }
-                if (!up.ok) { 
-                  alert("❌ อัปโหลดสลิปล้มเหลว กรุณาลองใหม่");
-                  console.error("UPLOAD FAIL:", up.status, upText);
-                  console.warn("upload failed:", up.status, upText); return; }
-                  console.log("UPLOAD OK:", upText);
+                if (!up.ok) { console.warn("upload failed:", up.status, upText); return; }
 
                 const slipUrl = (uj && (uj.data && (uj.data.url || uj.data.secure_url) || uj.url || uj.secure_url)) || null;
                 if (!slipUrl) { console.warn("no slip url in upload response", uj); return; }
