@@ -237,6 +237,7 @@ exports.getPopularProducts = async (req, res) => {
         id: String(p.id),
         slug: p.slug,
         name: p.name,
+        sku: v ? v.sku : null,
         priceTHB: v ? Number(v.price) : null,
         imageUrl: img ? img.url : null,
       };
@@ -281,6 +282,7 @@ exports.getNewestProducts = async (req, res) => {
         id: String(p.id),
         slug: p.slug,
         name: p.name,
+        sku: v ? v.sku : null,
         priceTHB: v ? Number(v.price) : null,
         imageUrl: img ? img.url : null,
       };
