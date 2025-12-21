@@ -213,18 +213,26 @@ btn.addEventListener("click", async () => {
     const slipUrl = uploadJson.data.url;
     console.log("✅ SLIP URL:", slipUrl);
 
-    // ===== 2) CREATE ORDER =====
+    
     const orderRes = await fetch(
-      "https://web-med-production.up.railway.app/api/orders",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(draft) // ใช้ draft ที่มีอยู่แล้ว
-      }
-    );
+  "https://web-med-production.up.railway.app/api/orders",
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(draft)
+  }
+);
 
-    const orderJson = await orderRes.json();
-    const orderId = orderJson.data.id;
+if (!orderRes.ok) {
+  const t = await orderRes.text();
+  throw new Error("CREATE ORDER FAILED: " + t);
+}
+
+const orderJson = await orderRes.json();
+if (!orderJson?.data?.id) {
+  throw new Error("ORDER RESPONSE INVALID");
+}
+
 
     // ===== 3) CREATE PAYMENT =====
     await fetch(
