@@ -245,61 +245,46 @@ if (qrContainer && PROMPTPAY_QR_URL) {
          const f = slipInput && slipInput.files && slipInput.files[0];
 
 if (f && orderId) {
-  (async () => {
-    try {
-      // ================================
-      // 1. upload slip to cloudinary
-      // ================================
-      const fd = new FormData();
-      fd.append("file", f); // ✅ ใช้ f
+  try {
+    const fd = new FormData();
+    fd.append("file", f);
 
-      const token =
-        localStorage.getItem("auth_token") ||
-        (() => {
-          try {
-            const u = JSON.parse(localStorage.getItem("auth_user") || "null");
-            return u?.token || null;
-          } catch {
-            return null;
-          }
-        })();
+    const up = await fetch(`${API_BASE}/api/uploads`, {
+      method: "POST",
+      body: fd,
+      headers: token ? { Authorization: "Bearer " + token } : {}
+    });
 
-      const up = await fetch(`${API_BASE}/api/uploads`, {
-        method: "POST",
-        body: fd,
-        headers: token ? { Authorization: "Bearer " + token } : {}
-      });
+    const uj = await up.json();
+    if (!uj.success) throw new Error("upload failed");
 
-      const uj = await up.json();
-      if (!uj.success || !uj.data?.url) {
-        console.error("upload slip failed", uj);
-        return;
-      }
+    const slipUrl = uj.data.url;
 
-      const slipUrl = uj.data.url;
+    await fetch(`${API_BASE}/api/orders/${orderId}/payments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: "Bearer " + token } : {})
+      },
+      body: JSON.stringify({
+        amount: draft.total,
+        payerName: draft.customer?.name || null,
+        slipUrl,
+        status: "PENDING"
+      })
+    });
 
-      // ================================
-      // 2. attach slip to payment
-      // ================================
-      await fetch(`${API_BASE}/api/orders/${orderId}/payments`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...(token ? { Authorization: "Bearer " + token } : {})
-        },
-        body: JSON.stringify({
-          amount: draft.total,
-          payerName: draft.customer?.name || null,
-          slipUrl: slipUrl,
-          status: "PENDING"
-        })
-      });
-
-    } catch (e) {
-      console.error("background upload/update error:", e);
-    }
-  })();
+  } catch (e) {
+    console.error(e);
+    alert("อัปโหลดสลิปไม่สำเร็จ");
+    btn.disabled = false;
+    btn.textContent = originalText;
+    return;
+  }
 }
+
+location.href = `success.html?orderNumber=${encodeURIComponent(createdOrder.orderNumber)}`;
+
 
 
           // clear cart/draft and redirect to success
