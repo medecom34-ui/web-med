@@ -112,7 +112,7 @@ function toNumberIfPossible(v) {
       
       total: subtotalLocal,
       createdAt: new Date().toISOString(),
-      status: "draft"
+      status: "PENDING"
     };
 
     localStorage.setItem("orderDraft", JSON.stringify(draft));
