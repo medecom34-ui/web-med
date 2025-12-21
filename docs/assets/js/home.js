@@ -370,7 +370,7 @@ window.addToCart = (keyOrSlug) => {
   const idx = cart.findIndex((x) => x.key === key);
 
   if (idx > -1) cart[idx].qty += 1;
-  else cart.push({ key, id: key, name: item.name, option: null, qty: 1, price,scode: sku });
+  else cart.push({ key, id: key, name: item.name, option: null, qty: 1, price,code: sku });
 
   localStorage.setItem("cart", JSON.stringify(cart));
   window.dispatchEvent(new Event("cart:changed"));
