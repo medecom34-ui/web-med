@@ -1,6 +1,7 @@
-function apiFetch(path, opts = {}) {
-  const API_BASE = "https://web-med-production.up.railway.app";
 
+window.API_BASE = "https://web-med-production.up.railway.app";
+
+window.apiFetch = function(path, opts = {}) {
   const token =
     localStorage.getItem("auth_token") ||
     (() => {
@@ -14,7 +15,7 @@ function apiFetch(path, opts = {}) {
 
   const url = path.startsWith("http")
     ? path
-    : API_BASE + path;
+    : window.API_BASE + path;
 
   opts.headers = {
     "Content-Type": "application/json",
@@ -33,4 +34,4 @@ function apiFetch(path, opts = {}) {
       return { success: false, status: r.status, body: txt };
     }
   });
-}
+};
