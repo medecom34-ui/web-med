@@ -279,7 +279,7 @@ $("#addCart").onclick = () => {
   
   const variant = selectedVariant || null;
   const key = variant
-  ? `${product.slug}__${variant.sku}`
+  ? `${product.slug}__v${variant.id}`
   : product.slug;
 
   const idx = cart.findIndex((c) => c.key === key);
@@ -302,10 +302,8 @@ $("#addCart").onclick = () => {
     variantId: variant ? variant.id : null,
     slug: product.slug,
     name: product.name,
-    option: selectedVariant
-  ? selectedVariant.attributesJson
-  : null,
-    code: product.code || null,
+    option: variant ? variant.attributesJson : null,
+    code: variant?.code || product.code || null,
     sku: sku,
     qty,
     price: resolvedPrice,
