@@ -30,21 +30,24 @@ function toNumberIfPossible(v) {
   // replace the existing items rendering block with this:
   if (itemsBox) {
     itemsBox.innerHTML = cart
-      .map((i) => `
-        <div class="order-item" data-key="${i.key || ''}">
-          <div class="order-thumb" style="${i.image ? `background-image:url(${i.image})` : ''}"></div>
-          <div style="flex:1; min-width:0;">
-            <div class="order-name">${i.name}</div>
-            ${(i.code || i.sku || i.skuSnapshot)
-  ? `<div class="order-option">รหัส: ${i.code || i.sku || i.skuSnapshot}</div>`
-  : ''}
+      .map(i => `
+  <div class="order-item" data-key="${i.key || ''}">
+    <div class="order-thumb" style="${i.image ? `background-image:url(${i.image})` : ''}"></div>
+    <div style="flex:1; min-width:0;">
+      <div class="order-name">${i.name}</div>
 
-            <div class="order-option">x${i.qty}</div>
-          </div>
-          <div class="order-price">${money(i.price * i.qty)}</div>
-        </div>
-      `).join("");
-  }
+      ${
+        (i.sku || i.skuSnapshot || i.code)
+          ? `<div class="order-option">รหัส: ${i.sku || i.skuSnapshot || i.code}</div>`
+          : ''
+      }
+
+      <div class="order-option">x${i.qty}</div>
+    </div>
+    <div class="order-price">${money(i.price * i.qty)}</div>
+  </div>
+`).join("");
+
 
   const subtotal = cart.reduce((a, b) => a + b.qty * b.price, 0);
  
