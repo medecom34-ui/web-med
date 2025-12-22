@@ -276,7 +276,8 @@ $("#addCart").onclick = () => {
   if (!product) return;
   const qty = Number($("#qty").value || 1);
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
+  
+  const variant = selectedVariant || null;
   const key = variant
   ? `${product.slug}__${variant.sku}`
   : product.slug;
@@ -286,7 +287,7 @@ $("#addCart").onclick = () => {
   const firstImgRaw = product.images?.[0]?.url || null;
   const firstImg = firstImgRaw ? optimizeImg(firstImgRaw, 200) : null; // small thumb
 
-  const variant = selectedVariant || null;
+  
 
   // ตัดสินราคาด้วย resolvePrice (รองรับหลายชื่อตัวแปร)
   const resolvedPrice = resolvePrice(variant, product);
