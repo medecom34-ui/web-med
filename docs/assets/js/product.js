@@ -241,7 +241,7 @@ function renderVariantOptions() {
   wrap.querySelectorAll("input[name='variant']").forEach((el) => {
     el.addEventListener("change", () => {
       const id = el.value;
-      selectedVariant = product.variants.find(v => v.id === id);
+      selectedVariant = product.variants.find(v => String(v.id) === String(id));
       updatePrice();
       updateSku();
     });
