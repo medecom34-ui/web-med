@@ -271,6 +271,28 @@ $("#minus").onclick = () => {
   if (v > 1) el.value = v - 1;
 };
 
+function formatVariantOption(attr) {
+  if (!attr || typeof attr !== "object") return null;
+
+  const order = [
+    "size",
+    "type",
+    "connector",
+    "color",
+    "model",
+    "shape",
+    "width",
+    "length",
+    "capacity",
+  ];
+
+  return order
+    .filter(k => attr[k])
+    .map(k => attr[k])
+    .join(" / ");
+}
+
+
 // add to cart
 $("#addCart").onclick = () => {
   if (!product) return;
@@ -302,7 +324,7 @@ $("#addCart").onclick = () => {
     variantId: variant ? variant.id : null,
     slug: product.slug,
     name: product.name,
-    option: variant ? variant.attributesJson : null,
+    option: variant ? formatVariantOption(variant.attributesJson) : null,
     code: variant?.code || product.code || null,
     sku: sku,
     qty,
