@@ -132,4 +132,4 @@ function toNumberIfPossible(v) {
     localStorage.setItem("orderDraft", JSON.stringify(draft));
     location.href = "payment.html";
   });
-})();
+}})();
