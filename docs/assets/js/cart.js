@@ -130,6 +130,14 @@
     return false;
   }
 
+  function normalizeOption(opt) {
+  if (!opt) return null;
+  if (typeof opt === "string") return opt;
+  if (typeof opt === "object") return Object.values(opt).join(" / ");
+  return String(opt);
+}
+
+
   function render() {
     if (list) {
       const items = Cart.load();
@@ -141,7 +149,13 @@
             </div>
             <div class="cart-main">
               <div class="item-name">${row.name}</div>
-              ${row.option ? `<div class="item-option">ตัวเลือก: ${row.option}</div>` : ""}
+              ${(() => {
+                          const optionText = normalizeOption(row.option);
+                          return optionText
+                            ? `<div class="item-option">ตัวเลือก: ${optionText}</div>`
+                            : "";
+                        })()}
+
               ${(row.sku || row.code) ? `<div class="item-code mono">รหัส: ${row.sku || row.code}</div>` : ""}  
               <div class="item-price">${fmtTHB(row.price)}</div>
             </div>
