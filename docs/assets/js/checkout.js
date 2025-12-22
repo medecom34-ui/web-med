@@ -23,7 +23,7 @@ function toNumberIfPossible(v) {
   const me = (window.Auth && Auth.current && Auth.current()) || null;
   if (!me) { location.href = "login.html?next=" + encodeURIComponent(location.pathname); return; }
 
-  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const cart = (window.Cart && Cart.load()) || []
   if (!cart.length) { location.href = "index.html"; return; }
 
   const itemsBox = $("#orderItems");
