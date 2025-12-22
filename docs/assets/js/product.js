@@ -277,7 +277,10 @@ $("#addCart").onclick = () => {
   const qty = Number($("#qty").value || 1);
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-  const key = product.slug;
+  const key = variant
+  ? `${product.slug}__${variant.sku}`
+  : product.slug;
+
   const idx = cart.findIndex((c) => c.key === key);
 
   const firstImgRaw = product.images?.[0]?.url || null;
@@ -298,7 +301,9 @@ $("#addCart").onclick = () => {
     variantId: variant ? variant.id : null,
     slug: product.slug,
     name: product.name,
-    option: null,
+    option: selectedVariant
+  ? selectedVariant.attributesJson
+  : null,
     code: product.code || null,
     sku: sku,
     qty,
