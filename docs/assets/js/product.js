@@ -108,7 +108,7 @@ if (isInboxProduct(p)) {
     <a class="btn-line"
        href="https://line.me/ti/p/tongg_99"
        target="_blank">
-       💬 สอบถาม / สั่งซื้อผ่าน LINE
+       สอบถาม / สั่งซื้อผ่าน LINE
     </a>
   `;
 }
