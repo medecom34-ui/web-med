@@ -20,6 +20,11 @@ function optimizeImg(url, width) {
   return url.replace("/upload/", `/upload/w_${width},f_auto,q_auto/`);
 }
 
+function isInboxProduct(p) {
+  return String(p?.shortDesc || "").toUpperCase() === "INBOX";
+}
+
+
 // วงกลมสีเทา (data URI) สำหรับ select/pill
 const PLACEHOLDER_ICON =
   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='22'><circle cx='11' cy='11' r='11' fill='%23e5e7eb'/></svg>";
@@ -566,6 +571,8 @@ function cartSvg() {
     </svg>`;
 }
 
+
+
 function renderProducts() {
   if (!products.length) {
     productGrid.innerHTML = `<p style="color:#64748b;font-size:14px">ยังไม่มีการลงข้อมูลสินค้าในหมวดนี้</p>`;
@@ -578,21 +585,31 @@ function renderProducts() {
       const href = `product.html?slug=${encodeURIComponent(p.slug || "")}`;
       const imgStyle = p.imageUrl ? `style="background-image:url('${optimizeImg(p.imageUrl, 250)}')"` : "";
       const priceVal = (p.priceTHB !== undefined && p.priceTHB !== null) ? Number(p.priceTHB) : null;
-      const priceText = priceVal != null ? fmtTHB(priceVal) : "กรุณาสอบถาม";
+      const priceText = isInbox
+  ? "กรุณาสอบถามผ่านไลน์"
+  : (priceVal != null ? fmtTHB(priceVal) : "กรุณาสอบถาม");
+
       //const skuHtml = p.sku ? `<div class="sku" style="font-size:12px;color:#6b7280;margin-top:4px">รหัส: ${p.sku}</div>` : "";
 
       
       const dataAttr = `data-slug="${(p.slug||"").replace(/"/g,'&quot;')}" data-id="${(p.id||"").toString().replace(/"/g,'&quot;')}" data-sku="${(p.sku||"").replace(/"/g,'&quot;')}" data-code="${(p.code||"").replace(/"/g,'&quot;')}" data-price="${priceVal != null ? priceVal : 0}" data-img="${(p.imageUrl||"").replace(/"/g,'&quot;')}"`;
 
-      
+      const isInbox = isInboxProduct(p.raw);
+
+      const cartBtnHtml = isInbox
+        ? ""
+        : `
+          <button class="cart-fab add-from-cat" title="ใส่ตะกร้า" ${dataAttr} aria-label="ใส่ตะกร้า">
+            ${cartSvg()}
+          </button>
+        `;
+
 
       return `
       <div class="product-card">
         <div class="img">
           <a class="open-detail" href="${href}" aria-label="${p.name || ''}" ${imgStyle}></a>
-          <button class="cart-fab add-from-cat" title="ใส่ตะกร้า" ${dataAttr} aria-label="ใส่ตะกร้า">
-            ${cartSvg()}
-          </button>
+          ${cartBtnHtml}
         </div>
         <a class="name link-name" href="${href}">${p.name}</a>
         <div class="price">${priceText}</div>

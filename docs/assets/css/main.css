@@ -1934,7 +1934,6 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   gap: 6px;
 }
 
-/* ❗ บังคับซ่อน <br> ที่ทำให้ LINE ตกบรรทัด */
 .btn-line br {
   display: none !important;
 }
