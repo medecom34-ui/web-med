@@ -588,8 +588,7 @@ function renderProducts() {
   ? Number(p.priceTHB)
   : null;
       const isInbox =
-  String(p.raw?.shortDesc || "").toUpperCase() === "INBOX"
-  || p.priceTHB === null;
+  String(p.raw?.shortDesc || "").trim().toUpperCase() === "INBOX";
 
       const priceText = isInbox
   ? "กรุณาสอบถามผ่าน LINE"
