@@ -106,7 +106,7 @@ const buyRow = document.querySelector(".buy-row");
 if (isInboxProduct(p)) {
   buyRow.innerHTML = `
     <a class="btn-line"
-       href="https://line.me/ti/p/YOUR_LINE_ID"
+       href="https://line.me/ti/p/tongg_99"
        target="_blank">
        💬 สอบถาม / สั่งซื้อผ่าน LINE
     </a>
