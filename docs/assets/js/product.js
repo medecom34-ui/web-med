@@ -197,7 +197,10 @@ if (isInboxProduct(p)) {
 
   // reset qty
   $("#qty").value = 1;
+  if (!isInboxProduct(p)) {
   renderVariantOptions();
+}
+
 }
 
 function renderVariantOptions() {
@@ -268,9 +271,16 @@ function renderVariantOptions() {
 
 
 function updatePrice() {
+  if (isInboxProduct(product)) {
+    $("#product-price").innerHTML =
+      `<span class="price-inbox">ราคาสอบถาม</span>`;
+    return;
+  }
+
   const price = resolvePrice(selectedVariant, product);
   $("#product-price").textContent = fmtTHB(price);
 }
+
 
 function updateSku() {
   $("#product-code").textContent =
