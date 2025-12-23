@@ -104,6 +104,7 @@ function renderProduct() {
 const buyRow = document.querySelector(".buy-row");
 
 if (isInboxProduct(p)) {
+  // ซ่อน qty + ปุ่ม addCart เดิม
   buyRow.innerHTML = `
     <a class="btn-line"
        href="https://line.me/ti/p/tongg_99"
@@ -111,6 +112,9 @@ if (isInboxProduct(p)) {
        สอบถาม / สั่งซื้อผ่าน LINE
     </a>
   `;
+} else {
+  // ไม่ใช่ INBOX → ใช้ระบบเดิม
+  renderVariantOptions();
 }
 
 
@@ -195,12 +199,6 @@ if (isInboxProduct(p)) {
     thumbsWrap.innerHTML = "";
   }
 
-  if (!isInboxProduct(p)) {
-  const qtyEl = document.getElementById("qty");
-  if (qtyEl) qtyEl.value = 1;
-
-  renderVariantOptions();
-}
 
 }
 
@@ -327,7 +325,7 @@ function formatVariantOption(attr) {
 
 // add to cart
 $("#addCart").onclick = () => {
-  if (!product) return;
+  if (!product || isInboxProduct(product)) return;
   if (isInboxProduct(product)) {
     alert("สินค้านี้ต้องสอบถามหรือสั่งซื้อผ่าน LINE เท่านั้น");
     return;
