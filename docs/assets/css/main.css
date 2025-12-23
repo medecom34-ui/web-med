@@ -1968,15 +1968,21 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   filter:brightness(1.05);
 }
 
-/* ===== FIX: ย้ายปุ่ม LINE ไปฝั่งซ้าย ===== */
-.buy-row {
+/* =========================
+   FIX: ย้ายปุ่ม LINE ไปฝั่งซ้าย
+   (ไม่กระทบสินค้าแบบมีราคา)
+   ========================= */
+
+/* แถวปุ่มสั่งซื้อ */
+.buy-row{
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* ปุ่ม LINE */
-.buy-row .btn-line {
-  order: -1;          /* ดันไปซ้ายสุด */
+/* ปุ่ม LINE (สินค้าราคาสอบถาม) */
+.buy-row .btn-line{
+  order: -1;          /* ดันปุ่ม LINE ไปซ้ายสุด */
 }
+
 
