@@ -585,6 +585,7 @@ function renderProducts() {
       const href = `product.html?slug=${encodeURIComponent(p.slug || "")}`;
       const imgStyle = p.imageUrl ? `style="background-image:url('${optimizeImg(p.imageUrl, 250)}')"` : "";
       const priceVal = (p.priceTHB !== undefined && p.priceTHB !== null) ? Number(p.priceTHB) : null;
+      const isInbox = isInboxProduct(p.raw);
       const priceText = isInbox
   ? "กรุณาสอบถามผ่านไลน์"
   : (priceVal != null ? fmtTHB(priceVal) : "กรุณาสอบถาม");
@@ -594,7 +595,7 @@ function renderProducts() {
       
       const dataAttr = `data-slug="${(p.slug||"").replace(/"/g,'&quot;')}" data-id="${(p.id||"").toString().replace(/"/g,'&quot;')}" data-sku="${(p.sku||"").replace(/"/g,'&quot;')}" data-code="${(p.code||"").replace(/"/g,'&quot;')}" data-price="${priceVal != null ? priceVal : 0}" data-img="${(p.imageUrl||"").replace(/"/g,'&quot;')}"`;
 
-      const isInbox = isInboxProduct(p.raw);
+      
 
       const cartBtnHtml = isInbox
         ? ""
