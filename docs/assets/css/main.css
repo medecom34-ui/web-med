@@ -1919,4 +1919,24 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   order: -1;          /* ดันปุ่ม LINE ไปซ้ายสุด */
 }
 
+.buy-row {
+  justify-content: flex-start;
+}
+
+/* ปุ่ม LINE */
+.btn-line {
+  display: inline-flex;        /* ใช้ flex */
+  align-items: center;         /* กลางแนวตั้ง */
+  justify-content: flex-start; /* ชิดซ้าย */
+  white-space: nowrap;         /* ❗ ห้ามตัดบรรทัด */
+  text-align: left;
+
+  padding: 12px 20px;
+  gap: 6px;                    /* ถ้ามี icon จะไม่ติดกัน */
+}
+
+/* ถ้ามี <br> หรือ line break ซ่อนมัน */
+.btn-line br {
+  display: none;
+}
 
