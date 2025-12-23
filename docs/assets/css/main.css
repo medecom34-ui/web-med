@@ -1077,8 +1077,10 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 .product-img .img-box img {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  max-width: 85%;
+  max-height: 85%;
   object-fit: contain;
 }
 
@@ -1180,9 +1182,9 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 /* พื้นหลังโซนรายละเอียด เอาสีออก + ให้ชิด footer */
-.section.bg-lightblue {
-  background: none;      /* ไม่เอาฟ้าอ่อนแล้ว */
-  padding: 16px 0 0;     /* ด้านบนมีช่องนิดหน่อย ด้านล่างชิด footer */
+.product-layout + .section.bg-lightblue {
+  background: none;
+  padding: 16px 0 0;
 }
 
 /* กล่องรายละเอียดสินค้า ชิดซ้าย กว้างเท่ากับ container */
@@ -1881,3 +1883,8 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   display: block;  
 }
 
+/* FIX: product info card spacing */
+.product-info .info-card {
+  padding: 22px 24px;
+  border-radius: 18px;
+}
