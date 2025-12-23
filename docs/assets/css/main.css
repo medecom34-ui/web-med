@@ -1967,3 +1967,16 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 .btn-line:hover{
   filter:brightness(1.05);
 }
+
+/* ===== FIX: ย้ายปุ่ม LINE ไปฝั่งซ้าย ===== */
+.buy-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ปุ่ม LINE */
+.buy-row .btn-line {
+  order: -1;          /* ดันไปซ้ายสุด */
+}
+
