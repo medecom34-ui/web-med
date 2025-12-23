@@ -107,9 +107,22 @@ function buildSmartSelect(nativeSel, mountEl, options, currentValue, onChange) {
     close();
   });
 
-  document.addEventListener("click", (e) => {
-    if (!root.contains(e.target)) close();
-  });
+document.addEventListener("click", (e) => {
+
+
+  if (
+    e.target.closest("#cartButton") ||
+    e.target.closest("#cartDrawer") ||
+    e.target.closest("#cartClose")
+  ) {
+    return;
+  }
+
+  if (!e.target.closest(".ss")) {
+    closeAllSelect();
+  }
+});
+
 }
 
 
