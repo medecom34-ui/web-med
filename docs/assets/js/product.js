@@ -195,9 +195,10 @@ if (isInboxProduct(p)) {
     thumbsWrap.innerHTML = "";
   }
 
-  // reset qty
-  $("#qty").value = 1;
   if (!isInboxProduct(p)) {
+  const qtyEl = document.getElementById("qty");
+  if (qtyEl) qtyEl.value = 1;
+
   renderVariantOptions();
 }
 
@@ -288,16 +289,19 @@ function updateSku() {
 }
 
 
-// qty controls
-$("#plus").onclick = () => {
-  const el = $("#qty");
+$("#plus")?.addEventListener("click", () => {
+  const el = document.getElementById("qty");
+  if (!el) return;
   el.value = Number(el.value || 1) + 1;
-};
-$("#minus").onclick = () => {
-  const el = $("#qty");
+});
+
+$("#minus")?.addEventListener("click", () => {
+  const el = document.getElementById("qty");
+  if (!el) return;
   const v = Number(el.value || 1);
   if (v > 1) el.value = v - 1;
-};
+});
+
 
 function formatVariantOption(attr) {
   if (!attr || typeof attr !== "object") return null;
