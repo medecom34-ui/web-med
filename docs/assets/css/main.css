@@ -1866,7 +1866,8 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 .hidden {
-  display: none !important;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .cart-drawer.show {
