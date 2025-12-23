@@ -587,9 +587,12 @@ function renderProducts() {
       const priceVal = (p.priceTHB !== undefined && p.priceTHB !== null)
   ? Number(p.priceTHB)
   : null;
-      const isInbox = isInboxProduct(p.raw);
+      const isInbox =
+  String(p.raw?.shortDesc || "").toUpperCase() === "INBOX"
+  || p.priceTHB === null;
+
       const priceText = isInbox
-  ? "กรุณาสอบถามผ่านไลน์"
+  ? "กรุณาสอบถามผ่าน LINE"
   : (priceVal != null ? fmtTHB(priceVal) : "กรุณาสอบถาม");
 
       //const skuHtml = p.sku ? `<div class="sku" style="font-size:12px;color:#6b7280;margin-top:4px">รหัส: ${p.sku}</div>` : "";

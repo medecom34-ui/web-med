@@ -100,6 +100,7 @@ async function getProductsByCategorySlug(req, res) {
         id: p.id != null ? String(p.id) : null,
         slug: p.slug || null,
         name: p.name || null,
+        shortDesc: p.shortDesc || null,
         // price จาก variant ถ้ามี, ถ้าไม่มาจาก product.price/priceTHB
         priceTHB: v ? Number(v.price) : (p.priceTHB ?? p.price ?? null),
         sku: v ? (v.sku || null) : (p.sku || null),
