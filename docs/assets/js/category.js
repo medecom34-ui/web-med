@@ -585,7 +585,7 @@ function renderProducts() {
       const href = `product.html?slug=${encodeURIComponent(p.slug || "")}`;
       const imgStyle = p.imageUrl ? `style="background-image:url('${optimizeImg(p.imageUrl, 250)}')"` : "";
       const priceVal = (p.priceTHB !== undefined && p.priceTHB !== null) ? Number(p.priceTHB) : null;
-      const isInbox = isInboxProduct(p.raw);
+      const isInbox = priceVal === 0 || priceVal == null;
       const priceText = isInbox
   ? "กรุณาสอบถามผ่านไลน์"
   : (priceVal != null ? fmtTHB(priceVal) : "กรุณาสอบถาม");
@@ -600,7 +600,7 @@ function renderProducts() {
       const cartBtnHtml = isInbox
         ? ""
         : `
-          <button class="cart-fab add-from-cat" title="ใส่ตะกร้า" ${dataAttr} aria-label="ใส่ตะกร้า">
+          <button class="cart-fab add-from-cat" title="ใส่ตะกร้า" ${dataAttr}>
             ${cartSvg()}
           </button>
         `;
