@@ -33,6 +33,9 @@ function optimizeImg(url, width) {
   );
 }
 
+function isInboxProduct(p) {
+  return String(p?.shortDesc || "").toUpperCase() === "INBOX";
+}
 
 function resolvePrice(variant, product) {
   // ถ้ามี variant ให้ลองดึงค่าหลายชื่อที่เป็นไปได้
@@ -90,11 +93,26 @@ function renderProduct() {
   $("#product-code").textContent = p.code || "-";
 
   // แสดงราคาจาก variant ถ้ามี (โดยใช้ resolvePrice)
+  if (isInboxProduct(p)) {
+  $("#product-price").innerHTML =
+    `<span class="price-inbox">ราคาสอบถาม</span>`;
+} else {
   const displayPrice = resolvePrice(selectedVariant, p);
-  $("#product-price").textContent =
-    displayPrice !== null && displayPrice !== undefined
-      ? fmtTHB(displayPrice)
-      : "กรุณาสอบถาม";
+  $("#product-price").textContent = fmtTHB(displayPrice);
+}
+
+const buyRow = document.querySelector(".buy-row");
+
+if (isInboxProduct(p)) {
+  buyRow.innerHTML = `
+    <a class="btn-line"
+       href="https://line.me/ti/p/YOUR_LINE_ID"
+       target="_blank">
+       💬 สอบถาม / สั่งซื้อผ่าน LINE
+    </a>
+  `;
+}
+
 
   // -------------------------
   // DESCRIPTION HANDLING

@@ -116,6 +116,7 @@ exports.getProductDetail = async (req, res) => {
       id: String(product.id),
       slug: product.slug,
       name: product.name,
+      shortDesc: product.shortDesc,
       code: mainVariant ? mainVariant.sku : null,
       priceTHB: mainVariant ? Number(mainVariant.price) : null,
       description: product.longDesc || product.shortDesc || "-",
