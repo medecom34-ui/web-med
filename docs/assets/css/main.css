@@ -1865,4 +1865,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   text-decoration: none;
 }
 
+.hidden {
+  display: none !important;
+}
 

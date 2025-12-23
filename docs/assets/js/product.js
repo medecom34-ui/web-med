@@ -104,17 +104,19 @@ function renderProduct() {
 const buyRow = document.querySelector(".buy-row");
 
 if (isInboxProduct(p)) {
-  // ซ่อน qty + ปุ่ม addCart เดิม
-  buyRow.innerHTML = `
-    <a class="btn-line"
-       href="https://line.me/ti/p/tongg_99"
-       target="_blank">
-       สอบถาม / สั่งซื้อผ่าน LINE
-    </a>
-  `;
-} else {
-  // ไม่ใช่ INBOX → ใช้ระบบเดิม
-  renderVariantOptions();
+  // ซ่อนของเดิม แต่ "ไม่ลบทิ้ง"
+  buyRow.querySelector(".qty-group")?.classList.add("hidden");
+  buyRow.querySelector("#addCart")?.classList.add("hidden");
+
+  // ใส่ปุ่ม LINE ถ้ายังไม่มี
+  if (!buyRow.querySelector(".btn-line")) {
+    const a = document.createElement("a");
+    a.className = "btn-line";
+    a.href = "https://line.me/ti/p/tongg_99";
+    a.target = "_blank";
+    a.textContent = "สอบถาม / สั่งซื้อผ่าน LINE";
+    buyRow.appendChild(a);
+  }
 }
 
 
