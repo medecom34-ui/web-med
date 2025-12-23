@@ -1869,3 +1869,14 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   display: none !important;
 }
 
+.cart-drawer.show {
+  transform: none;
+  display: flex;   /* ← สำคัญ */
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+  display: block;  /* ← สำคัญ */
+}
+
