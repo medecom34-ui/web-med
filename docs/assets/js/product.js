@@ -314,6 +314,10 @@ function formatVariantOption(attr) {
 // add to cart
 $("#addCart").onclick = () => {
   if (!product) return;
+  if (isInboxProduct(product)) {
+    alert("สินค้านี้ต้องสอบถามหรือสั่งซื้อผ่าน LINE เท่านั้น");
+    return;
+  }
   const qty = Number($("#qty").value || 1);
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   
