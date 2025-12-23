@@ -63,8 +63,19 @@
     statusBadge.textContent = active;
   }
 
-  function openDrawer(){ drawer && overlay && (drawer.classList.add("show"), overlay.classList.add("show")); }
-  function closeDrawer(){ drawer && overlay && (drawer.classList.remove("show"), overlay.classList.remove("show")); }
+function openDrawer(){
+  drawer.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+  drawer.classList.add("show");
+  overlay.classList.add("show");
+}
+
+function closeDrawer(){
+  drawer.classList.remove("show");
+  overlay.classList.remove("show");
+  drawer.classList.add("hidden");
+  overlay.classList.add("hidden");
+}
 
   function goLoginWithNext(next) {
     const url = "login.html?next=" + encodeURIComponent(next || "checkout.html");
