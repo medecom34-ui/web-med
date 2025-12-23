@@ -105,19 +105,27 @@ const buyRow = document.querySelector(".buy-row");
 
 if (isInboxProduct(p)) {
 
+  // ซ่อนของเดิม
   buyRow.querySelector(".qty-group")?.classList.add("hidden");
   buyRow.querySelector("#addCart")?.classList.add("hidden");
 
-  // ใส่ปุ่ม LINE ถ้ายังไม่มี
-  if (!buyRow.querySelector(".btn-line")) {
+  // ถ้ามีปุ่ม LINE อยู่แล้ว → อัปเดตลิงก์
+  let btn = buyRow.querySelector(".btn-line");
+
+  if (btn) {
+    btn.href = "https://lin.ee/HU3NA1K";
+  } else {
+    // ถ้ายังไม่มี → สร้างใหม่
     const a = document.createElement("a");
     a.className = "btn-line";
     a.href = "https://lin.ee/HU3NA1K";
     a.target = "_blank";
+    a.rel = "noopener";
     a.textContent = "สอบถาม / สั่งซื้อผ่าน LINE";
     buyRow.appendChild(a);
   }
 }
+
 
 
   // -------------------------
