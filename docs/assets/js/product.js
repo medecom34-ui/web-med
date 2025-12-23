@@ -112,7 +112,7 @@ if (isInboxProduct(p)) {
   if (!buyRow.querySelector(".btn-line")) {
     const a = document.createElement("a");
     a.className = "btn-line";
-    a.href = "https://line.me/R/ti/p/@tongg_99";
+    a.href = "https://lin.ee/HU3NA1K";
     a.target = "_blank";
     a.textContent = "สอบถาม / สั่งซื้อผ่าน LINE";
     buyRow.appendChild(a);
