@@ -1,25 +1,22 @@
-/* =========================
-   HOME – MOBILE (FINAL STABLE)
-   ========================= */
 
 /* =========================
-   GLOBAL MOBILE RESET
+   HOME – MOBILE (FINAL CLEAN)
    ========================= */
+
 .sidecats {
   display: none;
 }
 
 @media (max-width: 768px) {
 
-  /* ====== KILL DESKTOP LAYOUT ====== */
+  /* ===== RESET DESKTOP ===== */
   .home-grid {
     display: block;
-    max-width: 100%;
     margin: 0;
     padding: 0;
+    max-width: 100%;
   }
 
-  /* ====== UNIFIED PAGE GUTTER ====== */
   .container,
   .header,
   .banner > .container,
@@ -30,40 +27,31 @@
     box-sizing: border-box;
   }
 
-  /* ====== HEADER FIX (ต้นเหตุความไม่สมส่วน) ====== */
   .header {
-    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
-  .header.container {
-    padding-left: 16px;
-    padding-right: 16px;
+  .banner {
+    padding-top: 14px;
+    padding-bottom: 14px;
   }
 
-  /* ====== HOME MAIN ====== */
-  .home-main {
-    padding-top: 0;
-    padding-bottom: 0;
+  .banner__title {
+    font-size: 20px;
+    line-height: 1.3;
   }
 
-  .home-main section {
-    width: 100%;
-    margin-bottom: 24px;
-  }
-
-  /* =========================
-     CATEGORY – SCROLL 2 ROWS
-     ========================= */
+  /* ===== CATEGORY (2 ROW SCROLL) ===== */
   #category-row {
     display: grid;
     grid-auto-flow: column;
     grid-template-rows: repeat(2, 104px);
-    grid-auto-columns: 88px;
+    grid-auto-columns: 92px;
     gap: 12px;
     padding: 8px 0 12px;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
   }
 
   #category-row::-webkit-scrollbar {
@@ -71,25 +59,23 @@
   }
 
   #category-row .cat {
-    width: 88px;
+    width: 92px;
     height: 104px;
     padding: 6px;
     border-radius: 14px;
     background: #fff;
-    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
   }
 
   #category-row .cat__img {
-    width: 52px;
-    height: 52px;
+    width: 54px;
+    height: 54px;
     margin-bottom: 6px;
     background-size: contain;
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
   }
 
   #category-row .cat__name {
@@ -98,63 +84,23 @@
     text-align: center;
   }
 
-  /* =========================
-     PRODUCT GRID
-     ========================= */
+  /* ===== PRODUCT GRID ===== */
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
-    align-items: stretch;
-    justify-content: center;
   }
 
   .product-card {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    display: block;
+    padding: 10px;
+    border-radius: 14px;
   }
 
+  /* ❗ กลับไปใช้ 1:1 ซึ่งเหมาะกับสินค้าประเภทนี้ */
   .product-card .img {
     width: 100%;
     aspect-ratio: 1 / 1;
-  }
-
-
-    /* =========================
-     HEADER / BANNER SCALE FIX
-     ========================= */
-
-  .header {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
-  .banner {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-
-  .banner__title {
-    font-size: 20px;   /* เดิมใหญ่ไปเมื่อเทียบกับการ์ด */
-    line-height: 1.3;
-  }
-
-  /* =========================
-     PRODUCT CARD SCALE FIX
-     ========================= */
-
-  .card-grid {
-    gap: 12px; /* ลดช่องไฟนิดนึง */
-  }
-
-  .product-card {
-    padding: 10px; /* ลดความเทอะ */
-  }
-
-  .product-card .img {
-    aspect-ratio: 4 / 3; /* ❗ สำคัญ: เดิม 1:1 ทำให้การ์ดดูอ้วน */
+    object-fit: contain;
   }
 
   .product-card .name {
@@ -165,4 +111,5 @@
   .product-card .price {
     font-size: 13px;
   }
+
 }
