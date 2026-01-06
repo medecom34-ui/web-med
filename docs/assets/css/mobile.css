@@ -1,46 +1,31 @@
 /* =========================
-   HOME – MOBILE (FINAL LOCK)
-   ทุกอย่าง = 100vw เท่า HEADER
+   HOME – MOBILE (SAFE FIX)
+   กระทบเฉพาะมือถือ
    ========================= */
 
 @media (max-width: 768px) {
 
-  /* ===== GLOBAL KILL ===== */
   * {
     box-sizing: border-box;
   }
 
   html, body {
-    width: 100%;
     overflow-x: hidden;
   }
 
-  .sidecats {
-    display: none !important;
-  }
-
-  /* ===== KILL CONTAINER ทุกตัว ===== */
-  .container,
-  .header,
-  .banner > .container,
-  .home-grid,
-  .home-main,
-  .home-main > section,
-  .section {
-    width: 100vw !important;
-    max-width: 100vw !important;
-    margin: 0 !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-
-  /* ===== HEADER = BASE WIDTH ===== */
+  /* ================= HEADER ================= */
   header.header {
+    width: 100%;
+    padding: 0;
+  }
+
+  .header-inner {
+    max-width: 100%;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 8px 16px !important;
   }
 
   .logo__box {
@@ -58,10 +43,15 @@
     font-size: 18px;
   }
 
-  /* ===== BANNER ===== */
+  /* ================= BANNER ================= */
   .banner {
-    width: 100vw;
-    padding: 12px 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  .banner-inner {
+    max-width: 100%;
+    padding: 12px 16px;
   }
 
   .banner__title {
@@ -69,9 +59,13 @@
     line-height: 1.3;
   }
 
-  /* ===== CATEGORY = SCROLL X ===== */
+  /* ================= CATEGORY ================= */
+  .sidecats {
+    display: none;
+  }
+
   .category-grid-desktop {
-    width: 100vw;
+    width: 100%;
     overflow-x: auto;
   }
 
@@ -111,17 +105,30 @@
     text-align: center;
   }
 
-  /* ===== PRODUCT GRID ===== */
+  /* ================= MAIN ================= */
+  .home-grid {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .home-main {
+    padding: 0;
+  }
+
+  .home-main section {
+    padding: 0 16px;
+    margin-bottom: 20px;
+  }
+
+  /* ================= PRODUCT GRID ================= */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    width: 100%;
-    margin: 0;
   }
 
   .product-card {
-    width: 100%;
     padding: 10px;
     border-radius: 14px;
   }
@@ -131,23 +138,4 @@
     aspect-ratio: 1 / 1;
     object-fit: contain;
   }
-
-  .home-main section {
-    margin-bottom: 16px !important;
-  }
-
-    .banner {
-    padding-bottom: 24px;
-  }
-
-  /* ดันหมวดหมู่ลงมาให้พ้น banner */
-  .category-grid-desktop {
-    margin-top: 12px;
-  }
-
-  /* กันกรณี container ข้างในชิดเกิน */
-  .category-grid-desktop .container {
-    padding-top: 4px;
-  }
-
 }
