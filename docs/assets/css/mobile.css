@@ -1,6 +1,6 @@
 /* =========================
-   HOME – MOBILE (SAFE FIX)
-   กระทบเฉพาะมือถือ
+   HOME – MOBILE (FINAL / CLEAN)
+   ใช้ได้แน่นอน – 2 แถว + scroll
    ========================= */
 
 @media (max-width: 768px) {
@@ -10,22 +10,13 @@
   }
 
   html, body {
-    overflow-x: visible;
+    overflow-x: hidden;
   }
 
   /* ================= HEADER ================= */
   header.header {
     width: 100%;
     padding: 0;
-  }
-
-  .header-inner {
-    max-width: 100%;
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
   }
 
   .logo__box {
@@ -39,18 +30,12 @@
     gap: 10px;
   }
 
-  .header-icon {
-    font-size: 18px;
-  }
-
   /* ================= BANNER ================= */
   .banner {
     width: 100%;
-    padding: 0;
   }
 
   .banner-inner {
-    max-width: 100%;
     padding: 12px 16px;
   }
 
@@ -60,45 +45,41 @@
   }
 
   /* ================= CATEGORY ================= */
+
+  /* ซ่อน sidebar */
   .sidecats {
     display: none;
   }
 
-
-  .category-grid-desktop > .container.section {
-    overflow: visible;
-  }
-
-
-  .category-grid-desktop > .container.section {
+  /* container ต้องไม่บีบความกว้าง */
+  .category-container {
     max-width: 100% !important;
+    padding: 0 !important;
   }
 
-  .cat-row {
-    margin-top: 0 !important;
-    grid-template-columns: none !important;
-    display: grid !important;
+  /* ตัวเลื่อนจริง */
+  .category-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
+  .category-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* GRID หมวดหมู่ */
   #category-row {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(2, 96px);
-    grid-auto-columns: 80px;
+    grid-template-rows: repeat(2, 96px);   /* ✅ 2 แถว */
+    grid-auto-columns: 80px;              /* ความกว้างต่อช่อง */
     gap: 12px;
 
     padding: 12px 16px;
 
-    /* 🔑 จุดสำคัญ */
-    width: max-content;
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    -webkit-overflow-scrolling: touch;
-  }
-
-  #category-row::-webkit-scrollbar {
-    display: none;
+    /* 🔑 บังคับให้กว้างกว่า viewport เสมอ */
+    min-width: calc(80px * 10);
   }
 
   #category-row .cat {
@@ -106,6 +87,7 @@
     height: 96px;
     background: #fff;
     border-radius: 14px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,6 +98,9 @@
     width: 48px;
     height: 48px;
     margin-bottom: 6px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   #category-row .cat__name {
@@ -128,10 +113,6 @@
   .home-grid {
     display: block;
     margin: 0;
-    padding: 0;
-  }
-
-  .home-main {
     padding: 0;
   }
 
@@ -156,10 +137,5 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: contain;
-  }
-
-  #category-row,
-  #category-row.cat-row {
-    display: grid !important;
   }
 }
