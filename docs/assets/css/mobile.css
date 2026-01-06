@@ -1,5 +1,5 @@
 /* =========================
-   HOME – MOBILE ONLY (CLEAN FINAL)
+   HOME – MOBILE ONLY (FINAL)
    ========================= */
 
 /* ซ่อน sidebar */
@@ -10,29 +10,57 @@
 @media (max-width: 768px) {
 
   /* =================================================
-     CATEGORY : 2 ROW + HORIZONTAL SCROLL
+     CATEGORY : 2 ROW + HORIZONTAL SCROLL (OK แล้ว)
      ================================================= */
 
   .category-grid-desktop > .container {
-    max-width: none;
-    padding: 0;
+    max-width: none !important;
+    padding: 0 !important;
   }
 
   #category-row {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
 
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, 120px);
-    grid-auto-columns: 110px;
+    display: grid !important;
+    grid-auto-flow: column !important;
+    grid-template-rows: repeat(2, 120px) !important;
+    grid-auto-columns: 110px !important;
 
     gap: 12px;
     padding: 12px 16px;
 
     overflow-x: auto;
     overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #category-row .cat {
+    width: 110px;
+    height: 120px;
+
+    padding: 6px;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    scroll-snap-align: start;
+  }
+
+  #category-row .cat__img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 6px;
+  }
+
+  #category-row .cat__name {
+    font-size: 12px;
+    text-align: center;
   }
 
   #category-row::-webkit-scrollbar {
@@ -44,16 +72,21 @@
      ================================================= */
 
   .home-main > section.container.section {
-    max-width: none;
-    padding-left: 0;
-    padding-right: 0;
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
-  /* ใช้ FLEX เพื่อความชัวร์ */
   .card-grid {
-    display: flex;
-    gap: 12px;
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
 
+    display: grid !important;
+    grid-auto-flow: column !important;
+    grid-auto-columns: 150px !important;
+
+    gap: 12px;
     padding: 8px 16px 16px;
 
     overflow-x: auto;
@@ -68,44 +101,46 @@
   }
 
   /* =================================================
-     PRODUCT CARD (ขนาดมือถือจริง)
+     PRODUCT CARD (ตัวจริง)
      ================================================= */
 
-  .card {
-    flex: 0 0 140px;          /* 🔥 ล็อกความกว้าง */
-    max-width: 140px;
-
+  .product-card {
+    width: 150px;
     padding: 10px;
-    background: #fff;
 
+    background: #fff;
     border: 1.5px solid #3b82f6;
     border-radius: 16px;
 
-    position: relative;
     scroll-snap-align: start;
   }
 
-  /* รูปสินค้า */
-  .card .card__img {
+  /* กล่องรูป */
+  .product-card .img {
+    position: relative;
+  }
+
+  .product-card .card__img {
     width: 100%;
-    height: 96px;             /* 🔥 เล็กลงจริง */
-    margin-bottom: 8px;
+    height: 110px;
 
     border-radius: 12px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+
+    margin-bottom: 8px;
   }
 
-  /* ปุ่มตะกร้า */
-  .card .card__cart {
+  /* ปุ่มตะกร้า (กดได้แน่นอน) */
+  .product-card .cart-fab {
     position: absolute;
     right: 8px;
     bottom: 8px;
 
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
 
     border-radius: 50%;
     background: #3b82f6;
@@ -115,8 +150,14 @@
     pointer-events: auto;
   }
 
+  /* กัน link ขโมยคลิก */
+  .product-card .open-detail {
+    position: relative;
+    z-index: 1;
+  }
+
   /* ชื่อสินค้า */
-  .card .card__title {
+  .product-card .card__title {
     font-size: 13px;
     line-height: 1.25;
     font-weight: 600;
@@ -124,7 +165,7 @@
   }
 
   /* ลิงก์ */
-  .card .card__link {
+  .product-card .card__link {
     font-size: 12px;
     font-weight: 600;
     color: #2563eb;
