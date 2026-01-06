@@ -99,35 +99,43 @@
 
 }
 
+
+
+
 @media (max-width: 768px) {
 
-  /* CATEGORY — grid ชัด อ่านง่าย */
+  /* CATEGORY — แบบภาพที่สอง (เลื่อนข้าง 2 แถว) */
   #category-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 108px);
+    grid-auto-columns: 96px;
     gap: 12px;
-    padding: 12px 0;
-    overflow: hidden; /* ❌ ไม่เลื่อน */
+    padding: 8px 0 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  #category-row::-webkit-scrollbar {
+    display: none;
   }
 
   #category-row .cat {
-    width: 100%;
-    height: auto;
-    padding: 8px 4px;
+    width: 96px;
+    height: 108px;
+    padding: 6px;
+    border-radius: 12px;
   }
 
   #category-row .cat__img {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     margin: 0 auto 6px;
   }
 
   #category-row .cat__name {
     font-size: 11px;
-    line-height: 1.3;
+    line-height: 1.25;
     text-align: center;
   }
-
 }
-
-
