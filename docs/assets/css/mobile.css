@@ -167,3 +167,24 @@
     border: none;
   }
 }
+
+.m-card {
+  flex: 0 0 140px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.m-card__img {
+  flex: 0 0 90px;
+}
+
+.m-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.m-card__link {
+  margin-top: auto;
+}

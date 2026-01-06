@@ -28,7 +28,11 @@ async function loadPopularProducts() {
     if (!json.success) throw new Error();
 
     const items = json.data.map(mapProduct);
-    $("#popular-grid").innerHTML = renderCards(items);
+if (window.innerWidth <= 768) {
+  $("#popular-grid").innerHTML = renderMobileCards(items);
+} else {
+  $("#popular-grid").innerHTML = renderCards(items);
+}
 
     window.__popular = items;
     syncAllProducts();
@@ -44,7 +48,11 @@ async function loadNewestProducts() {
     if (!json.success) throw new Error();
 
     const items = json.data.map(mapProduct);
-    $("#newest-grid").innerHTML = renderCards(items);
+if (window.innerWidth <= 768) {
+  $("#newest-grid").innerHTML = renderMobileCards(items);
+} else {
+  $("#newest-grid").innerHTML = renderCards(items);
+}
 
     window.__newest = items;
     syncAllProducts();
@@ -373,3 +381,34 @@ window.addToCart = (keyOrSlug) => {
   alert("เพิ่มลงตะกร้าแล้ว");
 };
 
+function renderMobileCards(items) {
+  return items.map((p) => {
+    const href = `product.html?slug=${encodeURIComponent(p.slug || "")}`;
+    const imgStyle = p.imageUrl
+      ? `style="background-image:url('${optimizeImg(p.imageUrl, 300)}')"`
+      : "";
+
+    return `
+      <div class="m-card">
+        <a class="m-card__img" href="${href}" ${imgStyle}></a>
+
+        <div class="m-card__body">
+          <a class="m-card__title" href="${href}">
+            ${p.name || ""}
+          </a>
+
+          <a class="m-card__link" href="${href}">
+            ดูรายละเอียด
+          </a>
+        </div>
+
+        <button
+          class="m-card__cart"
+          onclick="event.stopPropagation(); addToCart('${p.slug || p.id}')"
+          aria-label="ใส่ตะกร้า">
+          🛒
+        </button>
+      </div>
+    `;
+  }).join("");
+}
