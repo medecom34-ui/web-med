@@ -9,58 +9,57 @@
 
 @media (max-width: 768px) {
 
-  /* ===== Category mobile – locked proportion ===== */
+  /* ===== FORCE CATEGORY ROW (FINAL) ===== */
 
   #category-row {
     display: grid !important;
-    grid-template-rows: repeat(2, 124px);   /* 🔒 ล็อกความสูงต่อแถว */
-    grid-auto-flow: column;
-    gap: 12px;
+    grid-auto-flow: column !important;
+    grid-template-rows: repeat(2, 120px) !important;
+    grid-auto-columns: 110px !important;
 
-    padding: 10px 14px 14px;
-    overflow-x: auto;
-    overflow-y: hidden;
+    gap: 12px !important;
+    padding: 8px 12px 12px !important;
 
-    scroll-snap-type: x proximity;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
 
-  /* การ์ด */
   #category-row .cat {
-    width: 112px;          /* 🔒 ล็อก */
-    height: 124px;
+    width: 110px !important;
+    height: 120px !important;
 
-    padding: 6px 6px 8px;
+    padding: 6px !important;
     border-radius: 12px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
 
-    background: #fff;
     scroll-snap-align: start;
   }
 
-  /* รูป */
+  /* 🔥 override global .cat__img */
   #category-row .cat__img {
-    width: 72px;           /* 🔒 */
-    height: 72px;
-    margin-bottom: 6px;
+    width: 70px !important;
+    height: 70px !important;
+    margin: 0 auto 6px !important;
   }
 
-  /* ชื่อ */
   #category-row .cat__name {
-    font-size: 12px;
+    font-size: 12px !important;
     line-height: 1.2;
     text-align: center;
   }
 
-  /* ซ่อน scrollbar */
   #category-row::-webkit-scrollbar {
     display: none;
   }
 }
+
 
 
 
