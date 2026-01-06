@@ -1,15 +1,26 @@
-
 /* =========================
-   HOME – MOBILE (FINAL CLEAN)
+   HOME – MOBILE (FINAL FIXED)
+   ใช้กับหน้าจอ ≤ 768px
    ========================= */
-
-.sidecats {
-  display: none;
-}
 
 @media (max-width: 768px) {
 
-  /* ===== RESET DESKTOP ===== */
+  /* =========================
+     GLOBAL RESET
+     ========================= */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .sidecats {
+    display: none;
+  }
+
+  /* =========================
+     LAYOUT RESET
+     ========================= */
+
   .home-grid {
     display: block;
     margin: 0;
@@ -17,129 +28,45 @@
     max-width: 100%;
   }
 
-  .container,
-  .header,
-  .banner > .container,
-  .home-main {
+  .container {
     max-width: 100%;
     padding-left: 16px;
     padding-right: 16px;
-    box-sizing: border-box;
   }
 
-  .header {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  .home-main {
+    padding: 0;
   }
 
-  .banner {
-    padding-top: 14px;
-    padding-bottom: 14px;
+  .home-main section {
+    margin-bottom: 24px;
   }
 
-  .banner__title {
-    font-size: 20px;
-    line-height: 1.3;
-  }
-
-  /* ===== CATEGORY (2 ROW SCROLL) ===== */
-  #category-row {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, 104px);
-    grid-auto-columns: 92px;
-    gap: 12px;
-    padding: 8px 0 12px;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-
-  #category-row::-webkit-scrollbar {
-    display: none;
-  }
-
-  #category-row .cat {
-    width: 92px;
-    height: 104px;
-    padding: 6px;
-    border-radius: 14px;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #category-row .cat__img {
-    width: 54px;
-    height: 54px;
-    margin-bottom: 6px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  #category-row .cat__name {
-    font-size: 11px;
-    line-height: 1.25;
-    text-align: center;
-  }
-
-  /* ===== PRODUCT GRID ===== */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-
-  .product-card {
-    padding: 10px;
-    border-radius: 14px;
-  }
-
-  /* ❗ กลับไปใช้ 1:1 ซึ่งเหมาะกับสินค้าประเภทนี้ */
-  .product-card .img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-  }
-
-  .product-card .name {
-    font-size: 13px;
-    line-height: 1.3;
-  }
-
-  .product-card .price {
-    font-size: 13px;
-  }
-
-  
   /* =========================
-     HEADER – SCALE FIX
+     HEADER (ไม่แคบ ไม่อ้วน)
      ========================= */
 
-  /* ตัดผล container ออกจาก header */
+  /* ตัดผล container เดิม */
   header.header.container {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
 
   header.header {
-    max-width: 100%;
-    padding: 8px 16px;        /* ใช้ padding ชุดเดียว */
+    width: 100%;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
   }
 
-  /* โลโก้ */
   .logo__box {
     font-size: 14px;
     padding: 6px 10px;
     border-radius: 8px;
   }
 
-  /* ไอคอนขวา */
   .header-icons {
     display: flex;
     align-items: center;
@@ -158,5 +85,110 @@
     line-height: 16px;
   }
 
+  /* =========================
+     BANNER (เต็มจอจริง)
+     ========================= */
+
+  .banner {
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .banner > .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .banner__title {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  /* =========================
+     CATEGORY – 2 ROW SCROLL
+     ========================= */
+
+  .category-grid-desktop {
+    padding: 0;
+  }
+
+  #category-row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 104px);
+    grid-auto-columns: 92px;
+    gap: 12px;
+    padding: 8px 16px 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+  }
+
+  #category-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  #category-row .cat {
+    width: 92px;
+    height: 104px;
+    padding: 6px;
+    border-radius: 14px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-snap-align: start;
+  }
+
+  #category-row .cat__img {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 6px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #category-row .cat__name {
+    font-size: 11px;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  /* =========================
+     PRODUCT GRID (ช่องไม่ห่าง)
+     ========================= */
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  .product-card {
+    padding: 10px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .product-card .img {
+    width: 100%;
+    aspect-ratio: 4 / 3;   /* สำคัญ: กันการ์ดสูงไม่เท่ากัน */
+    object-fit: contain;
+  }
+
+  .product-card .name {
+    font-size: 13px;
+    line-height: 1.3;
+    min-height: 2.6em;     /* กันชื่อสั้น/ยาวทำ grid พัง */
+  }
+
+  .product-card .price {
+    font-size: 13px;
+  }
 
 }
