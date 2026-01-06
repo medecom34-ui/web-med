@@ -160,3 +160,37 @@
     text-decoration: none;
   }
 }
+
+@media (max-width: 768px) {
+
+  /* 🔒 ล็อกความสูงการ์ดให้เท่ากันทุกใบ */
+  #popular-grid .card,
+  #newest-grid .card {
+    height: 190px;                /* <<< จุดสำคัญ */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 🔒 กล่องรูป (ความสูงตายตัว) */
+  #popular-grid .card__img,
+  #newest-grid .card__img {
+    flex: 0 0 84px;
+  }
+
+  /* 🔒 กล่องข้อความ */
+  #popular-grid .card__title,
+  #newest-grid .card__title {
+    flex: 0 0 auto;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* ไม่เกิน 2 บรรทัด */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 🔒 ดันลิงก์ไปล่างสุดเสมอ */
+  #popular-grid .card__link,
+  #newest-grid .card__link {
+    margin-top: auto;
+  }
+}
