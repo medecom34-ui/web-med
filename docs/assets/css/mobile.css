@@ -6,3 +6,48 @@
 .sidecats {
   display: none;
 }
+
+@media (max-width: 768px) {
+
+  /* ===== หมวดหมู่หน้า Home (2 แถว + scroll แนวนอน) ===== */
+  #category-row {
+    display: grid;
+    grid-auto-flow: column;          /* เรียงเป็นคอลัมน์ → เลื่อนข้าง */
+    grid-template-rows: repeat(2, 1fr); /* 🔥 แค่ 2 แถว */
+    gap: 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 8px 12px 12px;
+    scroll-snap-type: x mandatory;
+  }
+
+  /* การ์ดหมวดหมู่ */
+  #category-row .cat {
+    width: 140px;                    /* คุมความกว้างการ์ด */
+    min-height: 140px;
+
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* รูปหมวดหมู่ */
+  #category-row .cat__img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 6px;
+  }
+
+  /* ชื่อหมวด */
+  #category-row .cat__name {
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  /* ซ่อน scrollbar (ยัง scroll ได้) */
+  #category-row::-webkit-scrollbar {
+    display: none;
+  }
+}
