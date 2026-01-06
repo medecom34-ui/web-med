@@ -1,7 +1,6 @@
 /* =========================
    HOME – MOBILE (FINAL SAFE)
    ========================= */
-
 .sidecats {
   display: none;
 }
@@ -24,16 +23,16 @@
     box-sizing: border-box;
   }
 
-  .banner > .container,
+  /* home main ต้องเต็มจอ */
   .home-main {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  /* ห้าม container ซ้อน */
-  .home-main > section.container {
+    width: 100%;
+    max-width: 100%;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .home-main section {
+    width: 100%;
   }
 
   /* CATEGORY */
@@ -55,4 +54,8 @@
     gap: 12px;
   }
 
+  .product-card {
+    width: 100% !important;
+    max-width: none !important;
+  }
 }
