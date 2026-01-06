@@ -72,16 +72,18 @@
   }
 }
 
+
 /* =========================================
-   PRODUCT – MOBILE FIX (POPULAR + NEW ONLY)
+   PRODUCT – MOBILE ONLY
+   Popular + New (1 row, horizontal scroll)
    ========================================= */
 @media (max-width: 768px) {
 
-  /* ==== กล่องสินค้ายอดนิยม + สินค้าใหม่ ==== */
-  #popular-grid,
-  #newest-grid {
-    display: flex !important;          /* แถวเดียว */
-    flex-wrap: nowrap !important;
+  /* ----- กล่องรายการสินค้า ----- */
+  #popular-grid.card-grid,
+  #newest-grid.card-grid {
+    display: flex;              /* แถวเดียว */
+    flex-wrap: nowrap;
     gap: 12px;
 
     padding: 8px 16px 16px;
@@ -91,16 +93,16 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  #popular-grid::-webkit-scrollbar,
-  #newest-grid::-webkit-scrollbar {
+  #popular-grid.card-grid::-webkit-scrollbar,
+  #newest-grid.card-grid::-webkit-scrollbar {
     display: none;
   }
 
-  /* ==== การ์ดสินค้า ==== */
+  /* ----- การ์ดสินค้า ----- */
   #popular-grid .card,
   #newest-grid .card {
-    flex: 0 0 135px;                   /* 🔥 ขนาดมือถือจริง */
-    max-width: 135px;
+    flex: 0 0 128px;             /* 🔑 ขนาดมือถือจริง */
+    max-width: 128px;
 
     background: #fff;
     border: 1.5px solid #3b82f6;
@@ -110,11 +112,11 @@
     position: relative;
   }
 
-  /* ==== รูปสินค้า ==== */
+  /* ----- รูปสินค้า ----- */
   #popular-grid .card__img,
   #newest-grid .card__img {
     width: 100%;
-    height: 90px;                      /* 🔥 ลดความสูง */
+    height: 84px;                /* 🔑 อิงพื้นที่ header ฟ้า */
     margin-bottom: 6px;
 
     background-size: contain;
@@ -123,15 +125,15 @@
     border-radius: 10px;
   }
 
-  /* ==== ปุ่มตะกร้า ==== */
+  /* ----- ปุ่มตะกร้า ----- */
   #popular-grid .card__cart,
   #newest-grid .card__cart {
     position: absolute;
     right: 6px;
     bottom: 6px;
 
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     font-size: 13px;
 
     border-radius: 50%;
@@ -139,7 +141,7 @@
     color: #fff;
   }
 
-  /* ==== ชื่อสินค้า ==== */
+  /* ----- ชื่อสินค้า ----- */
   #popular-grid .card__title,
   #newest-grid .card__title {
     font-size: 12px;
@@ -148,7 +150,7 @@
     margin-bottom: 2px;
   }
 
-  /* ==== ลิงก์ ==== */
+  /* ----- ลิงก์ ----- */
   #popular-grid .card__link,
   #newest-grid .card__link {
     font-size: 11px;
