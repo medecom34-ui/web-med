@@ -64,9 +64,15 @@
     display: none;
   }
 
-  .category-grid-desktop {
-    width: 100%;
+  /* ✅ ตัวนี้ต้องเป็นตัวเลื่อน */
+  .category-grid-desktop > .container.section {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* iOS smooth */
+  }
+
+  /* กัน container ตัดความกว้าง */
+  .category-grid-desktop > .container.section {
+    max-width: 100% !important;
   }
 
   .cat-row {
