@@ -1,6 +1,6 @@
 /* =========================
-   HOME – MOBILE (FINAL FIXED)
-   ใช้กับหน้าจอ ≤ 768px
+   HOME – MOBILE (FULL WIDTH)
+   ทุกอย่างกว้างเท่า HEADER
    ========================= */
 
 @media (max-width: 768px) {
@@ -8,9 +8,12 @@
   /* =========================
      GLOBAL RESET
      ========================= */
-
   * {
     box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 
   .sidecats {
@@ -18,47 +21,34 @@
   }
 
   /* =========================
-     LAYOUT RESET
+     KILL DESKTOP CONTAINER
      ========================= */
-
-  .home-grid {
-    display: block;
-    margin: 0;
-    padding: 0;
-    max-width: 100%;
-  }
-
-  .container {
-    max-width: 100%;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .home-main {
-    padding: 0;
-  }
-
-  .home-main section {
-    margin-bottom: 24px;
+  .container,
+  .section,
+  .home-grid,
+  .home-main,
+  .banner > .container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
   /* =========================
-     HEADER (ไม่แคบ ไม่อ้วน)
+     HEADER = BASE WIDTH
      ========================= */
-
-  /* ตัดผล container เดิม */
-  header.header.container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
   header.header {
-    width: 100%;
+    width: 100vw;
     padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+  }
+
+  header.header.container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
   .logo__box {
@@ -69,34 +59,15 @@
 
   .header-icons {
     display: flex;
-    align-items: center;
     gap: 10px;
   }
 
-  .header-icon {
-    font-size: 18px;
-    line-height: 1;
-  }
-
-  .header-icon .badge {
-    font-size: 11px;
-    min-width: 16px;
-    height: 16px;
-    line-height: 16px;
-  }
-
   /* =========================
-     BANNER (เต็มจอจริง)
+     BANNER = 100% VIEWPORT
      ========================= */
-
   .banner {
-    width: 100%;
+    width: 100vw;
     padding: 12px 0;
-  }
-
-  .banner > .container {
-    padding-left: 16px;
-    padding-right: 16px;
   }
 
   .banner__title {
@@ -105,23 +76,18 @@
   }
 
   /* =========================
-     CATEGORY – 2 ROW SCROLL
+     CATEGORY (SCROLL ONLY)
      ========================= */
-
   .category-grid-desktop {
-    padding: 0;
+    width: 100vw;
+    overflow-x: auto;
   }
 
   #category-row {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, 104px);
-    grid-auto-columns: 92px;
+    display: flex;
     gap: 12px;
     padding: 8px 16px 12px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    width: max-content;
   }
 
   #category-row::-webkit-scrollbar {
@@ -129,7 +95,7 @@
   }
 
   #category-row .cat {
-    width: 92px;
+    flex: 0 0 92px;
     height: 104px;
     padding: 6px;
     border-radius: 14px;
@@ -137,8 +103,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    scroll-snap-align: start;
   }
 
   #category-row .cat__img {
@@ -152,39 +116,37 @@
 
   #category-row .cat__name {
     font-size: 11px;
-    line-height: 1.25;
     text-align: center;
   }
 
   /* =========================
-     PRODUCT GRID (ช่องไม่ห่าง)
+     PRODUCT GRID = FULL WIDTH
      ========================= */
-
   .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    align-items: start;
+    width: 100%;
   }
 
   .product-card {
+    width: 100%;
     padding: 10px;
     border-radius: 14px;
     display: flex;
     flex-direction: column;
-    height: 100%;
   }
 
   .product-card .img {
     width: 100%;
-    aspect-ratio: 4 / 3;   /* สำคัญ: กันการ์ดสูงไม่เท่ากัน */
+    aspect-ratio: 4 / 3;
     object-fit: contain;
   }
 
   .product-card .name {
     font-size: 13px;
     line-height: 1.3;
-    min-height: 2.6em;     /* กันชื่อสั้น/ยาวทำ grid พัง */
+    min-height: 2.6em;
   }
 
   .product-card .price {
