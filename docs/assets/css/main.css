@@ -1756,3 +1756,14 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   display: none !important;
 }
 
+/* ===== DESKTOP HEADER LOCK ===== */
+@media (min-width: 769px) {
+  header.header.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0 !important;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
