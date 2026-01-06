@@ -9,36 +9,54 @@
 
 @media (max-width: 768px) {
 
-  /* โลโก้ HOME */
-  .logo__box {
-    font-size: 5px;        /* จากเดิมใหญ่ → เล็กพอดี */
-    font-weight: 700;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+  /* ซ่อน sidebar */
+  .sidecats {
+    display: none !important;
   }
 
-}
+  /* ===== LOGO HOME ===== */
+  .logo {
+    display: flex;
+    align-items: center;
+  }
 
-@media (max-width: 768px) {
+  .logo__box {
+    font-size: 12px !important;   /* ❗ ต้อง !important */
+    font-weight: 700;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;            /* ❗ สำคัญมาก */
+    padding: 0;
+    border-radius: 8px;
+    text-align: center;
+  }
 
-  /* กลุ่มไอคอนขวา */
+  /* ===== HEADER ICONS ===== */
   .header-icons {
-    gap: 8px;
+    gap: 6px;
   }
 
   .header-icon {
-    padding: 6px 8px;      /* ลด padding */
-    font-size: 16px;       /* ขนาดไอคอน */
-    border-radius: 10px;
+    padding: 6px;
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* badge ตัวเลข (1) */
+  /* ❗ emoji รถ + ตะกร้า */
+  .header-icon span,
+  .header-icon {
+    font-size: 16px !important;
+  }
+
+  /* badge */
   .header-icon .badge {
-    font-size: 11px;
-    padding: 2px 6px;
-    min-width: 18px;
-    height: 18px;
+    font-size: 10px !important;
+    min-width: 16px;
+    height: 16px;
+    padding: 1px 4px;
+    line-height: 14px;
   }
-
 }
