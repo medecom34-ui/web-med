@@ -316,31 +316,36 @@ const renderCards = (items) =>
         ? `style="background-image:url('${optimizeImg(p.imageUrl, 250)}')"`
         : "";
 
+      const priceText =
+        p.priceTHB && Number(p.priceTHB) > 0
+          ? fmtTHB(p.priceTHB)
+          : "กรุณาสอบถาม";
+
       return `
-        <div class="m-card">
-          <a class="m-card__img" href="${href}" ${imgStyle}></a>
-
-          <div class="m-card__body">
-            <a class="m-card__title" href="${href}">
-              ${p.name || ""}
-            </a>
-
-            <a class="m-card__link" href="${href}">
-              ดูรายละเอียด
-            </a>
-          </div>
+      <div class="product-card">
+        <div class="img">
+          <a class="open-detail"
+             href="${href}"
+             aria-label="${p.name || ""}"
+             ${imgStyle}></a>
 
           <button
-            class="m-card__cart"
+            class="cart-fab add-from-cat"
+            title="ใส่ตะกร้า"
             onclick="event.stopPropagation(); addToCart('${p.slug || p.id}')"
             aria-label="ใส่ตะกร้า">
-            🛒
+            ${cartSvg()}
           </button>
         </div>
-      `;
+
+        <a class="name link-name" href="${href}">
+          ${p.name || ""}
+        </a>
+
+        <div class="price">${priceText}</div>
+      </div>`;
     })
     .join("");
-
 
 
 
