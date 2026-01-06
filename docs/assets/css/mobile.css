@@ -1,26 +1,26 @@
 /* =========================
-   HOME – MOBILE ONLY (FINAL)
+   HOME – Mobile only
    ========================= */
 
-/* ซ่อน sidebar */
+/* ซ่อนหมวดหมู่แบบ sidebar (ภาพที่หนูเห็นอยู่) */
 .sidecats {
   display: none;
 }
-
 @media (max-width: 768px) {
 
-  /* =================================================
-     CATEGORY : 2 ROW + HORIZONTAL SCROLL (OK แล้ว)
-     ================================================= */
+  /* =========================
+     FIX REAL PROBLEM: FULL BLEED
+     ========================= */
 
+  /* ดึง category ให้กว้างเท่า viewport */
   .category-grid-desktop > .container {
     max-width: none !important;
     padding: 0 !important;
   }
 
   #category-row {
-    width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
+    width: 100vw !important;                 /* 🔥 เท่าหน้าจอ */
+    margin-left: calc(50% - 50vw) !important; /* 🔥 full-bleed */
     margin-right: calc(50% - 50vw) !important;
 
     display: grid !important;
@@ -28,147 +28,165 @@
     grid-template-rows: repeat(2, 120px) !important;
     grid-auto-columns: 110px !important;
 
-    gap: 12px;
-    padding: 12px 16px;
+    gap: 12px !important;
+    padding: 12px 16px !important;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
 
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
 
   #category-row .cat {
-    width: 110px;
-    height: 120px;
+    width: 110px !important;
+    height: 120px !important;
 
-    padding: 6px;
+    padding: 6px !important;
     border-radius: 12px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
 
     scroll-snap-align: start;
   }
 
   #category-row .cat__img {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 6px;
+    width: 70px !important;
+    height: 70px !important;
+    margin-bottom: 6px !important;
   }
 
   #category-row .cat__name {
-    font-size: 12px;
+    font-size: 12px !important;
+    line-height: 1.2;
     text-align: center;
   }
 
   #category-row::-webkit-scrollbar {
     display: none;
   }
+}
 
-  /* =================================================
-     PRODUCT LIST : 1 ROW SCROLL (POPULAR + NEW)
-     ================================================= */
 
-  .home-main > section.container.section {
-    max-width: none !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+@media (max-width: 768px) {
 
+  /* =========================
+     PRODUCT CARD – MOBILE (FINAL)
+     ========================= */
+
+  /* grid ของสินค้า */
   .card-grid {
-    width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-
     display: grid !important;
-    grid-auto-flow: column !important;
-    grid-auto-columns: 150px !important;
-
-    gap: 12px;
-    padding: 8px 16px 16px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    grid-template-columns: 1fr !important; /* 1 ใบต่อแถว */
+    gap: 16px !important;
+    padding: 0 16px !important;
   }
 
-  .card-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* =================================================
-     PRODUCT CARD (ตัวจริง)
-     ================================================= */
-
-  .product-card {
-    width: 150px;
-    padding: 10px;
-
+  /* ตัวการ์ด */
+  .card {
+    position: relative;
     background: #fff;
-    border: 1.5px solid #3b82f6;
-    border-radius: 16px;
-
-    scroll-snap-align: start;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 14px;
   }
+
+  /* รูปสินค้า */
+  .card__img {
+    width: 100% !important;
+    height: 180px !important;        /* 🔒 คุมสัดส่วน */
+    border-radius: 14px;
+    background-size: contain !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 12px;
+  }
+
+  /* ปุ่มรถเข็น */
+  .card__cart {
+    position: absolute;
+    right: 22px;
+    bottom: 120px;                  /* 🔥 ลอยบนรูป */
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: #3b82f6;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ชื่อสินค้า */
+  .card__title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    color: #111827;
+  }
+
+  /* ลิงก์ */
+  .card__link {
+    font-size: 14px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  /* ===== PRODUCT CARD BLUE BORDER ===== */
+  .product-card {
+    border: 1.5px solid #3b82f6;   /* ฟ้า */
+    border-radius: 18px;
+    padding: 14px;
+    background: #fff;
+  }
+}
+
+@media (max-width: 768px) {
 
   /* กล่องรูป */
   .product-card .img {
     position: relative;
   }
 
-  .product-card .card__img {
+  /* link รูปสินค้า */
+  .product-card .open-detail {
+    display: block;
     width: 100%;
-    height: 110px;
-
-    border-radius: 12px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    margin-bottom: 8px;
+    height: 100%;
   }
 
-  /* ปุ่มตะกร้า (กดได้แน่นอน) */
+  /* 🔥 ปุ่มตะกร้า */
   .product-card .cart-fab {
     position: absolute;
-    right: 8px;
-    bottom: 8px;
+    right: 14px;
+    bottom: 14px;
 
-    width: 34px;
-    height: 34px;
-    font-size: 15px;
-
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
+
     background: #3b82f6;
     color: #fff;
 
-    z-index: 10;
-    pointer-events: auto;
+    z-index: 10;                 /* 🔑 ตัวแก้จริง */
+    pointer-events: auto;        /* 🔑 บังคับรับคลิก */
   }
 
-  /* กัน link ขโมยคลิก */
+  /* กันไม่ให้ a ขโมยคลิก */
   .product-card .open-detail {
     position: relative;
     z-index: 1;
   }
-
-  /* ชื่อสินค้า */
-  .product-card .card__title {
-    font-size: 13px;
-    line-height: 1.25;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-
-  /* ลิงก์ */
-  .product-card .card__link {
-    font-size: 12px;
-    font-weight: 600;
-    color: #2563eb;
-    text-decoration: none;
-  }
 }
+
+
