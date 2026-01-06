@@ -1,15 +1,17 @@
 /* =========================
-   HOME – MOBILE (FINAL REAL)
+   HOME – MOBILE (FINAL STABLE)
    ========================= */
 
-/* ซ่อน sidebar */
+/* =========================
+   GLOBAL MOBILE RESET
+   ========================= */
 .sidecats {
   display: none;
 }
 
 @media (max-width: 768px) {
 
-  /* ========== RESET DESKTOP LAYOUT ========== */
+  /* ====== KILL DESKTOP LAYOUT ====== */
   .home-grid {
     display: block;
     max-width: 100%;
@@ -17,17 +19,31 @@
     padding: 0;
   }
 
-  .container {
+  /* ====== UNIFIED PAGE GUTTER ====== */
+  .container,
+  .header,
+  .banner > .container,
+  .home-main {
     max-width: 100%;
     padding-left: 16px;
     padding-right: 16px;
     box-sizing: border-box;
   }
 
+  /* ====== HEADER FIX (ต้นเหตุความไม่สมส่วน) ====== */
+  .header {
+    margin: 0;
+  }
+
+  .header.container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* ====== HOME MAIN ====== */
   .home-main {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .home-main section {
@@ -35,12 +51,14 @@
     margin-bottom: 24px;
   }
 
-  /* ========== CATEGORY (เหมือนภาพที่สอง) ========== */
+  /* =========================
+     CATEGORY – SCROLL 2 ROWS
+     ========================= */
   #category-row {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(2, 110px);
-    grid-auto-columns: 96px;
+    grid-template-rows: repeat(2, 104px);
+    grid-auto-columns: 88px;
     gap: 12px;
     padding: 8px 0 12px;
     overflow-x: auto;
@@ -53,8 +71,8 @@
   }
 
   #category-row .cat {
-    width: 96px;
-    height: 110px;
+    width: 88px;
+    height: 104px;
     padding: 6px;
     border-radius: 14px;
     background: #fff;
@@ -66,8 +84,8 @@
   }
 
   #category-row .cat__img {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     margin-bottom: 6px;
     background-size: contain;
     background-position: center;
@@ -80,12 +98,15 @@
     text-align: center;
   }
 
-  /* ========== PRODUCT GRID ========== */
+  /* =========================
+     PRODUCT GRID
+     ========================= */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
     align-items: stretch;
+    justify-content: center;
   }
 
   .product-card {
@@ -98,11 +119,6 @@
   .product-card .img {
     width: 100%;
     aspect-ratio: 1 / 1;
-  }
-
-  /* ========== FIX ODD ITEM (ไม่ให้ดูพัง) ========== */
-  .card-grid {
-    justify-content: center;
   }
 
 }
