@@ -39,7 +39,6 @@
   /* ================= BANNER ================= */
   .banner {
     padding: 0;
-    margin-bottom: 12px;
   }
 
   .banner-inner {
@@ -54,13 +53,11 @@
   /* ================= CATEGORY ================= */
   .category-grid-desktop {
     overflow-x: auto;
-    padding-top: 4px;
   }
 
   #category-row {
     display: flex;
     gap: 12px;
-    padding-top: 4px;
     padding: 8px 16px 12px;
     width: max-content;
   }
