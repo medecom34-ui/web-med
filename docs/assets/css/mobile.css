@@ -9,21 +9,20 @@
 @media (max-width: 768px) {
 
   /* =========================
-     FIX REAL PROBLEM: FULL BLEED
+     FIX WITH LOGIC (NO GUESS)
      ========================= */
 
-  /* ดึง category ให้กว้างเท่า viewport */
-  .category-grid-desktop > .container {
+  /* 1. ดึง container ออกให้ full width */
+  .category-grid-desktop > section.container {
     max-width: none !important;
     padding: 0 !important;
   }
 
-  #category-row {
-    width: 100vw !important;                 /* 🔥 เท่าหน้าจอ */
-    margin-left: calc(50% - 50vw) !important; /* 🔥 full-bleed */
-    margin-right: calc(50% - 50vw) !important;
+  /* 2. ปิด flex เดิมให้หมด */
+  #category-row.cat-row {
+    display: grid !important;        /* ❗ override flex */
+    flex-wrap: unset !important;     /* ❗ kill wrap */
 
-    display: grid !important;
     grid-auto-flow: column !important;
     grid-template-rows: repeat(2, 120px) !important;
     grid-auto-columns: 110px !important;
@@ -38,26 +37,29 @@
     -webkit-overflow-scrolling: touch;
   }
 
+  /* 3. การ์ด */
   #category-row .cat {
     width: 110px !important;
     height: 120px !important;
-
-    padding: 6px !important;
-    border-radius: 12px;
 
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
 
+    padding: 6px !important;
+    border-radius: 12px;
+
     scroll-snap-align: start;
   }
 
+  /* 4. รูป */
   #category-row .cat__img {
     width: 70px !important;
     height: 70px !important;
     margin-bottom: 6px !important;
   }
 
+  /* 5. ชื่อ */
   #category-row .cat__name {
     font-size: 12px !important;
     line-height: 1.2;
@@ -66,87 +68,6 @@
 
   #category-row::-webkit-scrollbar {
     display: none;
-  }
-}
-
-@media (max-width: 768px) {
-
-  /* =========================
-     PRODUCT – MOBILE ONLY
-     แถวเดียว + scroll
-     ========================= */
-
-  /* กล่องรายการสินค้า */
-  .card-grid {
-    display: flex;              /* ✅ ใช้ flex ชัวร์สุด */
-    gap: 12px;
-
-    padding: 8px 16px 16px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .card-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* การ์ดสินค้า */
-  .card {
-    flex: 0 0 140px;             /* ✅ ล็อกความกว้าง */
-    max-width: 140px;
-
-    background: #fff;
-    border: 1.5px solid #3b82f6;
-    border-radius: 16px;
-
-    padding: 10px;
-    position: relative;
-  }
-
-  /* รูป */
-  .card__img {
-    width: 100%;
-    height: 96px;                /* ✅ เล็กลง */
-    margin-bottom: 8px;
-
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 12px;
-  }
-
-  /* ปุ่มตะกร้า */
-  .card__cart {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-
-    border-radius: 50%;
-    background: #3b82f6;
-    color: #fff;
-  }
-
-  /* ชื่อ */
-  .card__title {
-    font-size: 13px;
-    line-height: 1.25;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-
-  /* ลิงก์ */
-  .card__link {
-    font-size: 12px;
-    color: #2563eb;
-    font-weight: 600;
-    text-decoration: none;
   }
 }
 
