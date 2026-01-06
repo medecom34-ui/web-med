@@ -10,7 +10,7 @@
   }
 
   html, body {
-    overflow-x: hidden;
+    overflow-x: visible;
   }
 
   /* ================= HEADER ================= */
@@ -67,7 +67,8 @@
   /* ✅ ตัวนี้ต้องเป็นตัวเลื่อน */
   .category-grid-desktop > .container.section {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* iOS smooth */
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
   }
 
   /* กัน container ตัดความกว้าง */
