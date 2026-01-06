@@ -1,33 +1,32 @@
 /* =========================
-   HOME – MOBILE (FULL WIDTH)
-   ทุกอย่างกว้างเท่า HEADER
+   HOME – MOBILE (FINAL LOCK)
+   ทุกอย่าง = 100vw เท่า HEADER
    ========================= */
 
 @media (max-width: 768px) {
 
-  /* =========================
-     GLOBAL RESET
-     ========================= */
+  /* ===== GLOBAL KILL ===== */
   * {
     box-sizing: border-box;
   }
 
-  body {
+  html, body {
+    width: 100%;
     overflow-x: hidden;
   }
 
   .sidecats {
-    display: none;
+    display: none !important;
   }
 
-  /* =========================
-     KILL DESKTOP CONTAINER
-     ========================= */
+  /* ===== KILL CONTAINER ทุกตัว ===== */
   .container,
-  .section,
+  .header,
+  .banner > .container,
   .home-grid,
   .home-main,
-  .banner > .container {
+  .home-main > section,
+  .section {
     width: 100vw !important;
     max-width: 100vw !important;
     margin: 0 !important;
@@ -35,20 +34,13 @@
     padding-right: 16px !important;
   }
 
-  /* =========================
-     HEADER = BASE WIDTH
-     ========================= */
+  /* ===== HEADER = BASE WIDTH ===== */
   header.header {
-    width: 100vw;
-    padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  header.header.container {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    gap: 12px;
+    padding: 8px 16px !important;
   }
 
   .logo__box {
@@ -62,9 +54,11 @@
     gap: 10px;
   }
 
-  /* =========================
-     BANNER = 100% VIEWPORT
-     ========================= */
+  .header-icon {
+    font-size: 18px;
+  }
+
+  /* ===== BANNER ===== */
   .banner {
     width: 100vw;
     padding: 12px 0;
@@ -75,9 +69,7 @@
     line-height: 1.3;
   }
 
-  /* =========================
-     CATEGORY (SCROLL ONLY)
-     ========================= */
+  /* ===== CATEGORY = SCROLL X ===== */
   .category-grid-desktop {
     width: 100vw;
     overflow-x: auto;
@@ -119,38 +111,29 @@
     text-align: center;
   }
 
-  /* =========================
-     PRODUCT GRID = FULL WIDTH
-     ========================= */
+  /* ===== PRODUCT GRID ===== */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     width: 100%;
+    margin: 0;
   }
 
   .product-card {
     width: 100%;
     padding: 10px;
     border-radius: 14px;
-    display: flex;
-    flex-direction: column;
   }
 
   .product-card .img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     object-fit: contain;
   }
 
-  .product-card .name {
-    font-size: 13px;
-    line-height: 1.3;
-    min-height: 2.6em;
-  }
-
-  .product-card .price {
-    font-size: 13px;
+  .home-main section {
+    margin-bottom: 16px !important;
   }
 
 }
