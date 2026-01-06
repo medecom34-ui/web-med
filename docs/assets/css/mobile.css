@@ -73,11 +73,11 @@
 }
 
 /* =========================================
-   PRODUCT – MOBILE ONLY (FINAL, ONE SOURCE)
+   PRODUCT – MOBILE (ONE SOURCE OF TRUTH)
    ========================================= */
 @media (max-width: 768px) {
 
-  /* ===== container ของสินค้า ===== */
+  /* ===== แถวสินค้า (Popular + New) ===== */
   #popular-grid,
   #newest-grid {
     display: flex;
@@ -96,28 +96,28 @@
     display: none;
   }
 
-  /* ===== การ์ดสินค้า ===== */
+  /* ===== การ์ดสินค้า (ขนาดเดียวกันทุกใบ) ===== */
   #popular-grid .card,
   #newest-grid .card {
-    flex: 0 0 128px;
-    height: 190px;                 /* 🔒 ความสูงตายตัว */
+    flex: 0 0 128px;        /* ความกว้าง */
+    height: 190px;         /* 🔒 ล็อกความสูง */
 
-    display: flex;                 /* 🔑 สำคัญที่สุด */
+    display: flex;         /* สำคัญ */
     flex-direction: column;
 
     background: #fff;
     border: 1.5px solid #3b82f6;
     border-radius: 14px;
-
     padding: 8px;
+
     position: relative;
   }
 
   /* ===== รูปสินค้า ===== */
   #popular-grid .card__img,
   #newest-grid .card__img {
-    height: 84px;                  /* 🔒 ล็อกความสูงรูป */
-    flex: 0 0 84px;
+    flex: 0 0 84px;        /* 🔒 สูงเท่ากันทุกใบ */
+    height: 84px;
 
     background-size: contain;
     background-position: center;
@@ -127,7 +127,7 @@
     margin-bottom: 6px;
   }
 
-  /* ===== ชื่อสินค้า ===== */
+  /* ===== ชื่อสินค้า (ไม่เกิน 2 บรรทัด) ===== */
   #popular-grid .card__title,
   #newest-grid .card__title {
     font-size: 12px;
@@ -135,15 +135,15 @@
     font-weight: 600;
 
     display: -webkit-box;
-    -webkit-line-clamp: 2;          /* 🔒 ไม่เกิน 2 บรรทัด */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  /* ===== ลิงก์ (ดันลงล่าง) ===== */
+  /* ===== ลิงก์ ดันลงล่าง ===== */
   #popular-grid .card__link,
   #newest-grid .card__link {
-    margin-top: auto;              /* 🔑 ทำให้ทุกใบสูงเท่ากัน */
+    margin-top: auto;      /* 🔑 ตัวนี้ทำให้การ์ดสูงเท่ากัน */
     font-size: 11px;
     font-weight: 600;
     color: #2563eb;
