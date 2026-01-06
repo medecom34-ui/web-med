@@ -160,3 +160,67 @@
     color: #fff;
   }
 }
+
+@media (max-width: 768px) {
+
+  /* =========================
+     CONTAINER (อิง banner)
+     ========================= */
+  .home-main section.container {
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* =========================
+     CATEGORY
+     ========================= */
+  .home-main #category-row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 108px);
+    grid-auto-columns: 96px;
+
+    gap: 10px;
+    padding: 8px 0;
+
+    overflow-x: auto;
+  }
+
+  /* =========================
+     PRODUCT GRID (override main.css)
+     ========================= */
+  .home-main #popular-grid.card-grid,
+  .home-main #newest-grid.card-grid {
+    display: flex;          /* 🔥 ชนะ grid */
+    flex-wrap: nowrap;
+    gap: 12px;
+
+    padding: 8px 0 16px;
+    overflow-x: auto;
+  }
+
+  /* =========================
+     CARD (lock size)
+     ========================= */
+  .home-main #popular-grid .card,
+  .home-main #newest-grid .card {
+    flex: 0 0 128px;
+    height: 188px;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 14px;
+    padding: 8px;
+  }
+
+  .home-main .card__img {
+    flex: 0 0 82px;
+    height: 82px;
+  }
+
+  .home-main .card__link {
+    margin-top: auto;
+  }
+}
