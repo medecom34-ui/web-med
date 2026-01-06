@@ -84,4 +84,54 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
+
+  
+  /* wrapper ให้เลื่อนได้ */
+  #popular-grid,
+  #newest-grid {
+    display: flex;              /* 🔥 จาก grid → flex */
+    gap: 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    padding: 8px 16px 12px;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  #popular-grid::-webkit-scrollbar,
+  #newest-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ---------- PRODUCT CARD ---------- */
+  #popular-grid .product-card,
+  #newest-grid .product-card {
+    flex: 0 0 auto;            /* 🔥 ห้ามหด */
+    width: 160px;              /* ⬅️ เล็กลง */
+    border-radius: 14px;
+    padding: 10px;
+  }
+
+  /* รูปสินค้า */
+  #popular-grid .product-card .img,
+  #newest-grid .product-card .img {
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  /* ชื่อสินค้า */
+  #popular-grid .product-card h3,
+  #newest-grid .product-card h3 {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  /* ราคา / ปุ่ม */
+  #popular-grid .product-card .price,
+  #newest-grid .product-card .price {
+    font-size: 13px;
+  }
 }
