@@ -8,24 +8,35 @@
 
 @media (max-width: 768px) {
 
-  /* 1. กรอบเดียวกับ banner */
-  .banner > .container,
-  .home-main {
+  /* kill desktop grid */
+  .home-grid {
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  /* container = banner width */
+  .container {
+    max-width: 100%;
     padding-left: 16px;
     padding-right: 16px;
     box-sizing: border-box;
   }
 
-  /* 2. แบน container ซ้อน */
+  .banner > .container,
+  .home-main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* ห้าม container ซ้อน */
   .home-main > section.container {
     padding-left: 0;
     padding-right: 0;
-    max-width: 100%;
   }
 
-  /* 3. CATEGORY (2 แถว เลื่อนข้าง) */
+  /* CATEGORY */
   #category-row {
     display: grid;
     grid-auto-flow: column;
@@ -37,40 +48,11 @@
     overflow-y: hidden;
   }
 
-  #category-row::-webkit-scrollbar {
-    display: none;
-  }
-
-  #category-row .cat {
-    width: 96px;
-    height: 108px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 6px;
-    border-radius: 12px;
-  }
-
-  #category-row .cat__img {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 4px;
-  }
-
-  #category-row .cat__name {
-    font-size: 11px;
-    line-height: 1.2;
-    text-align: center;
-  }
-
-  /* 4. PRODUCT GRID */
+  /* PRODUCT GRID */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
-  .product-card {
-    width: 100%;
-  }
 }
