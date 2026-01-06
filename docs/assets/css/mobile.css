@@ -82,6 +82,7 @@
   /* ----- กล่องรายการสินค้า ----- */
   #popular-grid.card-grid,
   #newest-grid.card-grid {
+    grid-template-columns: unset !important;
     display: flex;              /* แถวเดียว */
     flex-wrap: nowrap;
     gap: 12px;
