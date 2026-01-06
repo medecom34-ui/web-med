@@ -6,3 +6,39 @@
 .sidecats {
   display: none;
 }
+
+@media (max-width: 768px) {
+
+  /* โลโก้ HOME */
+  .logo__box {
+    font-size: 14px;        /* จากเดิมใหญ่ → เล็กพอดี */
+    font-weight: 700;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  /* กลุ่มไอคอนขวา */
+  .header-icons {
+    gap: 8px;
+  }
+
+  .header-icon {
+    padding: 6px 8px;      /* ลด padding */
+    font-size: 16px;       /* ขนาดไอคอน */
+    border-radius: 10px;
+  }
+
+  /* badge ตัวเลข (1) */
+  .header-icon .badge {
+    font-size: 11px;
+    padding: 2px 6px;
+    min-width: 18px;
+    height: 18px;
+  }
+
+}
