@@ -70,16 +70,19 @@
   }
 
   .cat-row {
-  margin-top: 0 !important;
+    margin-top: 0 !important;
+    grid-template-columns: none !important;
+    display: block !important;
   }
 
   #category-row {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(2, 1fr);        /* 2 แถว */
-    grid-auto-columns: 72px;                   /* ความกว้างการ์ด */
-    gap: 10px 12px;
-    padding: 12px;
+    grid-template-rows: repeat(2, 1fr); /* ✅ 2 แถว */
+    grid-auto-columns: 80px;            /* ✅ คุมความกว้าง */
+    gap: 12px;
+    padding: 12px 16px 16px;
+    width: max-content;
   }
 
   #category-row::-webkit-scrollbar {
@@ -87,19 +90,15 @@
   }
 
   #category-row .cat {
-    flex: 0 0 72px;
-    height: 92px;
+    width: 80px;
+    height: 96px;
     padding: 6px;
     border-radius: 14px;
-    background: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 
   #category-row .cat__img {
-    width: 54px;
-    height: 54px;
+    width: 48px;
+    height: 48px;
     margin-bottom: 6px;
     background-size: contain;
     background-position: center;
@@ -108,7 +107,7 @@
 
   #category-row .cat__name {
     font-size: 11px;
-    text-align: center;
+    line-height: 1.2;
   }
 
   /* ================= MAIN ================= */
