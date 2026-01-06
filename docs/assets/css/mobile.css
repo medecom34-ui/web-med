@@ -7,48 +7,54 @@
   display: none;
 }
 
-
 @media (max-width: 768px) {
 
-  /* ===== บังคับหมวดหมู่เป็น 2 แถว + scroll แนวนอน (ชัวร์) ===== */
+  /* ===== Category mobile: 2 rows + horizontal scroll ===== */
 
-  /* ตัวครอบ */
   #category-row {
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    white-space: nowrap !important;   /* 🔥 หัวใจของวิธีนี้ */
-    padding: 8px 12px 12px !important;
+    display: grid !important;
+    grid-template-rows: repeat(2, 1fr);   /* 🔥 2 แถว */
+    grid-auto-flow: column;               /* ไหลแนวนอน */
+    gap: 12px;
+
+    padding: 12px 16px 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* การ์ดหมวดหมู่ */
   #category-row .cat {
-    display: inline-block !important; /* 🔥 ตัด grid/flex ทิ้งหมด */
-    vertical-align: top;
+    width: 130px;                         /* 🔧 ปรับตรงนี้ถ้าอยากใหญ่/เล็ก */
+    height: 150px;
 
-    width: 150px !important;
-    height: 150px !important;
-    margin: 0 10px 12px 0 !important; /* ระยะห่าง */
+    padding: 8px 6px;
+    border-radius: 14px;
 
-    white-space: normal;              /* ชื่อขึ้นบรรทัดได้ */
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  /* ทำให้เป็น 2 แถว */
-  #category-row {
-    max-height: calc(150px * 2 + 12px);
+    scroll-snap-align: start;
+    background: #fff;
   }
 
   /* รูป */
   #category-row .cat__img {
-    width: 100px !important;
-    height: 100px !important;
-    margin: 0 auto 6px;
+    width: 88px;
+    height: 88px;
+    margin-bottom: 6px;
   }
 
   /* ชื่อ */
   #category-row .cat__name {
     font-size: 13px;
+    line-height: 1.25;
     text-align: center;
-    line-height: 1.2;
+    word-break: break-word;
   }
 
   /* ซ่อน scrollbar */
@@ -56,3 +62,5 @@
     display: none;
   }
 }
+
+
