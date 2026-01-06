@@ -1,66 +1,27 @@
 /* =========================
-   HOME – MOBILE (FINAL / CLEAN)
-   ใช้ได้แน่นอน – 2 แถว + scroll
+   HOME – MOBILE (FINAL – WORKING)
+   2 แถว + scroll แน่นอน
    ========================= */
 
 @media (max-width: 768px) {
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   html, body {
     overflow-x: hidden;
   }
 
-  /* ================= HEADER ================= */
-  header.header {
-    width: 100%;
-    padding: 0;
+  /* ---------- CATEGORY STRIP ---------- */
+
+  .category-strip {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: #fff;
   }
 
-  .logo__box {
-    font-size: 14px;
-    padding: 6px 10px;
-    border-radius: 8px;
-  }
-
-  .header-icons {
-    display: flex;
-    gap: 10px;
-  }
-
-  /* ================= BANNER ================= */
-  .banner {
-    width: 100%;
-  }
-
-  .banner-inner {
-    padding: 12px 16px;
-  }
-
-  .banner__title {
-    font-size: 20px;
-    line-height: 1.3;
-  }
-
-  /* ================= CATEGORY ================= */
-
-  /* ซ่อน sidebar */
-  .sidecats {
-    display: none;
-  }
-
-  /* container ต้องไม่บีบความกว้าง */
-  .category-container {
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-
-  /* ตัวเลื่อนจริง */
   .category-scroll {
     overflow-x: auto;
-    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -68,18 +29,16 @@
     display: none;
   }
 
-  /* GRID หมวดหมู่ */
   #category-row {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(2, 96px);   /* ✅ 2 แถว */
-    grid-auto-columns: 80px;              /* ความกว้างต่อช่อง */
+    grid-template-rows: repeat(2, 96px);   /* 2 แถว */
+    grid-auto-columns: 80px;              /* 1 ช่องกว้าง 80px */
     gap: 12px;
-
     padding: 12px 16px;
 
-    /* 🔑 บังคับให้กว้างกว่า viewport เสมอ */
-    min-width: calc(80px * 10);
+    /* 🔑 สำคัญมาก: ทำให้เลื่อนได้จริง */
+    width: max-content;
   }
 
   #category-row .cat {
@@ -105,11 +64,14 @@
 
   #category-row .cat__name {
     font-size: 11px;
-    line-height: 1.2;
     text-align: center;
+    line-height: 1.2;
   }
 
-  /* ================= MAIN ================= */
+  /* ---------- MAIN ---------- */
+
+  .sidecats { display: none; }
+
   .home-grid {
     display: block;
     margin: 0;
@@ -121,21 +83,9 @@
     margin-bottom: 20px;
   }
 
-  /* ================= PRODUCT GRID ================= */
   .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-  }
-
-  .product-card {
-    padding: 10px;
-    border-radius: 14px;
-  }
-
-  .product-card .img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
   }
 }
