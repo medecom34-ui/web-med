@@ -291,3 +291,161 @@
   }
 }
 
+/* =========================
+   MOBILE ONLY – ISOLATED
+   ไม่ชน desktop
+   ========================= */
+@media (max-width: 768px) {
+
+  /* กรอบเดียวกับ banner สีฟ้า */
+  .is-mobile .home-main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* =========================
+     CATEGORY (มือถือ)
+     ========================= */
+  .is-mobile #category-row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 104px);
+    grid-auto-columns: 92px;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  /* =========================
+     PRODUCT ROW (มือถือ)
+     ========================= */
+  .is-mobile .mobile-products {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  /* =========================
+     PRODUCT CARD (มือถือ)
+     ========================= */
+  .is-mobile .m-card {
+    flex: 0 0 128px;
+    height: 188px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1.5px solid #3b82f6;
+    border-radius: 14px;
+    padding: 8px;
+    background: #fff;
+  }
+
+  .is-mobile .m-img {
+    height: 82px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 6px;
+  }
+
+  .is-mobile .m-name {
+    font-size: 12px;
+    line-height: 1.25;
+    font-weight: 600;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .is-mobile .m-price {
+    margin-top: auto;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2563eb;
+  }
+}
+
+/* =========================
+   MOBILE CARD – ISOLATED
+   ========================= */
+@media (max-width: 768px) {
+
+  /* แถวสินค้า */
+  #popular-grid,
+  #newest-grid {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0 16px;
+    overflow-x: auto;
+  }
+
+  #popular-grid::-webkit-scrollbar,
+  #newest-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* การ์ด */
+  .m-card {
+    flex: 0 0 140px;
+    height: 200px;
+
+    background: #fff;
+    border: 1.5px solid #3b82f6;
+    border-radius: 14px;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .m-card__img {
+    height: 90px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+
+  .m-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .m-card__title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.25;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .m-card__link {
+    margin-top: auto;
+    font-size: 11px;
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  .m-card__cart {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+  }
+}
+
