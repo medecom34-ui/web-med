@@ -59,3 +59,26 @@
     max-width: none !important;
   }
 }
+
+@media (max-width: 768px) {
+
+  .card-grid {
+    align-items: stretch;
+    justify-items: stretch;
+  }
+
+  .product-card {
+    margin: 0 !important;
+    align-self: stretch !important;
+  }
+
+  .product-card .img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+  }
+
+  #category-row {
+    margin-bottom: 8px;
+  }
+
+}
