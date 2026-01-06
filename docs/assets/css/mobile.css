@@ -1,8 +1,8 @@
 /* =========================
-   HOME – Mobile only
+   HOME – MOBILE (FINAL SAFE)
+   ทุกอย่างอิง banner สีฟ้า
    ========================= */
 
-/* ซ่อนหมวดหมู่แบบ sidebar (ภาพที่หนูเห็นอยู่) */
 .sidecats {
   display: none;
 }
@@ -10,85 +10,77 @@
 @media (max-width: 768px) {
 
   /* =========================
-     FIX WITH LOGIC (NO GUESS)
+     1. กรอบกลางเดียว (เหมือน banner)
      ========================= */
+  .home-main,
+  .home-main > section.container {
+    max-width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
 
-  /* 1. ดึง container ออกให้ full width */
+  /* ❌ ห้าม full-bleed */
   .category-grid-desktop > section.container {
-    max-width: none !important;
+    max-width: 100% !important;
     padding: 0 !important;
   }
 
-  /* 2. ปิด flex เดิมให้หมด */
+  /* =========================
+     CATEGORY (2 แถว เลื่อนข้าง แต่ไม่ล้น)
+     ========================= */
   #category-row.cat-row {
-    display: grid !important;        /* ❗ override flex */
-    flex-wrap: unset !important;     /* ❗ kill wrap */
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 110px);
+    grid-auto-columns: 100px;
 
-    grid-auto-flow: column !important;
-    grid-template-rows: repeat(2, 120px) !important;
-    grid-auto-columns: 110px !important;
+    gap: 10px;
+    padding: 8px 0;
 
-    gap: 12px !important;
-    padding: 12px 16px !important;
-
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* 3. การ์ด */
-  #category-row .cat {
-    width: 110px !important;
-    height: 120px !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-
-    padding: 6px !important;
-    border-radius: 12px;
-
-    scroll-snap-align: start;
-  }
-
-  /* 4. รูป */
-  #category-row .cat__img {
-    width: 70px !important;
-    height: 70px !important;
-    margin-bottom: 6px !important;
-  }
-
-  /* 5. ชื่อ */
-  #category-row .cat__name {
-    font-size: 12px !important;
-    line-height: 1.2;
-    text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   #category-row::-webkit-scrollbar {
     display: none;
   }
-}
 
-/* =========================================
-   PRODUCT – MOBILE (ONE SOURCE OF TRUTH)
-   ========================================= */
-@media (max-width: 768px) {
+  #category-row .cat {
+    width: 100px;
+    height: 110px;
 
-  /* ===== แถวสินค้า (Popular + New) ===== */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  #category-row .cat__img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 4px;
+  }
+
+  #category-row .cat__name {
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* =========================
+     PRODUCT (Popular + New)
+     อยู่ในกรอบ banner 100%
+     ========================= */
   #popular-grid,
   #newest-grid {
     display: flex;
-    flex-wrap: nowrap;
     gap: 12px;
 
-    padding: 8px 16px 16px;
+    padding: 8px 0 16px;
     overflow-x: auto;
     overflow-y: hidden;
-
-    -webkit-overflow-scrolling: touch;
   }
 
   #popular-grid::-webkit-scrollbar,
@@ -96,13 +88,13 @@
     display: none;
   }
 
-  /* ===== การ์ดสินค้า (ขนาดเดียวกันทุกใบ) ===== */
+  /* ===== การ์ดสินค้า (ขนาดเดียวกัน) ===== */
   #popular-grid .card,
   #newest-grid .card {
-    flex: 0 0 128px;        /* ความกว้าง */
-    height: 190px;         /* 🔒 ล็อกความสูง */
+    flex: 0 0 130px;
+    height: 190px;
 
-    display: flex;         /* สำคัญ */
+    display: flex;
     flex-direction: column;
 
     background: #fff;
@@ -113,11 +105,11 @@
     position: relative;
   }
 
-  /* ===== รูปสินค้า ===== */
+  /* ===== รูป ===== */
   #popular-grid .card__img,
   #newest-grid .card__img {
-    flex: 0 0 84px;        /* 🔒 สูงเท่ากันทุกใบ */
     height: 84px;
+    flex: 0 0 84px;
 
     background-size: contain;
     background-position: center;
@@ -127,7 +119,7 @@
     margin-bottom: 6px;
   }
 
-  /* ===== ชื่อสินค้า (ไม่เกิน 2 บรรทัด) ===== */
+  /* ===== ชื่อ (2 บรรทัดพอดี) ===== */
   #popular-grid .card__title,
   #newest-grid .card__title {
     font-size: 12px;
@@ -140,10 +132,10 @@
     overflow: hidden;
   }
 
-  /* ===== ลิงก์ ดันลงล่าง ===== */
+  /* ===== ลิงก์ดันล่าง ===== */
   #popular-grid .card__link,
   #newest-grid .card__link {
-    margin-top: auto;      /* 🔑 ตัวนี้ทำให้การ์ดสูงเท่ากัน */
+    margin-top: auto;
     font-size: 11px;
     font-weight: 600;
     color: #2563eb;
