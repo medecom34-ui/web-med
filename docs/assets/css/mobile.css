@@ -2,7 +2,7 @@
    HOME – Mobile only
    ========================= */
 
-/* ซ่อนหมวดหมู่แบบ grid ใหญ่ (ภาพที่ 2) บนมือถือ */
-.category-grid-desktop {
+/* ซ่อนหมวดหมู่แบบ sidebar (ภาพที่หนูเห็นอยู่) */
+.sidecats {
   display: none;
 }
