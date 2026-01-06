@@ -74,10 +74,12 @@
   }
 
   #category-row {
-    display: flex;
-    gap: 16px;
-    padding: 8px 12px 122px;
-    width: max-content;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 1fr);        /* 2 แถว */
+    grid-auto-columns: 72px;                   /* ความกว้างการ์ด */
+    gap: 10px 12px;
+    padding: 12px;
   }
 
   #category-row::-webkit-scrollbar {
@@ -85,7 +87,7 @@
   }
 
   #category-row .cat {
-    flex: 0 0 20px;
+    flex: 0 0 72px;
     height: 92px;
     padding: 6px;
     border-radius: 14px;
