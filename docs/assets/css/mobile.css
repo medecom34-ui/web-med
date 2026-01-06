@@ -136,4 +136,18 @@
     margin-bottom: 16px !important;
   }
 
+    .banner {
+    padding-bottom: 24px;
+  }
+
+  /* ดันหมวดหมู่ลงมาให้พ้น banner */
+  .category-grid-desktop {
+    margin-top: 12px;
+  }
+
+  /* กันกรณี container ข้างในชิดเกิน */
+  .category-grid-desktop .container {
+    padding-top: 4px;
+  }
+
 }
