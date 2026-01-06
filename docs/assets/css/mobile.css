@@ -72,7 +72,7 @@
   .cat-row {
     margin-top: 0 !important;
     grid-template-columns: none !important;
-    display: block !important;
+    display: grid !important;
   }
 
   #category-row {
@@ -108,6 +108,7 @@
   #category-row .cat__name {
     font-size: 11px;
     line-height: 1.2;
+    text-align: center;
   }
 
   /* ================= MAIN ================= */
