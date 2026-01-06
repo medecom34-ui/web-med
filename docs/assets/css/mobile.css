@@ -9,15 +9,15 @@
 
 @media (max-width: 768px) {
 
-  /* ===== Category mobile – tuned size ===== */
+  /* ===== Category mobile – locked proportion ===== */
 
   #category-row {
     display: grid !important;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 124px);   /* 🔒 ล็อกความสูงต่อแถว */
     grid-auto-flow: column;
-    gap: 10px;
+    gap: 12px;
 
-    padding: 8px 12px 12px;
+    padding: 10px 14px 14px;
     overflow-x: auto;
     overflow-y: hidden;
 
@@ -27,16 +27,16 @@
 
   /* การ์ด */
   #category-row .cat {
-    width: 120px;          /* ↓ จากเดิม */
-    height: 132px;         /* ↓ จากเดิม */
+    width: 112px;          /* 🔒 ล็อก */
+    height: 124px;
 
-    padding: 6px 6px;
+    padding: 6px 6px 8px;
     border-radius: 12px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     background: #fff;
     scroll-snap-align: start;
@@ -44,14 +44,14 @@
 
   /* รูป */
   #category-row .cat__img {
-    width: 78px;           /* ↓ */
-    height: 78px;          /* ↓ */
-    margin-bottom: 4px;
+    width: 72px;           /* 🔒 */
+    height: 72px;
+    margin-bottom: 6px;
   }
 
   /* ชื่อ */
   #category-row .cat__name {
-    font-size: 12px;       /* ↓ */
+    font-size: 12px;
     line-height: 1.2;
     text-align: center;
   }
@@ -61,6 +61,7 @@
     display: none;
   }
 }
+
 
 
 
