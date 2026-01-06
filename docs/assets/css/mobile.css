@@ -112,4 +112,51 @@
     font-size: 13px;
   }
 
+  
+  /* =========================
+     HEADER – SCALE FIX
+     ========================= */
+
+  /* ตัดผล container ออกจาก header */
+  header.header.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  header.header {
+    max-width: 100%;
+    padding: 8px 16px;        /* ใช้ padding ชุดเดียว */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  /* โลโก้ */
+  .logo__box {
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+
+  /* ไอคอนขวา */
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .header-icon .badge {
+    font-size: 11px;
+    min-width: 16px;
+    height: 16px;
+    line-height: 16px;
+  }
+
+
 }
