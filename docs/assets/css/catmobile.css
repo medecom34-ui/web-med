@@ -25,14 +25,26 @@
   /* =========================
      LAYOUT
      ========================= */
+
   .category-layout{
     display:block;
   }
 
+  /* ❗ แสดง aside กลับมา แต่ไม่เป็น sidebar */
   .category-layout > aside{
-    display:none;
+    display:block;
+    width:100%;
+    padding:0 16px;
+    margin-bottom:16px;
   }
 
+  /* filter card ให้ดูเป็น mobile box */
+  .category-layout > aside .filter-card{
+    border-radius:16px;
+    padding:14px;
+  }
+
+  /* content */
   .category-layout > section{
     width:100%;
     padding:0 16px;
@@ -50,16 +62,18 @@
     padding:6px 10px;
   }
 
+  /* =========================
+     TITLE
+     ========================= */
   .category-title{
     font-size:18px;
     margin:12px 0 16px;
   }
 
   /* =========================
-     🔥 PRODUCT GRID (FINAL FIX)
+     PRODUCT GRID (FINAL)
      ========================= */
 
-  /* 1️⃣ ฆ่า flex จาก main.css */
   #productGrid{
     display:grid !important;
     grid-template-columns:repeat(2, minmax(0,1fr));
@@ -67,7 +81,6 @@
     width:100%;
   }
 
-  /* 2️⃣ ฆ่า flex child ทุกตัว */
   #productGrid > .product-card{
     display:block !important;
     width:100% !important;
@@ -75,27 +88,25 @@
     flex:none !important;
   }
 
-  /* 3️⃣ การ์ด = หน้า HOME */
+  /* การ์ด = หน้า HOME */
   #productGrid .product-card{
     padding:10px;
     border-radius:14px;
   }
 
-  /* รูป */
   #productGrid .product-card .img{
     height:130px;
     border-radius:12px;
   }
 
-  /* ชื่อ */
   #productGrid .product-card .name{
     font-size:13px;
     line-height:1.35;
     min-height:36px;
   }
 
-  /* ราคา */
   #productGrid .product-card .price{
     font-size:14px;
   }
+
 }
