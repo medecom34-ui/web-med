@@ -1839,3 +1839,27 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   align-self:start;
   margin-top:0 !important;
 }
+
+.home-grid{
+  max-width:1280px;
+  margin:24px auto;
+  padding:0 16px;
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:24px;
+  align-items:start;
+}
+
+.sidecats{
+  align-self:start;
+}
+
+.category-grid-desktop{
+  margin-bottom:32px;
+}
+
+.cat-row{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:16px 24px;
+}
