@@ -201,5 +201,23 @@ body{
   overflow-x:hidden;
 }
 
+/* ==================================================
+   FIX HOME PRODUCT OVERFLOW (ROOT CAUSE FIX)
+   ================================================== */
+
+/* แก้ container ที่ถูก padding:0 แบบ inline */
+.home-main > section.container{
+  padding-left:16px !important;
+  padding-right:16px !important;
+  box-sizing:border-box;
+}
+
+/* กัน grid ไม่ให้เกินกรอบ */
+.home-main .card-grid{
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
   
 }
