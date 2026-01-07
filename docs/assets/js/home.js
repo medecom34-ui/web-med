@@ -150,25 +150,30 @@ function buildCategoryTree(flatList) {
 
 function renderCategoriesTree(rootCategories) {
   
-  const catRow = $("#category-row");
-  if (catRow) {
-    catRow.innerHTML = rootCategories
-      .map((c) => {
-        const imgUrl = c.imageUrl ? optimizeImg(c.imageUrl, 500) : null; // ย่อสำหรับการ์ดใหญ่
-        const imgStyle = imgUrl
-          ? `style="background-image:url('${imgUrl}');background-size:contain;background-position:center;background-repeat:no-repeat"`
-          : "";
-        return `
+  /* ===== HOME CATEGORY (DESKTOP + MOBILE) ===== */
+  const desktopRow = $("#category-row-desktop");
+  const mobileRow  = $("#category-row");
+
+  const renderCatCard = (c) => {
+    const imgUrl = c.imageUrl ? optimizeImg(c.imageUrl, 500) : null;
+    const imgStyle = imgUrl
+      ? `style="background-image:url('${imgUrl}');background-size:contain;background-position:center;background-repeat:no-repeat"`
+      : "";
+
+    return `
       <a class="cat" href="category.html?category=${encodeURIComponent(c.slug)}">
         <div class="cat__img" ${imgStyle}></div>
         <div class="cat__name">${c.name}</div>
       </a>
     `;
-      })
-      .join("");
-  }
+  };
 
- 
+  const html = rootCategories.map(renderCatCard).join("");
+
+  if (desktopRow) desktopRow.innerHTML = html;
+  if (mobileRow)  mobileRow.innerHTML  = html;
+
+  /* ===== SIDEBAR ===== */
   const sideCats = $("#sideCats");
   if (!sideCats) return;
 
