@@ -140,4 +140,103 @@
     overflow:hidden;
   }
 
+
+  
+  /* =========================
+     CATEGORY LAYOUT (mobile)
+     ========================= */
+
+  /* container หลักของหน้าหมวด */
+  main.category-layout{
+    padding:0 16px;
+  }
+
+  /* ซ่อน aside filter บนมือถือ */
+  main.category-layout > aside{
+    display:none;
+  }
+
+  /* section ขวาให้กินเต็ม */
+  main.category-layout > section{
+    width:100%;
+    margin:0;
+  }
+
+  /* =========================
+     BREADCRUMB (คุณอยู่ที่...)
+     ========================= */
+  .breadcrumb .container{
+    padding:8px 16px;
+    font-size:13px;
+    line-height:1.4;
+    color:#475569;
+  }
+
+  .breadcrumb b{
+    font-weight:600;
+    color:#0f172a;
+  }
+
+  /* =========================
+     SUB CATEGORY STRIP (pill)
+     ========================= */
+  .sub-strip-wrap{
+    margin-bottom:16px;
+  }
+
+  .sub-strip{
+    gap:8px;
+  }
+
+  .pill{
+    font-size:13px;
+    padding:6px 10px;
+  }
+
+  /* =========================
+     PAGE TITLE
+     ========================= */
+  .category-title{
+    font-size:18px;
+    margin:0 0 12px;
+  }
+
+  /* =========================
+     PRODUCT GRID (MATCH HOME)
+     ========================= */
+
+  /* grid */
+  #productGrid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:12px;
+    width:100%;
+  }
+
+  /* การ์ด */
+  #productGrid .product-card{
+    width:100%;
+    max-width:100%;
+    padding:10px;
+    border-radius:14px;
+  }
+
+  /* รูป */
+  #productGrid .product-card .img{
+    height:130px;            /* เท่าหน้า home */
+    border-radius:12px;
+  }
+
+  /* ชื่อ */
+  #productGrid .product-card .name{
+    font-size:13px;
+    line-height:1.35;
+    min-height:36px;         /* กันการ์ดยาวไม่เท่ากัน */
+  }
+
+  /* ราคา / ปุ่ม */
+  #productGrid .product-card .price{
+    font-size:14px;
+  }
+
 }
