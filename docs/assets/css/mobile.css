@@ -84,3 +84,31 @@
     gap: 12px;
   }
 }
+
+/* =========================================
+   🔒 DESKTOP HARD LOCK (FINAL FIX)
+   ========================================= */
+@media (min-width: 769px) {
+
+  /* ❌ ปิด mobile category strip บน desktop แบบบังคับ */
+  section.category-strip,
+  section.category-strip.mobile-only,
+  .category-strip,
+  .mobile-only {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* ✅ desktop layout กลับใช้ sidebar + grid เดิม */
+  .home-grid {
+    display: grid !important;
+    grid-template-columns: 320px 1fr !important;
+  }
+
+  .sidecats {
+    display: block !important;
+  }
+
+}
