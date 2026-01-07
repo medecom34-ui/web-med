@@ -1,7 +1,7 @@
 @media (max-width:768px){
 
   /* =========================
-     SAFETY
+     GLOBAL SAFETY
      ========================= */
   *, *::before, *::after{
     box-sizing:border-box;
@@ -9,12 +9,11 @@
 
   html, body{
     width:100%;
-    max-width:100%;
     overflow-x:hidden;
   }
 
   /* =========================
-     HIDE DESKTOP
+     HIDE DESKTOP PARTS
      ========================= */
   .sidecats,
   .category-grid-desktop{
@@ -26,31 +25,22 @@
   }
 
   /* =========================
-     🔥 ตัวการล้น — FIX ตรงนี้
-     ========================= */
-
-  /* บังคับ container ของ HOME เท่านั้น */
-  body > main.home-grid section.container{
-    max-width:100% !important;
-    width:100% !important;
-    padding-left:16px !important;
-    padding-right:16px !important;
-    margin-left:0 !important;
-    margin-right:0 !important;
-  }
-
-  /* =========================
-     HOME GRID
+     HOME GRID (กันล้น)
      ========================= */
   .home-grid{
     width:100%;
-    max-width:100%;
     margin:0;
     padding:0;
   }
 
+  main.home-grid > .home-main > section.container{
+    max-width:100% !important;
+    margin:0 !important;
+    padding:0 16px !important;
+  }
+
   /* =========================
-     PRODUCT GRID
+     PRODUCT GRID (HOME)
      ========================= */
   .card-grid{
     display:grid;
@@ -61,95 +51,67 @@
 
   .product-card{
     width:100%;
-    padding:10px;
-    border-radius:14px;
-  }
-
-  .product-card .img{
-    height:130px;
-    border-radius:12px;
-  }
-
-  .product-card .name{
-    font-size:13px;
-    line-height:1.35;
-    min-height:36px;
-  }
-
-  .product-card .price{
-    font-size:14px;
-  }
-
-  .cart-fab{
-    width:34px;
-    height:34px;
-    right:8px;
-    bottom:8px;
-  }
-
-  .cart-fab svg{
-    width:16px;
-    height:16px;
-  }
-
-    /* =========================
-     FIX CATEGORY STRIP (HOME)
-     ========================= */
-
-  /* ปลดล็อก overflow ของ strip */
-  .category-strip,
-  .category-scroll{
-    overflow:visible !important;
-  }
-
-  .category-scroll{
-    overflow-x:auto !important;
-    overflow-y:hidden !important;
-  }
-
-  /* ให้แถวหมวดหมู่คุมตัวเอง */
-  #category-row{
-    width:max-content !important;
-    min-width:100%;
-  }
-
-  /* กันไม่ให้ container ของสินค้าไปบีบหมวดหมู่ */
-  .category-strip .container,
-  .category-strip *{
-    max-width:none !important;
-  }
-
-    /* =========================
-     FIX HOME OVERFLOW (ROOT CAUSE)
-     ========================= */
-
-  /* ยกเลิก container ของ HOME เท่านั้น */
-  main.home-grid > .home-main > section.container{
-    max-width:100% !important;
-    width:100% !important;
-    margin-left:0 !important;
-    margin-right:0 !important;
-    padding-left:16px !important;
-    padding-right:16px !important;
-    box-sizing:border-box;
-  }
-
-  /* กัน grid คิดเกินจอ */
-  main.home-grid .card-grid{
-    width:100%;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-  }
-
-  /* การ์ดห้ามดันเกิน */
-  main.home-grid .product-card{
     max-width:100%;
   }
 
   /* =========================
-     SAFETY NET (กันล้นทั้งหน้า)
+     ✅ CATEGORY STRIP (FIXED)
      ========================= */
-  html, body{
-    overflow-x:hidden;
+
+  .category-strip{
+    background:#fff;
+    margin-bottom:16px;
+    overflow:hidden;              /* 🔒 สำคัญ */
+  }
+
+  .category-scroll{
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .category-scroll::-webkit-scrollbar{
+    display:none;
+  }
+
+  /* 🔥 ล็อก layout หมวดหมู่ */
+  #category-row{
+    display:grid !important;
+    grid-auto-flow:column;
+    grid-template-rows:repeat(2, 96px);
+    grid-auto-columns:84px;
+
+    gap:12px;
+    padding:12px 16px;
+
+    width:max-content;
+    height:204px;
+  }
+
+  #category-row .cat{
+    width:84px;
+    height:96px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+  }
+
+  #category-row .cat__img{
+    width:40px;
+    height:40px;
+    margin-bottom:6px;
+  }
+
+  #category-row .cat__name{
+    font-size:11px;
+    text-align:center;
+    line-height:1.2;
   }
 
 }
