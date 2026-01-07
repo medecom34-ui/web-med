@@ -68,12 +68,8 @@
     min-height:36px;
   }
 
-  main.home-grid .product-card .price{
-    font-size:14px;
-  }
-
   /* =========================
-     CATEGORY STRIP (HOME)
+     CATEGORY STRIP (HOME) ✅ FIX
      ========================= */
 
   .category-strip{
@@ -92,28 +88,31 @@
     display:none;
   }
 
-  /* 🔑 Grid คุม layout เอง */
+  /* 🔒 ล็อกโครง grid ให้เสถียร */
   #category-row{
     display:grid !important;
     grid-auto-flow:column;
-    grid-template-rows:repeat(2, auto);
+
+    /* 🔑 สำคัญ: ล็อกความสูงแถว */
+    grid-template-rows:repeat(2, 96px);
     grid-auto-columns:84px;
 
     gap:12px;
     padding:12px 16px;
+
     width:max-content;
+    height:204px; /* 96*2 + gap */
   }
 
   /* การ์ดหมวดหมู่ */
   #category-row .cat{
     width:84px;
-    min-height:96px;
+    height:96px;
 
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:flex-start;
-    gap:6px;
 
     padding:8px 6px;
     background:#fff;
@@ -125,13 +124,14 @@
   #category-row .cat__img{
     width:40px !important;
     height:40px !important;
+    margin-bottom:6px;
     flex-shrink:0;
   }
 
   /* ชื่อ */
   #category-row .cat__name{
     font-size:11px;
-    line-height:1.3;
+    line-height:1.25;
     text-align:center;
 
     display:-webkit-box;
