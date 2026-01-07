@@ -1863,3 +1863,12 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   grid-template-columns:repeat(4, minmax(0,1fr));
   gap:16px 24px;
 }
+
+.home-grid {
+  align-items: start;
+}
+
+.sidecats {
+  position: sticky;
+  top: 24px;
+}
