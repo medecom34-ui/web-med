@@ -114,4 +114,18 @@
     line-height:1.2;
   }
 
+    #category-row .cat__img{
+    width:40px !important;
+    height:40px !important;
+    border-radius:8px;
+  }
+
+  /* กัน label ดัน grid */
+  #category-row .cat__name{
+    font-size:11px;
+    line-height:1.2;
+    max-height:28px;
+    overflow:hidden;
+  }
+
 }
