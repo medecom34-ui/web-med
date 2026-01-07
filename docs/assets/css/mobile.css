@@ -107,7 +107,7 @@
   /* การ์ดหมวดหมู่ */
   #category-row .cat{
     width:84px;
-    height:96px;
+    min-height:96px;
 
     display:flex;
     flex-direction:column;
