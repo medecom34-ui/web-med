@@ -1,0 +1,93 @@
+@media (max-width:768px){
+
+  /* =========================
+     GLOBAL SAFETY (CATEGORY ONLY)
+     ========================= */
+  *, *::before, *::after{
+    box-sizing:border-box;
+  }
+
+  html, body{
+    width:100%;
+    overflow-x:hidden;
+  }
+
+  /* =========================
+     BREADCRUMB (คุณอยู่ที่...)
+     ========================= */
+  .breadcrumb .container{
+    padding-left:16px;
+    padding-right:16px;
+    line-height:1.5;
+  }
+
+  /* =========================
+     CATEGORY LAYOUT
+     ========================= */
+  main.category-layout{
+    display:block;
+    padding:0 16px;          /* ❗ ดันทั้งหน้าให้ไม่ชิดซ้าย */
+  }
+
+  main.category-layout > aside{
+    margin-bottom:16px;
+  }
+
+  main.category-layout > section{
+    width:100%;
+  }
+
+  /* =========================
+     SUB CATEGORY STRIP (pill)
+     ========================= */
+  .sub-strip{
+    gap:8px;
+  }
+
+  .sub-strip-wrap{
+    margin-bottom:12px;
+  }
+
+  /* =========================
+     PAGE TITLE
+     ========================= */
+  .category-title{
+    margin:8px 0 12px;
+  }
+
+  /* =========================
+     PRODUCT GRID (CATEGORY)
+     ========================= */
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:12px;
+    width:100%;
+  }
+
+  /* =========================
+     PRODUCT CARD (MATCH HOME)
+     ========================= */
+  .product-grid .product-card{
+    width:100%;
+    max-width:100%;
+    padding:10px;
+    border-radius:14px;
+  }
+
+  .product-grid .product-card .img{
+    height:130px;            /* 🔑 เท่าหน้า HOME */
+    border-radius:12px;
+  }
+
+  .product-grid .product-card .name{
+    font-size:13px;
+    line-height:1.35;
+    min-height:36px;         /* 🔑 กันการ์ดยาวไม่เท่ากัน */
+  }
+
+  .product-grid .product-card .price{
+    font-size:14px;
+  }
+
+}
