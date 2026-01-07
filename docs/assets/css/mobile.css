@@ -1,180 +1,59 @@
-/* =========================
-   HOME – MOBILE (FINAL SAFE)
-   ========================= */
-@media (max-width: 768px) {
+@media (max-width:768px){
 
-  html, body {
-    overflow-x: hidden;
+  html,body{ overflow-x:hidden; }
+
+  /* ❌ ซ่อน desktop */
+  .sidecats,
+  .category-grid-desktop{
+    display:none;
   }
 
-  /* แสดงเฉพาะ mobile */
-  .mobile-only {
-    display: block !important;
+  /* ✅ ใช้ mobile category strip */
+  .mobile-only{
+    display:block;
   }
 
-  /* ซ่อน sidebar desktop */
-  .sidecats {
-    display: none;
+  .category-strip{
+    display:block;
+    background:#fff;
   }
 
-  /* ===== CATEGORY STRIP ===== */
-  .category-strip {
-    display: block;
-    background: #fff;
+  .category-scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
   }
 
-  .category-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .category-scroll::-webkit-scrollbar{ display:none; }
+
+  #category-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    padding:12px 16px;
+    height:210px;
+    width:max-content;
   }
 
-  .category-scroll::-webkit-scrollbar {
-    display: none;
+  #category-row .cat{
+    width:80px;
+    height:96px;
+    flex:0 0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
   }
 
-  #category-row {
-    display: flex;
-    flex-wrap: wrap;          /* 2 แถว */
-    gap: 12px;
-    padding: 12px 16px;
-
-    height: 210px;
-    width: max-content;       /* เลื่อนชัวร์ */
+  /* product */
+  .home-grid{
+    display:block;
+    margin:0;
+    padding:0;
   }
 
-  #category-row .cat {
-    width: 80px;
-    height: 96px;
-    flex: 0 0 auto;
-
-    background: #fff;
-    border-radius: 14px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #category-row .cat__img {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 6px;
-  }
-
-  #category-row .cat__name {
-    font-size: 11px;
-    text-align: center;
-  }
-
-  /* ===== MAIN ===== */
-  .home-grid {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-
-  .home-main section {
-    padding: 0 16px;
-    margin-bottom: 20px;
-  }
-
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
   }
 }
-
-/* =========================================
-   🔒 DESKTOP HARD LOCK (FINAL FIX)
-   ========================================= */
-@media (min-width: 769px) {
-
-  /* ❌ ปิด mobile category strip บน desktop แบบบังคับ */
-  section.category-strip,
-  section.category-strip.mobile-only,
-  .category-strip,
-  .mobile-only {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    overflow: hidden !important;
-  }
-
-  /* ✅ desktop layout กลับใช้ sidebar + grid เดิม */
-  .home-grid {
-    display: grid !important;
-    grid-template-columns: 320px 1fr !important;
-  }
-
-  .sidecats {
-    display: block !important;
-  }
-
-}
-
-/* =========================
-   MOBILE ONLY
-   ========================= */
-@media (max-width: 768px) {
-
-  .mobile-only { display: block; }
-  .category-grid-desktop { display: none; }
-
-  .category-strip {
-    background: #fff;
-  }
-
-  .category-scroll {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .category-scroll::-webkit-scrollbar {
-    display: none;
-  }
-
-  #category-row-mobile {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px 16px;
-    height: 210px;
-    width: max-content;
-  }
-
-  #category-row-mobile .cat {
-    width: 80px;
-    height: 96px;
-    flex: 0 0 auto;
-    background: #fff;
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #category-row-mobile .cat__img {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 6px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  #category-row-mobile .cat__name {
-    font-size: 11px;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  /* mobile product list */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-}
-

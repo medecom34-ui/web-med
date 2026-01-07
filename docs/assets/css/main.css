@@ -1806,3 +1806,28 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   }
 }
 
+/* ===== HOME DESKTOP ===== */
+.home-grid{
+  max-width:1280px;
+  margin:24px auto;
+  padding:0 16px;
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:24px;
+}
+
+.sidecats{ display:block; }
+
+.category-grid-desktop{
+  display:block;
+  margin-top:-36px;
+  margin-bottom:32px;
+}
+
+.cat-row{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px 24px;
+}
+
+
