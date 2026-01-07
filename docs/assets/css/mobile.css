@@ -94,14 +94,14 @@
     grid-auto-flow:column;
 
     /* 🔑 สำคัญ: ล็อกความสูงแถว */
-    grid-template-rows:repeat(2, 96px);
+    grid-template-rows:repeat(2, auto);
     grid-auto-columns:84px;
 
     gap:12px;
     padding:12px 16px;
 
     width:max-content;
-    height:204px; /* 96*2 + gap */
+    height:auto !important; /* 96*2 + gap */
   }
 
   /* การ์ดหมวดหมู่ */
