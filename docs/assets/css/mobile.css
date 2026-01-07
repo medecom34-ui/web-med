@@ -92,4 +92,31 @@
     height:16px;
   }
 
+    /* =========================
+     FIX CATEGORY STRIP (HOME)
+     ========================= */
+
+  /* ปลดล็อก overflow ของ strip */
+  .category-strip,
+  .category-scroll{
+    overflow:visible !important;
+  }
+
+  .category-scroll{
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+  }
+
+  /* ให้แถวหมวดหมู่คุมตัวเอง */
+  #category-row{
+    width:max-content !important;
+    min-width:100%;
+  }
+
+  /* กันไม่ให้ container ของสินค้าไปบีบหมวดหมู่ */
+  .category-strip .container,
+  .category-strip *{
+    max-width:none !important;
+  }
+
 }
