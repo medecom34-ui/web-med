@@ -141,4 +141,25 @@
     width:16px;
     height:16px;
   }
+
+    /* =========================
+     FIX HOME CONTENT SHIFT
+     ========================= */
+
+  /* บังคับ container ใน home ให้มี padding */
+  .home-main > .container.section{
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+
+  /* เผื่อบาง section ไม่ได้ใช้ container */
+  .home-main section{
+    padding-left:16px;
+    padding-right:16px;
+  }
+
+  /* title ไม่ให้ติดขอบ */
+  .home-main .section__title{
+    margin-left:2px;
+  }
 }
