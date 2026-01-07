@@ -56,10 +56,10 @@
   }
 
   /* =========================
-     🔥 PRODUCT GRID (FIX จริง)
+     🔥 PRODUCT GRID — ROOT FIX
      ========================= */
 
-  /* grid หลัก */
+  /* ❗ ฆ่า flex จาก main.css */
   #productGrid{
     display:grid !important;
     grid-template-columns:repeat(2, minmax(0,1fr));
@@ -67,26 +67,28 @@
     width:100%;
   }
 
-  /* ❗ สำคัญมาก: override child ที่โดนบังคับ width:100% */
+  /* ❗ ยกเลิกพฤติกรรม flex child */
   #productGrid > *{
+    display:block !important;
     width:auto !important;
     max-width:none !important;
+    flex:none !important;
   }
 
-  /* การ์ด */
+  /* การ์ดสินค้า */
   #productGrid .product-card{
     width:100%;
     padding:10px;
     border-radius:14px;
   }
 
-  /* รูปสินค้า = หน้า HOME */
+  /* รูป = หน้า HOME */
   #productGrid .product-card .img{
     height:130px;
     border-radius:12px;
   }
 
-  /* ชื่อสินค้า */
+  /* ชื่อ */
   #productGrid .product-card .name{
     font-size:13px;
     line-height:1.35;
