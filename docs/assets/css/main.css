@@ -1787,4 +1787,22 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   display: grid;
 }
 
+/* ===== HOME CATEGORY (DESKTOP FINAL FIX) ===== */
+@media (min-width: 769px) {
+  .category-grid-desktop {
+    display: block !important;
+    margin-top: -36px;   /* ให้ซ้อนกับ banner แบบเดิม */
+    margin-bottom: 32px;
+  }
+
+  .category-grid-desktop .cat-row {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px 24px;
+  }
+
+  .category-grid-desktop .cat {
+    width: 100%;
+  }
+}
 
