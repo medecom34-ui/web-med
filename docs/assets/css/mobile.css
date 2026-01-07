@@ -1,23 +1,27 @@
 /* =========================
-   HOME – MOBILE (FINAL – WORKING)
-   2 แถว + scroll แน่นอน
+   HOME – MOBILE (SAFE FINAL)
    ========================= */
-
 @media (max-width: 768px) {
-
-  * { box-sizing: border-box; }
 
   html, body {
     overflow-x: hidden;
   }
 
-  /* ---------- CATEGORY STRIP ---------- */
+  /* show mobile strip only */
+  .mobile-only {
+    display: block;
+  }
 
+  /* hide desktop sidebar */
+  .sidecats {
+    display: none;
+  }
+
+  /* ===== CATEGORY STRIP ===== */
   .category-strip {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    display: block;
     background: #fff;
+    padding-bottom: 8px;
   }
 
   .category-scroll {
@@ -30,20 +34,20 @@
   }
 
   #category-row {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, 96px);   /* 2 แถว */
-    grid-auto-columns: 80px;              /* 1 ช่องกว้าง 80px */
+    display: flex;
+    flex-wrap: wrap;          /* 2 แถว */
     gap: 12px;
     padding: 12px 16px;
 
-
-    min-width: 920px;
+    height: 210px;            /* 96*2 + gap */
+    width: max-content;       /* ⭐ เลื่อนชัวร์ */
   }
 
   #category-row .cat {
     width: 80px;
     height: 96px;
+    flex: 0 0 auto;
+
     background: #fff;
     border-radius: 14px;
 
@@ -68,10 +72,7 @@
     line-height: 1.2;
   }
 
-  /* ---------- MAIN ---------- */
-
-  .sidecats { display: none; }
-
+  /* ===== PRODUCT LIST ===== */
   .home-grid {
     display: block;
     margin: 0;
@@ -87,15 +88,5 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-  }
-
-    #category-row .cat__img {
-    width: 48px !important;
-    height: 48px !important;
-  }
-
-  #category-row .cat {
-    width: 80px !important;
-    height: 96px !important;
   }
 }
