@@ -170,5 +170,36 @@
     height:16px;
   }
 
+  /* ==================================================
+   ✅ FIX HOME CARD OVERFLOW (MOBILE ONLY)
+   ================================================== */
+
+/* 1. คืน padding ให้ Home หลัก */
+.home-grid{
+  padding-left:16px !important;
+  padding-right:16px !important;
+  box-sizing:border-box;
+}
+
+/* 2. ห้าม section container ใน Home เป็น padding:0 */
+.home-main > section.container{
+  padding-left:0 !important;
+  padding-right:0 !important;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+/* 3. บังคับ grid ไม่เกินจอ */
+.home-main .card-grid{
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+/* 4. safety net กัน browser ดื้อ */
+body{
+  overflow-x:hidden;
+}
+
   
 }
