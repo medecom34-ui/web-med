@@ -13,7 +13,7 @@
   }
 
   /* =========================
-     CATEGORY STRIP
+     CATEGORY STRIP (HOME เท่านั้น)
      ========================= */
   .category-strip{
     display:block;
@@ -31,36 +31,25 @@
     display:none;
   }
 
-  /* 🔥 จุดแก้จริง */
   #category-row{
-    /* FORCE GRID (ทับ flex เดิม) */
     display:grid !important;
-
-    /* 2 แถว */
     grid-template-rows:repeat(2, 96px);
-
-    /* เรียงแนวนอน */
     grid-auto-flow:column;
     grid-auto-columns:84px;
-
     gap:12px;
     padding:12px 16px;
-
-    /* สำคัญมาก */
     width:max-content;
-    height:204px;              /* 96*2 + gap */
+    height:204px;
     align-content:start;
   }
 
   #category-row .cat{
     width:84px;
     height:96px;
-
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-
     border-radius:14px;
     background:#fff;
     box-shadow:0 2px 8px rgba(0,0,0,.06);
@@ -79,7 +68,7 @@
   }
 
   /* =========================
-     PRODUCT GRID (mobile)
+     ❌ ห้ามแตะ HOME GRID
      ========================= */
   .home-grid{
     display:block;
@@ -87,50 +76,34 @@
     padding:0;
   }
 
-  .card-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
+  /* ==================================================
+     ✅ CATEGORY PAGE ONLY (ไม่กระทบ Home)
+     ================================================== */
+
+  /* ขยับ content ทั้งหน้า category */
+  .category-layout{
+    padding-left:16px;
+    padding-right:16px;
   }
 
-  .product-card{
-    padding:10px;
-    border-radius:14px;
+  /* breadcrumb */
+  .breadcrumb .container{
+    padding-left:16px;
+    padding-right:16px;
   }
 
-  .product-card .img{
-    height:130px;
-    border-radius:12px;
+  /* หัวข้อหมวด */
+  .category-title{
+    margin-left:2px;
   }
 
-  .product-card .name{
-    font-size:13px;
-    line-height:1.35;
-    min-height:36px;
+  /* strip หมวดย่อย */
+  .category-layout .sub-strip-wrap{
+    padding-left:2px;
+    padding-right:2px;
   }
 
-  .product-card .price{
-    font-size:14px;
-  }
-
-  .cart-fab{
-    width:34px;
-    height:34px;
-    right:8px;
-    bottom:8px;
-  }
-
-  .cart-fab svg{
-    width:16px;
-    height:16px;
-  }
-
-  
-  /* =========================
-     CATEGORY PAGE – PRODUCT GRID
-     (ให้เหมือน Home)
-     ========================= */
-
+  /* grid สินค้า (หน้า category เท่านั้น) */
   .category-layout .product-grid{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
@@ -143,7 +116,7 @@
   }
 
   .category-layout .product-card .img{
-    height:130px;           /* 👈 เท่ากับหน้า Home */
+    height:130px;
     border-radius:12px;
   }
 
@@ -168,11 +141,4 @@
     width:16px;
     height:16px;
   }
-
-    .breadcrumb .container{
-    padding-left:16px;   /* 👈 ขยับเข้ามา */
-    padding-right:16px;
-  }
-
-  
 }
