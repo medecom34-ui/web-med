@@ -69,7 +69,7 @@
   }
 
   /* =========================
-     CATEGORY STRIP (HOME) ✅ FINAL FIX
+     CATEGORY STRIP (HOME) ✅ FIX
      ========================= */
 
   .category-strip{
@@ -88,24 +88,26 @@
     display:none;
   }
 
-  /* 🔥 เอา height ออก = ไม่โดนครอป */
+  /* 🔒 ล็อกโครง grid ให้เสถียร */
   #category-row{
     display:grid !important;
     grid-auto-flow:column;
 
-    grid-template-rows:repeat(2, auto); /* ✅ ปล่อยให้สูงตามจริง */
+    /* 🔑 สำคัญ: ล็อกความสูงแถว */
+    grid-template-rows:repeat(2, 96px);
     grid-auto-columns:84px;
 
     gap:12px;
     padding:12px 16px;
 
     width:max-content;
+    height:204px; /* 96*2 + gap */
   }
 
   /* การ์ดหมวดหมู่ */
   #category-row .cat{
     width:84px;
-    min-height:96px;           /* ✅ คุมขั้นต่ำแทน */
+    height:96px;
 
     display:flex;
     flex-direction:column;
