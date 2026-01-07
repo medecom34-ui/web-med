@@ -1,19 +1,20 @@
 @media (max-width:768px){
 
   /* =========================
-     GLOBAL SAFETY (mobile)
+     SAFETY
      ========================= */
   *, *::before, *::after{
     box-sizing:border-box;
   }
 
   html, body{
+    width:100%;
     max-width:100%;
     overflow-x:hidden;
   }
 
   /* =========================
-     HIDE DESKTOP PARTS
+     HIDE DESKTOP
      ========================= */
   .sidecats,
   .category-grid-desktop{
@@ -25,71 +26,35 @@
   }
 
   /* =========================
-     HOME – CATEGORY STRIP
+     🔥 ตัวการล้น — FIX ตรงนี้
      ========================= */
-  .category-strip{
-    background:#fff;
-    margin-bottom:16px;
-  }
 
-  .category-scroll{
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  .category-scroll::-webkit-scrollbar{
-    display:none;
-  }
-
-  #category-row{
-    display:grid !important;
-    grid-template-rows:repeat(2,96px);
-    grid-auto-flow:column;
-    grid-auto-columns:84px;
-    gap:12px;
-    padding:12px 16px;
-    width:max-content;
-    height:204px;
-  }
-
-  #category-row .cat{
-    width:84px;
-    height:96px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    border-radius:14px;
-    background:#fff;
-    box-shadow:0 2px 8px rgba(0,0,0,.06);
+  /* บังคับ container ของ HOME เท่านั้น */
+  body > main.home-grid section.container{
+    max-width:100% !important;
+    width:100% !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
   }
 
   /* =========================
-     🔥 HOME GRID FIX (ตัวการล้น)
+     HOME GRID
      ========================= */
-
-  /* บังคับกรอบ Home */
   .home-grid{
     width:100%;
     max-width:100%;
-    padding:0;
     margin:0;
-  }
-
-  /* บังคับทุก section ใน Home ให้อยู่กรอบเดียว */
-  .home-main > section.container{
-    max-width:100%;
-    padding-left:16px !important;
-    padding-right:16px !important;
-    overflow:hidden;
+    padding:0;
   }
 
   /* =========================
-     HOME PRODUCT GRID
+     PRODUCT GRID
      ========================= */
   .card-grid{
     display:grid;
-    grid-template-columns:repeat(2, minmax(0,1fr));
+    grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:12px;
     width:100%;
   }
