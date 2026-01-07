@@ -1,7 +1,7 @@
 @media (max-width:768px){
 
   /* =========================
-     SAFETY: ไม่กระทบ desktop
+     HARD RESET (กัน desktop)
      ========================= */
   .sidecats,
   .category-grid-desktop{
@@ -23,6 +23,7 @@
 
   .category-scroll{
     overflow-x:auto;
+    overflow-y:hidden;
     -webkit-overflow-scrolling:touch;
   }
 
@@ -30,37 +31,44 @@
     display:none;
   }
 
-  /* 🔥 หัวใจสำคัญ: 2 แถว + scroll */
+  /* 🔥 จุดแก้จริง */
   #category-row{
-    display:grid;
-    grid-auto-flow:column;                 /* เลื่อนไปทางขวา */
-    grid-template-rows:repeat(2, 104px);   /* 2 แถว */
-    grid-auto-columns:88px;                /* ความกว้างแต่ละการ์ด */
+    /* FORCE GRID (ทับ flex เดิม) */
+    display:grid !important;
+
+    /* 2 แถว */
+    grid-template-rows:repeat(2, 96px);
+
+    /* เรียงแนวนอน */
+    grid-auto-flow:column;
+    grid-auto-columns:84px;
 
     gap:12px;
     padding:12px 16px;
-    width:max-content;                     /* บังคับให้ยาว */
+
+    /* สำคัญมาก */
+    width:max-content;
+    height:204px;              /* 96*2 + gap */
+    align-content:start;
   }
 
   #category-row .cat{
-    width:88px;
-    height:104px;
-
-    flex:0 0 auto;
-    border-radius:14px;
+    width:84px;
+    height:96px;
 
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
 
+    border-radius:14px;
     background:#fff;
     box-shadow:0 2px 8px rgba(0,0,0,.06);
   }
 
   #category-row .cat__img{
-    width:44px;
-    height:44px;
+    width:40px;
+    height:40px;
     margin-bottom:6px;
   }
 
@@ -69,13 +77,9 @@
     line-height:1.2;
     text-align:center;
   }
-}
-
-
-@media (max-width:768px){
 
   /* =========================
-     HOME GRID
+     PRODUCT GRID (mobile)
      ========================= */
   .home-grid{
     display:block;
@@ -83,24 +87,19 @@
     padding:0;
   }
 
-  /* =========================
-     PRODUCT GRID
-     ========================= */
   .card-grid{
     display:grid;
-    grid-template-columns:repeat(2, 1fr); /* 2 คอลัมน์ */
+    grid-template-columns:repeat(2,1fr);
     gap:12px;
   }
 
   .product-card{
-    width:100%;
     padding:10px;
     border-radius:14px;
   }
 
-  /* กรอบรูปให้เตี้ยลง */
   .product-card .img{
-    height:140px;
+    height:130px;
     border-radius:12px;
   }
 
@@ -114,10 +113,9 @@
     font-size:14px;
   }
 
-  /* ปุ่มตะกร้าเล็กลง */
   .cart-fab{
-    width:36px;
-    height:36px;
+    width:34px;
+    height:34px;
     right:8px;
     bottom:8px;
   }
