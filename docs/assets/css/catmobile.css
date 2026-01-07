@@ -2,7 +2,6 @@
 
   /* =========================
      CATEGORY PAGE ONLY (MOBILE)
-     ไม่ยุ่ง HOME 100%
      ========================= */
 
   *, *::before, *::after{
@@ -26,8 +25,6 @@
   /* =========================
      LAYOUT
      ========================= */
-
-  /* ซ่อน sidebar */
   .category-layout{
     display:block;
   }
@@ -36,14 +33,13 @@
     display:none;
   }
 
-  /* content ขวา */
   .category-layout > section{
     width:100%;
-    padding:0 16px; /* ✅ ขยับจากขอบซ้าย */
+    padding:0 16px;
   }
 
   /* =========================
-     SUB CATEGORY PILLS
+     SUB CATEGORY
      ========================= */
   .sub-strip{
     gap:8px;
@@ -54,37 +50,39 @@
     padding:6px 10px;
   }
 
-  /* =========================
-     TITLE
-     ========================= */
   .category-title{
     font-size:18px;
     margin:12px 0 16px;
   }
 
   /* =========================
-     PRODUCT GRID
-     (โครงเดียวกับ HOME)
+     🔥 PRODUCT GRID (FIX จริง)
      ========================= */
 
+  /* grid หลัก */
   #productGrid{
-    display:grid;
+    display:grid !important;
     grid-template-columns:repeat(2, minmax(0,1fr));
     gap:12px;
     width:100%;
   }
 
+  /* ❗ สำคัญมาก: override child ที่โดนบังคับ width:100% */
+  #productGrid > *{
+    width:auto !important;
+    max-width:none !important;
+  }
+
   /* การ์ด */
   #productGrid .product-card{
     width:100%;
-    max-width:100%;
-    padding:10px;          /* เท่า home */
+    padding:10px;
     border-radius:14px;
   }
 
-  /* รูปสินค้า */
+  /* รูปสินค้า = หน้า HOME */
   #productGrid .product-card .img{
-    height:130px;          /* เท่า home */
+    height:130px;
     border-radius:12px;
   }
 
@@ -92,7 +90,7 @@
   #productGrid .product-card .name{
     font-size:13px;
     line-height:1.35;
-    min-height:36px;       /* 🔑 กันการ์ดยาวไม่เท่ากัน */
+    min-height:36px;
   }
 
   /* ราคา */
