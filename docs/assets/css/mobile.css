@@ -175,30 +175,4 @@
   }
 
   
-  /* =========================
-     CATEGORY PAGE – ALIGN FIX
-     ========================= */
-
-  /* ขยับทั้ง content ของหน้าหมวดหมู่ */
-  .category-layout{
-    padding-left:16px;
-    padding-right:16px;
-  }
-
-  /* ขยับหัวข้อหมวด */
-  .category-title{
-    margin-left:2px; /* กันชิดเกิน */
-  }
-
-  /* ขยับ "หมวดหมู่ย่อยของ ..." */
-  .sub-strip-wrap{
-    padding-left:2px;
-    padding-right:2px;
-  }
-
-  /* กัน product grid ชิดจอ */
-  .category-layout .product-grid{
-    padding-left:0;
-    padding-right:0;
-  }
 }
