@@ -1,5 +1,5 @@
 /* =================================================
-   PRODUCT DETAIL — MOBILE ONLY (FINAL STABLE)
+   PRODUCT DETAIL — MOBILE ONLY (FINAL TUNED)
    ไม่กระทบ desktop / หน้าอื่น
    ================================================= */
 @media (max-width: 768px) {
@@ -13,13 +13,13 @@
   }
 
   /* ===============================
-     BREADCRUMB — 1 บรรทัด / เล็กลง
+     BREADCRUMB — 1 บรรทัด / เล็ก
      =============================== */
-  body .breadcrumb {
+  .breadcrumb {
     margin-bottom: 6px;
   }
 
-  body .breadcrumb .breadcrumb__inner {
+  .breadcrumb .breadcrumb__inner {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -27,10 +27,10 @@
     flex-wrap: nowrap;
   }
 
-  body .breadcrumb .back-link {
+  .breadcrumb .back-link {
     flex-shrink: 0;
     font-size: 11px;
-    padding: 4px 10px;
+    padding: 4px 8px;
     border-radius: 999px;
     background: #eef2ff;
     border: 1px solid #dbeafe;
@@ -39,7 +39,7 @@
     white-space: nowrap;
   }
 
-  body .breadcrumb .breadcrumb-text {
+  .breadcrumb .breadcrumb-text {
     font-size: 11px;
     color: #475569;
     white-space: nowrap;
@@ -74,7 +74,6 @@
     border-radius: 18px;
   }
 
-  /* --- ชื่อสินค้า (เด่นจริง) --- */
   .product-info .prod-title {
     font-size: 24px;
     font-weight: 800;
@@ -95,36 +94,36 @@
   }
 
   /* ===============================
-     VARIANT OPTIONS — ชิดขึ้น
+     VARIANT OPTIONS — ชิดขึ้นจริง
      =============================== */
   .product-info .option-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px;
+    column-gap: 8px;   /* แนวนอน */
+    row-gap: 4px;      /* 👈 แนวตั้งชิดขึ้น */
     margin-top: 6px;
   }
 
   .product-info .variant-label {
     font-size: 12px;
-    padding: 6px 8px;
+    padding: 5px 8px;  /* 👈 เตี้ยลง */
     border-radius: 8px;
     text-align: center;
   }
 
   /* ===============================
-     BUY ROW — FIX โครงใหม่ (ไม่พัง)
+     BUY ROW — qty + ปุ่ม อยู่ติดกัน
      =============================== */
   .product-info .buy-row {
-    display: grid;
-    grid-template-columns: auto auto; /* qty | ปุ่ม */
+    display: inline-flex;     /* 👈 ไม่ใช้ grid แล้ว */
     align-items: center;
-    gap: 10px;
+    gap: 8px;                 /* ระยะห่างพอดี */
     margin-top: 14px;
-    width: 100%;
+    width: auto;
   }
 
   /* ===============================
-     QTY — กลับมาแน่นอน
+     QTY
      =============================== */
   .product-info .qty-group {
     display: inline-flex;
@@ -155,7 +154,7 @@
   }
 
   /* ===============================
-     ADD TO CART — สั้นจริง ไม่ยืด
+     ADD TO CART — สั้น + ชิด qty
      =============================== */
   .product-info #addCart {
     display: inline-flex;
@@ -163,7 +162,7 @@
     justify-content: center;
 
     height: 34px;
-    padding: 0 16px;      /* 👈 ความยาวตามข้อความ */
+    padding: 0 14px;
     font-size: 13px;
     font-weight: 700;
 
@@ -172,9 +171,7 @@
     border: none;
     border-radius: 999px;
 
-    width: auto;          /* ❗ ไม่ full */
-    min-width: unset;
-    max-width: unset;
+    width: auto;
     white-space: nowrap;
   }
 
