@@ -1,107 +1,122 @@
 /* =================================================
-   PRODUCT DETAIL — MOBILE ONLY (OVERRIDE HARD)
-   ไม่กระทบ desktop / หน้าอื่น
+   PRODUCT DETAIL — MOBILE ONLY (HARD OVERRIDE FINAL)
    ================================================= */
 @media (max-width: 768px) {
 
   /* ===============================
-     BREADCRUMB — บรรทัดเดียว
+     BREADCRUMB — 1 บรรทัด / ปุ่มเล็ก
      =============================== */
   body .breadcrumb .breadcrumb__inner {
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
-    padding: 8px 12px !important;
+    gap: 6px !important;
+    padding: 6px 10px !important;
     flex-wrap: nowrap !important;
   }
 
   body .breadcrumb .back-link {
-    flex: 0 0 auto !important;
-    font-size: 12px !important;
-    padding: 6px 12px !important;
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+    border-radius: 999px !important;
+    line-height: 1 !important;
     white-space: nowrap !important;
+    flex-shrink: 0 !important;
   }
 
   body .breadcrumb .breadcrumb-text {
-    flex: 1 1 auto !important;
-    font-size: 12px !important;
+    font-size: 11px !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
   }
 
   /* ===============================
-     PRODUCT TITLE — ให้เด่นจริง
+     PRODUCT TITLE — เด่นขึ้น
      =============================== */
   body .product-layout .prod-title {
-    font-size: 26px !important;
+    font-size: 24px !important;
     font-weight: 800 !important;
     line-height: 1.25 !important;
     color: #2563eb !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
   }
 
   body .product-layout .prod-price {
     font-size: 20px !important;
     font-weight: 800 !important;
-    margin: 8px 0 14px !important;
+    margin: 8px 0 12px !important;
   }
 
   /* ===============================
-     VARIANT OPTIONS
+     VARIANT OPTIONS — ชิดขึ้น
      =============================== */
   body .product-layout .option-list {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0,1fr)) !important;
-    gap: 8px !important;
+    gap: 6px !important;           /* 👈 ลดช่องว่าง */
+    margin-top: 6px !important;
   }
 
   body .product-layout .variant-label {
     font-size: 12px !important;
-    padding: 8px 10px !important;
-    text-align: center !important;
+    padding: 6px 8px !important;   /* 👈 เตี้ยลง */
+    border-radius: 8px !important;
   }
 
   /* ===============================
-     BUY ROW — FIX จริง
+     BUY ROW — ไม่หลุด / ปุ่มสั้น
      =============================== */
   body .product-layout .buy-row {
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
-    margin-top: 14px !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+    width: 100% !important;
   }
 
   /* qty */
   body .product-layout .qty-group {
     display: inline-flex !important;
     align-items: center !important;
-    height: 36px !important;
+    height: 34px !important;
     border-radius: 999px !important;
+    flex: 0 0 auto !important;
   }
 
   body .product-layout .qty-group button {
-    width: 34px !important;
-    height: 36px !important;
+    width: 32px !important;
+    height: 34px !important;
     font-size: 18px !important;
   }
 
   body .product-layout .qty-group input {
-    width: 44px !important;
-    height: 36px !important;
+    width: 40px !important;
+    height: 34px !important;
     font-size: 14px !important;
     text-align: center !important;
   }
 
-  /* add to cart — สั้น + ชิดขวา */
+  /* ===============================
+     ADD TO CART — FIX หลุดขอบ + สั้นจริง
+     =============================== */
   body .product-layout #addCart {
-    flex: 0 0 auto !important;
-    margin-left: auto !important;
-    height: 36px !important;
-    padding: 0 16px !important;
-    font-size: 14px !important;
+    all: unset !important;                 /* 🔥 ตัด btn-primary desktop ทิ้ง */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    height: 34px !important;
+    padding: 0 14px !important;            /* 👈 สั้นลงจริง */
+    font-size: 13px !important;
+    font-weight: 700 !important;
+
+    background: #3b82f6 !important;
+    color: #fff !important;
     border-radius: 999px !important;
+
+    margin-left: auto !important;           /* 👈 ชิดขวา */
     white-space: nowrap !important;
+    max-width: max-content !important;      /* 👈 ไม่ยืด */
   }
 
 }
