@@ -1,122 +1,199 @@
 /* =================================================
-   PRODUCT DETAIL — MOBILE ONLY (HARD OVERRIDE FINAL)
+   PRODUCT DETAIL — MOBILE ONLY (FINAL STABLE)
+   ไม่กระทบ desktop / หน้าอื่น
    ================================================= */
 @media (max-width: 768px) {
 
   /* ===============================
-     BREADCRUMB — 1 บรรทัด / ปุ่มเล็ก
+     SAFE RESET
      =============================== */
-  body .breadcrumb .breadcrumb__inner {
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    padding: 6px 10px !important;
-    flex-wrap: nowrap !important;
-  }
-
-  body .breadcrumb .back-link {
-    font-size: 11px !important;
-    padding: 4px 10px !important;
-    border-radius: 999px !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-    flex-shrink: 0 !important;
-  }
-
-  body .breadcrumb .breadcrumb-text {
-    font-size: 11px !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
   }
 
   /* ===============================
-     PRODUCT TITLE — เด่นขึ้น
+     BREADCRUMB — 1 บรรทัด / เล็กลง
      =============================== */
-  body .product-layout .prod-title {
-    font-size: 24px !important;
-    font-weight: 800 !important;
-    line-height: 1.25 !important;
-    color: #2563eb !important;
-    margin-bottom: 6px !important;
+  body .breadcrumb {
+    margin-bottom: 6px;
   }
 
-  body .product-layout .prod-price {
-    font-size: 20px !important;
-    font-weight: 800 !important;
-    margin: 8px 0 12px !important;
+  body .breadcrumb .breadcrumb__inner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    flex-wrap: nowrap;
+  }
+
+  body .breadcrumb .back-link {
+    flex-shrink: 0;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eef2ff;
+    border: 1px solid #dbeafe;
+    color: #2563eb;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  body .breadcrumb .breadcrumb-text {
+    font-size: 11px;
+    color: #475569;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ===============================
+     PRODUCT IMAGE
+     =============================== */
+  .product-img .img-box {
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  #product-image {
+    width: 100%;
+    max-height: 260px;
+    object-fit: contain;
+  }
+
+  .thumb-row {
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  /* ===============================
+     PRODUCT INFO CARD
+     =============================== */
+  .product-info .info-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  /* --- ชื่อสินค้า (เด่นจริง) --- */
+  .product-info .prod-title {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #2563eb;
+    margin-bottom: 6px;
+  }
+
+  .product-info .prod-meta {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .product-info .prod-price {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 8px 0 12px;
   }
 
   /* ===============================
      VARIANT OPTIONS — ชิดขึ้น
      =============================== */
-  body .product-layout .option-list {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
-    gap: 6px !important;           /* 👈 ลดช่องว่าง */
-    margin-top: 6px !important;
+  .product-info .option-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 6px;
   }
 
-  body .product-layout .variant-label {
-    font-size: 12px !important;
-    padding: 6px 8px !important;   /* 👈 เตี้ยลง */
-    border-radius: 8px !important;
-  }
-
-  /* ===============================
-     BUY ROW — ไม่หลุด / ปุ่มสั้น
-     =============================== */
-  body .product-layout .buy-row {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    margin-top: 12px !important;
-    width: 100% !important;
-  }
-
-  /* qty */
-  body .product-layout .qty-group {
-    display: inline-flex !important;
-    align-items: center !important;
-    height: 34px !important;
-    border-radius: 999px !important;
-    flex: 0 0 auto !important;
-  }
-
-  body .product-layout .qty-group button {
-    width: 32px !important;
-    height: 34px !important;
-    font-size: 18px !important;
-  }
-
-  body .product-layout .qty-group input {
-    width: 40px !important;
-    height: 34px !important;
-    font-size: 14px !important;
-    text-align: center !important;
+  .product-info .variant-label {
+    font-size: 12px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    text-align: center;
   }
 
   /* ===============================
-     ADD TO CART — FIX หลุดขอบ + สั้นจริง
+     BUY ROW — FIX โครงใหม่ (ไม่พัง)
      =============================== */
-  body .product-layout #addCart {
-    all: unset !important;                 /* 🔥 ตัด btn-primary desktop ทิ้ง */
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    height: 34px !important;
-    padding: 0 14px !important;            /* 👈 สั้นลงจริง */
-    font-size: 13px !important;
-    font-weight: 700 !important;
-
-    background: #3b82f6 !important;
-    color: #fff !important;
-    border-radius: 999px !important;
-
-    margin-left: auto !important;           /* 👈 ชิดขวา */
-    white-space: nowrap !important;
-    max-width: max-content !important;      /* 👈 ไม่ยืด */
+  .product-info .buy-row {
+    display: grid;
+    grid-template-columns: auto auto; /* qty | ปุ่ม */
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    width: 100%;
   }
 
+  /* ===============================
+     QTY — กลับมาแน่นอน
+     =============================== */
+  .product-info .qty-group {
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #dbeafe;
+  }
+
+  .product-info .qty-group button {
+    width: 32px;
+    height: 34px;
+    font-size: 18px;
+    background: transparent;
+    border: none;
+    color: #2563eb;
+  }
+
+  .product-info .qty-group input {
+    width: 42px;
+    height: 34px;
+    font-size: 14px;
+    text-align: center;
+    border: none;
+    outline: none;
+  }
+
+  /* ===============================
+     ADD TO CART — สั้นจริง ไม่ยืด
+     =============================== */
+  .product-info #addCart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 34px;
+    padding: 0 16px;      /* 👈 ความยาวตามข้อความ */
+    font-size: 13px;
+    font-weight: 700;
+
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+
+    width: auto;          /* ❗ ไม่ full */
+    min-width: unset;
+    max-width: unset;
+    white-space: nowrap;
+  }
+
+  /* ===============================
+     DESCRIPTION
+     =============================== */
+  .product-desc-box {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .product-desc-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .product-desc-text {
+    font-size: 14px;
+    line-height: 1.6;
+  }
 }
