@@ -1,167 +1,107 @@
 /* =================================================
-   PRODUCT DETAIL — MOBILE ONLY (FINAL FIX)
+   PRODUCT DETAIL — MOBILE ONLY (OVERRIDE HARD)
    ไม่กระทบ desktop / หน้าอื่น
    ================================================= */
 @media (max-width: 768px) {
 
-  /* ===== SAFE ===== */
-  html, body {
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  /* =================================================
+  /* ===============================
      BREADCRUMB — บรรทัดเดียว
-     ================================================= */
-  .breadcrumb {
-    margin-bottom: 8px;
-  }
-
-  .breadcrumb .breadcrumb__inner {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+     =============================== */
+  body .breadcrumb .breadcrumb__inner {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
     padding: 8px 12px !important;
-    flex-wrap: nowrap;              /* ❗ ห้ามตัดบรรทัด */
+    flex-wrap: nowrap !important;
   }
 
-  .breadcrumb .back-link {
-    flex: 0 0 auto;
-    padding: 6px 12px;
-    font-size: 12px;
-    border-radius: 999px;
-    background: #eef2ff;
-    border: 1px solid #dbeafe;
-    color: #2563eb;
-    white-space: nowrap;
+  body .breadcrumb .back-link {
+    flex: 0 0 auto !important;
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+    white-space: nowrap !important;
   }
 
-  .breadcrumb-text {
-    flex: 1 1 auto;
-    font-size: 12px;
-    color: #475569;
-    white-space: nowrap;            /* ❗ อยู่บรรทัดเดียว */
-    overflow: hidden;
-    text-overflow: ellipsis;        /* ถ้ายาว ตัด … */
+  body .breadcrumb .breadcrumb-text {
+    flex: 1 1 auto !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
-  /* =================================================
-     PRODUCT IMAGE
-     ================================================= */
-  .product-img .img-box {
-    border-radius: 16px;
-    padding: 12px;
+  /* ===============================
+     PRODUCT TITLE — ให้เด่นจริง
+     =============================== */
+  body .product-layout .prod-title {
+    font-size: 26px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    color: #2563eb !important;
+    margin-bottom: 8px !important;
   }
 
-  #product-image {
-    max-height: 260px;
-    width: 100%;
-    object-fit: contain;
-  }
-
-  /* =================================================
-     PRODUCT INFO CARD
-     ================================================= */
-  .product-info .info-card {
-    padding: 16px !important;
-    border-radius: 18px;
-  }
-
-  /* ===== ชื่อสินค้า (ให้เด่นจริง) ===== */
-  .prod-title {
-    font-size: 24px !important;     /* ⬅ ใหญ่ขึ้นชัด */
-    font-weight: 800;
-    line-height: 1.25;
-    color: #2563eb;
-    margin-bottom: 6px;
-  }
-
-  .prod-meta {
-    font-size: 13px;
-    margin-bottom: 4px;
-  }
-
-  .prod-price {
+  body .product-layout .prod-price {
     font-size: 20px !important;
-    font-weight: 800;
-    margin: 10px 0 14px;
+    font-weight: 800 !important;
+    margin: 8px 0 14px !important;
   }
 
-  /* =================================================
+  /* ===============================
      VARIANT OPTIONS
-     ================================================= */
-  .option-list {
+     =============================== */
+  body .product-layout .option-list {
     display: grid !important;
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    gap: 8px !important;
   }
 
-  .variant-label {
-    font-size: 12px;
-    padding: 8px 10px;
-    text-align: center;
+  body .product-layout .variant-label {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+    text-align: center !important;
   }
 
-  /* =================================================
-     BUY ROW — FINAL LAYOUT
-     ================================================= */
-  .product-info .buy-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 14px;
+  /* ===============================
+     BUY ROW — FIX จริง
+     =============================== */
+  body .product-layout .buy-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-top: 14px !important;
   }
 
-  /* ----- qty group ----- */
-  .product-info .qty-group {
-    display: inline-flex;
-    align-items: center;
-    height: 36px;
-    border-radius: 999px;
-    overflow: hidden;
-    flex: 0 0 auto;
+  /* qty */
+  body .product-layout .qty-group {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 36px !important;
+    border-radius: 999px !important;
   }
 
-  .product-info .qty-group button {
-    width: 34px;
-    height: 36px;
-    font-size: 18px;
+  body .product-layout .qty-group button {
+    width: 34px !important;
+    height: 36px !important;
+    font-size: 18px !important;
   }
 
-  .product-info .qty-group input {
-    width: 44px;
-    height: 36px;
-    font-size: 14px;
-    text-align: center;
+  body .product-layout .qty-group input {
+    width: 44px !important;
+    height: 36px !important;
+    font-size: 14px !important;
+    text-align: center !important;
   }
 
-  /* ----- add to cart (สั้น + ชิดขวา) ----- */
-  .product-info #addCart {
-    flex: 0 0 auto;                 /* ❗ ไม่กินเต็ม */
-    height: 36px;
-    padding: 0 16px;
-    font-size: 14px;
-    border-radius: 999px;
-    margin-left: auto;              /* ❗ ดันไปขวาสุด */
-    white-space: nowrap;
+  /* add to cart — สั้น + ชิดขวา */
+  body .product-layout #addCart {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+    height: 36px !important;
+    padding: 0 16px !important;
+    font-size: 14px !important;
+    border-radius: 999px !important;
+    white-space: nowrap !important;
   }
 
-  /* =================================================
-     DESCRIPTION
-     ================================================= */
-  .product-desc-box {
-    padding: 14px;
-    border-radius: 16px;
-  }
-
-  .product-desc-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-
-  .product-desc-text {
-    font-size: 14px;
-    line-height: 1.6;
-  }
 }
