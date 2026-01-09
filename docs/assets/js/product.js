@@ -91,6 +91,9 @@ function renderProduct() {
   // title / code / price / desc
   $("#product-name").textContent = p.name;
   $("#product-code").textContent = p.code || "-";
+  
+  renderVariantOptions();   
+
 
   // แสดงราคาจาก variant ถ้ามี (โดยใช้ resolvePrice)
   if (isInboxProduct(p)) {
