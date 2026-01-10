@@ -40,6 +40,8 @@
   };
 
   window.AppCart = Cart;
+  window.Cart = Cart;   
+
 
   // UI refs
   const btn     = $("#cartButton");
@@ -82,25 +84,30 @@ function closeDrawer(){
     location.href = url;
   }
 
-  function syncCheckoutButton() {
-    if (!goBtn) return;
-    const isLoggedIn = !!(window.Auth && Auth.current && Auth.current());
-    if (isLoggedIn) {
-      goBtn.classList.remove("btn-disabled");
-      goBtn.removeAttribute("aria-disabled");
-      goBtn.setAttribute("href", "checkout.html");
-      goBtn.onclick = null;
-    } else {
-      goBtn.classList.add("btn-disabled");
-      goBtn.setAttribute("aria-disabled", "true");
-      goBtn.removeAttribute("href");
-      goBtn.onclick = (e) => {
-        e.preventDefault();
-        alert("กรุณาเข้าสู่ระบบก่อนทำการสั่งซื้อ");
-        goLoginWithNext("checkout.html");
-      };
+function syncCheckoutButton() {
+  if (!goBtn) return;
+
+  const isLoggedIn = !!(window.Auth && Auth.current && Auth.current());
+
+  goBtn.onclick = (e) => {
+    e.preventDefault();
+
+    if (!isLoggedIn) {
+      alert("กรุณาเข้าสู่ระบบก่อนทำการสั่งซื้อ");
+      goLoginWithNext("checkout.html");
+      return;
     }
-  }
+
+    const cart = Cart.load();
+    if (!cart.length) {
+      alert("ตะกร้าว่าง");
+      return;
+    }
+
+    location.href = "checkout.html";
+  };
+}
+
 
   function safeImgSrc(url) {
     if (!url) return DATA_PLACEHOLDER;
@@ -342,7 +349,6 @@ function closeDrawer(){
   btn      && btn.addEventListener("click", () => { render(); openDrawer(); });
   overlay  && overlay.addEventListener("click", closeDrawer);
   closeBtn && closeBtn.addEventListener("click", closeDrawer);
-  goBtn    && goBtn.addEventListener("click", closeDrawer);
 
   list && list.addEventListener("click", e => {
     const wrap = e.target.closest(".cart-item");

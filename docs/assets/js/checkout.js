@@ -23,8 +23,12 @@ function toNumberIfPossible(v) {
   const me = (window.Auth && Auth.current && Auth.current()) || null;
   if (!me) { location.href = "login.html?next=" + encodeURIComponent(location.pathname); return; }
 
-  const cart = (window.Cart && Cart.load()) || []
-  if (!cart.length) { location.href = "index.html"; return; }
+  const cart = Cart.load();
+  if (!cart.length) {
+  alert("ตะกร้าว่าง (debug)");
+  return; 
+}
+
 
   const itemsBox = $("#orderItems");
   // replace the existing items rendering block with this:
