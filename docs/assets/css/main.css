@@ -1324,13 +1324,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 .order-price { margin-left:auto; font-weight:700; color:#0f172a; }
 .order-total { margin-top:12px; font-weight:600; text-align:right; }
 
-.order-item .thumb {
-  width:56px;
-  height:56px;
-  border-radius:8px;
-  background:#f8fafc center/cover no-repeat;
-  display:inline-block;
-}
+
 
 
 .pay-summary {
