@@ -142,7 +142,7 @@
   flex: 0 0 52px;
 
   /* ✅ อย่าลบ background-image */
-  background-color: #f3f4f6;     /* แค่สี fallback */
+  background-color:transparent;     /* แค่สี fallback */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

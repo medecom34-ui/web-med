@@ -776,7 +776,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   display:grid; grid-template-columns:100px 1fr 120px; gap:16px;
   align-items:center; padding:8px 0; border-bottom:1px dashed #e2e8f0;
 }
-.order-thumb { width:100px; height:90px; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:8px; }
+.order-thumb { width:100px; height:90px; background:transparent; border:1px solid #e2e8f0; border-radius:8px; }
 .order-name { font-size:20px; color:#2563eb; font-weight:700; }
 .order-option { color:#64748b; margin-top:4px; font-size:14px; }
 .order-price { color:#0f172a; font-weight:600; text-align:right; }
