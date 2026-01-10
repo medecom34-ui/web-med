@@ -1,0 +1,66 @@
+/* =========================
+   SUCCESS – MOBILE STEPPER
+   same style as checkout/payment
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* container ของ stepper */
+  .container.stepper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;                 /* ระยะระหว่าง 1-2-3 */
+    padding: 0 8px;
+    margin: 12px auto 16px;
+    max-width: 100%;
+  }
+
+  /* step แต่ละอัน */
+  .container.stepper .step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    white-space: nowrap;
+
+    /* ❌ ห้าม flex ยืด/บีบ */
+    flex: 0 0 auto;
+  }
+
+  /* วงกลมเลข 1 2 3 */
+  .container.stepper .step::before {
+    content: attr(data-step);
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+
+    background: #e8effa;
+    color: #3b82f6;
+
+    flex-shrink: 0; /* กันเลขถูกบีบ */
+  }
+
+  /* step ปัจจุบัน (active) */
+  .container.stepper .step.active {
+    color: #0f172a;
+  }
+
+  .container.stepper .step.active::before {
+    background: #3b82f6;
+    color: #ffffff;
+  }
+
+}
