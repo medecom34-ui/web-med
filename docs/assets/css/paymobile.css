@@ -135,14 +135,6 @@
     padding: 10px 0;
   }
 
-  /* 🔥 FIX IMAGE NOT SHOWING */
-  body #sumItems .order-thumb {
-    width: 52px;
-    height: 52px;
-    flex: 0 0 52px;
-    overflow: hidden;
-    background: none !important;
-  }
 
   body #sumItems .order-thumb {
   width: 52px;
