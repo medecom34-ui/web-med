@@ -1311,7 +1311,15 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 
 .pay-summary { background:#fff; border-radius:12px; padding:18px; box-shadow:0 4px 14px rgba(13,38,76,0.03); }
 .order-item { display:flex; gap:12px; align-items:center; padding:12px 0; border-bottom:1px dashed #eef2ff; }
-.order-thumb { width:56px; height:56px; border-radius:8px; background:#f8fafc center/cover no-repeat; flex:0 0 56px; }
+.order-thumb {
+  width:56px;
+  height:56px;
+  background-color:#f8fafc;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .order-name { font-weight:700; color:#0f172a; }
 .order-price { margin-left:auto; font-weight:700; color:#0f172a; }
 .order-total { margin-top:12px; font-weight:600; text-align:right; }
