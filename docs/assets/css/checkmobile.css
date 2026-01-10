@@ -1,0 +1,43 @@
+/* =========================
+   CHECKOUT – MOBILE ONLY
+   ปรับ step 1 2 3 ให้อยู่ในกรอบ
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* container หลัก */
+  .stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+
+    padding: 8px 6px;
+    box-sizing: border-box;
+  }
+
+  /* step แต่ละอัน */
+  .stepper .step {
+    flex: 1;
+    text-align: center;
+
+    font-size: 12px;      /* ลดขนาดตัวอักษร */
+    padding: 6px 4px;
+    margin: 0 2px;
+
+    white-space: nowrap;  /* ไม่ให้ตัดบรรทัด */
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    border-radius: 14px;
+  }
+
+  /* step ที่ active */
+  .stepper .step.active {
+    font-weight: 600;
+  }
+
+}
