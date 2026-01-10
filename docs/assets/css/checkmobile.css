@@ -1,43 +1,49 @@
 /* =========================
-   CHECKOUT – MOBILE ONLY
-   ปรับ step 1 2 3 ให้อยู่ในกรอบ
+   CHECKOUT – MOBILE FIX (FINAL)
+   Override desktop stepper
    ========================= */
 
 @media (max-width: 768px) {
 
-  /* container หลัก */
-  .stepper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100%;
+  /* บังคับ container */
+  .container.stepper {
     max-width: 100%;
+    padding: 0 8px;
     overflow: hidden;
-
-    padding: 8px 6px;
-    box-sizing: border-box;
   }
 
-  /* step แต่ละอัน */
-  .stepper .step {
-    flex: 1;
-    text-align: center;
+  /* override stepper desktop */
+  .container.stepper.stepper {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    margin: 12px 0 !important;
+  }
 
-    font-size: 12px;      /* ลดขนาดตัวอักษร */
-    padding: 6px 4px;
-    margin: 0 2px;
+  /* step */
+  .container.stepper .step {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    white-space: nowrap;  /* ไม่ให้ตัดบรรทัด */
+    gap: 4px !important;
+    font-size: 12px !important;
+    font-weight: 600;
+
+    padding: 4px 2px;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
-    border-radius: 14px;
   }
 
-  /* step ที่ active */
-  .stepper .step.active {
-    font-weight: 600;
+  /* วงกลมเลข */
+  .container.stepper .step::before {
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 11px !important;
+    line-height: 22px;
+    flex-shrink: 0;
   }
 
 }
