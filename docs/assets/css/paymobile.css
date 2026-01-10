@@ -1,123 +1,139 @@
 /* =========================
-   PAYMENT – MOBILE ONLY
+   PAYMENT – MOBILE OVERRIDE (FINAL)
    ========================= */
 
 @media (max-width: 768px) {
 
-  /* ---------- layout หลัก ---------- */
-  .pay-grid {
+  /* ===============================
+     FORCE PAY GRID → SINGLE COLUMN
+     =============================== */
+
+  body .container.pay-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 16px;
-    margin-top: 12px;
+    gap: 16px !important;
+
+    /* kill grid from desktop */
+    grid-template-columns: 1fr !important;
+    align-items: stretch !important;
   }
 
-  /* ---------- stepper ---------- */
-  .container.stepper {
-    padding: 0 6px;
-    margin-bottom: 8px;
-  }
+  /* ===============================
+     PAYMENT LEFT (QR / UPLOAD)
+     =============================== */
 
-  /* ---------- กล่องชำระเงิน ---------- */
-  .pay-box {
+  body .pay-box {
+    width: 100% !important;
     padding: 16px !important;
     border-radius: 14px;
   }
 
-  .pay-box h2 {
+  body .pay-box h2 {
     font-size: 18px;
     margin-bottom: 6px;
   }
 
-  .pay-box p {
+  body .pay-box p {
     font-size: 14px;
     color: #64748b;
     margin-bottom: 12px;
   }
 
-  /* ---------- QR CARD ---------- */
-  .qr-card {
-    padding: 16px;
-    border-radius: 14px;
-    margin: 12px 0;
+  /* QR CARD */
+  body .qr-card {
+    padding: 16px !important;
+    margin: 12px 0 !important;
+    border-radius: 16px;
+    text-align: center;
   }
 
-  .qr-header {
+  body .qr-header {
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-weight: 700;
   }
 
-  #qrContainer img {
+  body #qrContainer img {
     width: 200px !important;
     max-width: 100%;
     height: auto;
+    margin: 0 auto 8px;
   }
 
-  /* ---------- upload slip ---------- */
-  input[type="file"] {
+  /* ===============================
+     UPLOAD + BUTTON
+     =============================== */
+
+  body input[type="file"] {
     width: 100%;
     font-size: 14px;
   }
 
-  #slipPreview {
-    font-size: 13px;
-    color: #475569;
-  }
-
-  /* ---------- ปุ่มหลัก ---------- */
-  #paidBtn {
-    width: 100%;
+  body #paidBtn {
+    width: 100% !important;
     height: 52px;
     font-size: 16px;
     border-radius: 12px;
+    margin-top: 12px;
   }
 
-  /* ---------- summary ---------- */
-  .pay-summary {
-    padding: 16px;
+  /* ===============================
+     SUMMARY (MOVE TO BOTTOM)
+     =============================== */
+
+  body .pay-summary {
+    width: 100% !important;
+    padding: 16px !important;
     border-radius: 14px;
+    margin-top: 8px;
   }
 
-  .pay-summary h3 {
+  body .pay-summary h3 {
     font-size: 16px;
     margin-bottom: 10px;
   }
 
-  /* รายการสินค้า */
-  #sumItems .order-item {
+  /* order items */
+  body #sumItems .order-item {
     padding: 10px 0;
+    gap: 10px;
   }
 
-  #sumItems .order-thumb {
+  body #sumItems .order-thumb {
     width: 52px;
     height: 52px;
     flex: 0 0 52px;
   }
 
-  #sumItems .order-name {
+  body #sumItems .order-name {
     font-size: 14px;
+    font-weight: 600;
   }
 
-  #sumItems .order-option {
+  body #sumItems .order-option {
     font-size: 12px;
   }
 
-  #sumItems .order-price {
+  body #sumItems .order-price {
     font-size: 14px;
+    font-weight: 700;
   }
 
-  /* ---------- ราคา ---------- */
-  .price-summary {
+  /* price summary */
+  body .price-summary {
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
     gap: 6px;
   }
 
-  .price-row {
+  body .price-row {
     font-size: 14px;
   }
 
-  .price-row.total {
+  body .price-row.total {
     font-size: 16px;
+    font-weight: 700;
   }
 
 }
