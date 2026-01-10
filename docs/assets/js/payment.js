@@ -163,19 +163,11 @@ if (qrContainer && PROMPTPAY_QR_URL) {
     if (list) {
       list.innerHTML = draft.items.map(i => `
         <div class="order-item" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
-        <div class="order-thumb"
-  style="
-    width:60px;
-    height:60px;
-    border-radius:8px;
-    flex:0 0 60px;
-    background-color:#f3f4f6;
-    background-image: ${i.image ? `url('${i.image}')` : "none"};
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  ">
-</div>
+        <div
+          class="order-thumb"
+          data-image="${i.image || ''}">
+        </div>
+
 
 
           <div style="flex:1">

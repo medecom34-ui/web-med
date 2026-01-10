@@ -1874,3 +1874,19 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   position: sticky;
   top: 24px;
 }
+
+.order-thumb {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  background-color: #f3f4f6;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex: 0 0 60px;
+}
+
+.order-thumb[data-image]:not([data-image=""]) {
+  background-image: attr(data-image url);
+}
+
