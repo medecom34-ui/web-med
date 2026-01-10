@@ -1,55 +1,57 @@
 /* =========================
-   PAYMENT – MOBILE OVERRIDE (FINAL)
+   PAYMENT – MOBILE OVERRIDE (REAL FINAL)
    ========================= */
 
 @media (max-width: 768px) {
 
   /* =================================================
-     FORCE PAY GRID → SINGLE COLUMN (FIX GRID DESKTOP)
+     FORCE PAY GRID → SINGLE COLUMN
      ================================================= */
 
-  body .container.pay-grid {
+  body .pay-grid {
     display: flex !important;
     flex-direction: column !important;
     gap: 16px !important;
-
-    /* kill desktop grid */
-    grid-template-columns: 1fr !important;
-    align-items: stretch !important;
   }
 
   /* =================================================
-     STEPPER 1-2-3 (SAME AS CHECKOUT – NO SQUEEZE)
+     🔥 STEPPER FIX (THE REAL FIX)
      ================================================= */
 
-  body .container.stepper {
+  body .stepper {
     display: flex !important;
     justify-content: center !important;
-    gap: 10px !important;      /* ชิดขึ้น */
-    padding: 0 6px;
-    margin-bottom: 10px;
+    align-items: center !important;
+
+    gap: 12px !important;
+    padding: 0 8px !important;
+    margin: 12px 0 !important;
   }
 
-  body .container.stepper .step {
-    flex: 0 0 auto !important; /* ❌ ห้ามถูกบีบ */
-    display: flex;
-    align-items: center;
+  body .stepper .step {
+    /* ❌ ฆ่า flex:1 จาก desktop */
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+
+    display: flex !important;
+    align-items: center !important;
     gap: 6px !important;
 
-    font-size: 12px !important;
-    font-weight: 600;
-    white-space: nowrap;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
   }
 
-  body .container.stepper .step::before {
-    width: 24px !important;
-    height: 24px !important;
-    min-width: 24px;
-    min-height: 24px;
+  body .stepper .step::before {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
 
-    font-size: 12px !important;
-    line-height: 24px;
-    flex-shrink: 0;
+    font-size: 13px !important;
+    line-height: 26px !important;
+    flex-shrink: 0 !important;
   }
 
   /* =================================================
@@ -89,8 +91,8 @@
 
   body #qrContainer img {
     width: 200px !important;
-    max-width: 100%;
-    height: auto;
+    height: auto !important;
+    display: block;
     margin: 0 auto 8px;
   }
 
@@ -112,14 +114,14 @@
   }
 
   /* =================================================
-     SUMMARY (BOTTOM)
+     SUMMARY
      ================================================= */
 
   body .pay-summary {
     width: 100% !important;
     padding: 16px !important;
     border-radius: 14px;
-    margin-top: 8px;
+    margin-top: 12px;
   }
 
   body .pay-summary h3 {
@@ -127,46 +129,29 @@
     margin-bottom: 10px;
   }
 
-  /* order items */
   body #sumItems .order-item {
-    padding: 10px 0;
+    display: flex;
     gap: 10px;
+    padding: 10px 0;
   }
 
+  /* 🔥 FIX IMAGE NOT SHOWING */
   body #sumItems .order-thumb {
     width: 52px;
     height: 52px;
     flex: 0 0 52px;
-
-    /* 🔴 FIX IMAGE NOT SHOWING */
-    background: none !important;
     overflow: hidden;
+    background: none !important;
   }
 
   body #sumItems .order-thumb img {
-    display: block !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
+    display: block !important;
   }
 
-  body #sumItems .order-name {
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  body #sumItems .order-option {
-    font-size: 12px;
-  }
-
-  body #sumItems .order-price {
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  /* price summary */
   body .price-summary {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -180,5 +165,4 @@
     font-size: 16px;
     font-weight: 700;
   }
-
 }
