@@ -161,23 +161,23 @@ if (qrContainer && PROMPTPAY_QR_URL) {
     const shipRow = document.getElementById("shipRow");
 
     if (list) {
-      list.innerHTML = draft.items.map(i => `
-        <div class="order-item" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
-        <div
-          class="order-thumb"
-          data-image="${i.image || ''}">
-        </div>
+          list.innerHTML = draft.items.map(i => `
+            <div class="order-item" style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+              <div
+                class="order-thumb"
+                style="background-image: url('${i.image || ''}')">
+              </div>
 
+              <div style="flex:1">
+                <div class="order-name" style="font-weight:700">${i.name}</div>
+                ${i.sku ? `<div class="order-option">รหัส: ${i.sku}</div>` : ""}
+                <div class="order-option">x${i.qty}</div>
+              </div>
 
+              <div class="order-price">${money(i.unitPrice * i.qty)}</div>
+            </div>
+          `).join("");
 
-          <div style="flex:1">
-            <div class="order-name" style="font-weight:700">${i.name}</div>
-            ${i.sku ? `<div class="order-option" style="color:#94a3b8;font-size:13px">รหัส: ${i.sku}</div>` : ""}
-            <div class="order-option" style="color:#94a3b8;font-size:13px">x${i.qty}</div>
-          </div>
-          <div class="order-price" style="font-weight:700">${money(i.unitPrice * i.qty)}</div>
-        </div>
-      `).join("");
     }
 
     // show subtotal and total; hide or set ship to 0

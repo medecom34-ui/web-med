@@ -1886,7 +1886,4 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   flex: 0 0 60px;
 }
 
-.order-thumb[data-image]:not([data-image=""]) {
-  background-image: attr(data-image url);
-}
 
