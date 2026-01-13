@@ -1,7 +1,5 @@
 // Client/assets/js/payment.js
 
-const { it } = require("node:test");
-
 (function () {
   // helpers
   function slugify(text) {
