@@ -18,6 +18,13 @@
     return Number.isNaN(n) ? null : n;
   }
 
+  function normalizeImage(url) {
+  if (!url) return null;
+  if (url.startsWith("http")) return url;
+  return API_BASE + "/" + url.replace(/^\/+/, "");
+}
+
+
   const $ = s => document.querySelector(s);
   const API_BASE = "https://web-med-production.up.railway.app";
   const PROMPTPAY_QR_URL =
@@ -106,12 +113,14 @@ if (qrContainer && PROMPTPAY_QR_URL) {
         qty: Number(i.qty || 1),
         unitPrice: Number(i.price || 0),
         lineTotal: Number((i.qty||1)*(i.price||0)),
-          image:
-          i.image ||
-          i.imageUrl ||
-          i.thumbnail ||
-          (Array.isArray(i.images) ? i.images[0] : null) ||
-          null
+          image: normalizeImage(
+  it.image ||
+  it.imageSnapshot ||
+  it.imageUrl ||
+  it.thumbnail ||
+  (Array.isArray(it.images) ? it.images[0] : null)
+)
+
       }));
       draft = {
         userId: null,
@@ -137,13 +146,14 @@ if (qrContainer && PROMPTPAY_QR_URL) {
           qty: Number(it.qty || 1),
           unitPrice: Number((it.unitPrice !== undefined && it.unitPrice !== null) ? it.unitPrice : (it.price || 0)),
           lineTotal: Number(it.lineTotal || ((it.qty||1) * (it.unitPrice || it.price || 0))),
-          image:
+          image: normalizeImage(
   it.image ||
   it.imageSnapshot ||
   it.imageUrl ||
   it.thumbnail ||
-  (Array.isArray(it.images) ? it.images[0] : null) ||
-  null
+  (Array.isArray(it.images) ? it.images[0] : null)
+)
+
 
         };
       });
