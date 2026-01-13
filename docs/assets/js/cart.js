@@ -313,8 +313,7 @@ function syncCheckoutButton() {
                 skuSnapshot: found.code || it.skuSnapshot || null,
                 qty,
                 unitPrice,
-                lineTotal: Number(qty * unitPrice),
-                image: found.image || null 
+                lineTotal: Number(qty * unitPrice)
               };
             });
             od.subtotal = od.items.reduce((s,i) => s + (i.lineTotal||0), 0);
@@ -327,8 +326,7 @@ function syncCheckoutButton() {
               skuSnapshot: ci.code || null,
               qty: ci.qty || 1,
               unitPrice: Number(ci.price || 0),
-              lineTotal: Number((ci.qty || 1) * (ci.price || 0)),
-              image: ci.image || null
+              lineTotal: Number((ci.qty || 1) * (ci.price || 0))
             }));
             od.subtotal = od.items.reduce((s,i) => s + (i.lineTotal||0), 0);
           }
