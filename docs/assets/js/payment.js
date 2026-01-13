@@ -114,10 +114,10 @@ if (qrContainer && PROMPTPAY_QR_URL) {
         unitPrice: Number(i.price || 0),
         lineTotal: Number((i.qty||1)*(i.price||0)),
           image: normalizeImage(
-  i.image ||
-  i.imageSnapshot ||
-  i.imageUrl ||
-  i.thumbnail ||
+  it.image ||
+  it.imageSnapshot ||
+  it.imageUrl ||
+  it.thumbnail ||
   (Array.isArray(it.images) ? it.images[0] : null)
 )
 
@@ -147,10 +147,10 @@ if (qrContainer && PROMPTPAY_QR_URL) {
           unitPrice: Number((it.unitPrice !== undefined && it.unitPrice !== null) ? it.unitPrice : (it.price || 0)),
           lineTotal: Number(it.lineTotal || ((it.qty||1) * (it.unitPrice || it.price || 0))),
           image: normalizeImage(
-  i.image ||
-  i.imageSnapshot ||
-  i.imageUrl ||
-  i.thumbnail ||
+  it.image ||
+  it.imageSnapshot ||
+  it.imageUrl ||
+  it.thumbnail ||
   (Array.isArray(it.images) ? it.images[0] : null)
 )
 
@@ -173,19 +173,29 @@ if (qrContainer && PROMPTPAY_QR_URL) {
     if (list) {
 list.innerHTML = draft.items.map(i => `
   <div class="order-item">
-    <div class="order-thumb">
-      ${i.image ? `<img src="${i.image}" alt="">` : ``}
+    <div
+      class="order-thumb"
+      style="${i.image ? `background-image:url(${i.image})` : ''}">
     </div>
 
-    <div style="flex:1">
-      <div class="order-name">${i.name}</div>
-      ${i.sku ? `<div class="order-option">รหัส: ${i.sku}</div>` : ""}
+    <div style="flex:1; min-width:0;">
+      <div class="order-name">${i.nameSnapshot || i.name}</div>
+
+      ${
+        i.skuSnapshot
+          ? `<div class="order-option">รหัส: ${i.skuSnapshot}</div>`
+          : ''
+      }
+
       <div class="order-option">x${i.qty}</div>
     </div>
 
-    <div class="order-price">${money(i.unitPrice * i.qty)}</div>
+    <div class="order-price">
+      ${money(i.unitPrice * i.qty)}
+    </div>
   </div>
 `).join("");
+
 
 
     }
