@@ -120,7 +120,7 @@ if (qrContainer && PROMPTPAY_QR_URL) {
   i.imageSnapshot ||
   i.imageUrl ||
   i.thumbnail ||
-  (Array.isArray(it.images) ? it.images[0] : null)
+  (Array.isArray(i.images) ? i.images[0] : null)
 )
 
       }));
