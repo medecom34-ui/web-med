@@ -116,10 +116,10 @@ if (qrContainer && PROMPTPAY_QR_URL) {
         unitPrice: Number(i.price || 0),
         lineTotal: Number((i.qty||1)*(i.price||0)),
           image: normalizeImage(
-  it.image ||
-  it.imageSnapshot ||
-  it.imageUrl ||
-  it.thumbnail ||
+  i.image ||
+  i.imageSnapshot ||
+  i.imageUrl ||
+  i.thumbnail ||
   (Array.isArray(it.images) ? it.images[0] : null)
 )
 
