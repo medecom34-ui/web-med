@@ -114,10 +114,10 @@ if (qrContainer && PROMPTPAY_QR_URL) {
         unitPrice: Number(i.price || 0),
         lineTotal: Number((i.qty||1)*(i.price||0)),
           image: normalizeImage(
-  it.image ||
-  it.imageSnapshot ||
-  it.imageUrl ||
-  it.thumbnail ||
+  i.image ||
+  i.imageSnapshot ||
+  i.imageUrl ||
+  i.thumbnail ||
   (Array.isArray(it.images) ? it.images[0] : null)
 )
 
@@ -147,10 +147,10 @@ if (qrContainer && PROMPTPAY_QR_URL) {
           unitPrice: Number((it.unitPrice !== undefined && it.unitPrice !== null) ? it.unitPrice : (it.price || 0)),
           lineTotal: Number(it.lineTotal || ((it.qty||1) * (it.unitPrice || it.price || 0))),
           image: normalizeImage(
-  it.image ||
-  it.imageSnapshot ||
-  it.imageUrl ||
-  it.thumbnail ||
+  i.image ||
+  i.imageSnapshot ||
+  i.imageUrl ||
+  i.thumbnail ||
   (Array.isArray(it.images) ? it.images[0] : null)
 )
 
