@@ -1886,4 +1886,13 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   flex: 0 0 60px;
 }
 
+.order-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+}
+
+
 
