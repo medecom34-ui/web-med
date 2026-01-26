@@ -29,7 +29,7 @@
     if (!iso) return "-";
     const d = new Date(iso);
     if (isNaN(d.getTime())) return "-";
-    // แปลงเป็นเวลาไทยในการแสดง
+    // แปลงเป็นเวลาไทย
     return d.toLocaleString("th-TH", { dateStyle: "medium", timeStyle: "short" });
   };
 
@@ -81,7 +81,7 @@
       const subtotalDisplay = isNaN(subtotalVal) ? "฿0.00" : money(subtotalVal);
       const totalDisplay = isNaN(totalVal) ? "฿0.00" : money(totalVal);
 
-      // หา tracking number 
+
       let tracking = null;
       try {
         if (o.shipments && o.shipments.length) {
@@ -145,7 +145,7 @@
       `;
     }).join("");
 
-    // update badge (ถ้าอยากให้ Auth.updateStatusBadge ใช้ได้ด้วย)
+    
     const active = (orders || []).filter(o => o.status !== "DELIVERED" && o.status !== "COMPLETED").length;
     const badge = $("#statusBadge");
     if (badge) {
@@ -154,14 +154,13 @@
     }
   }
 
-  // boot: fetch and render
   (async function boot(){
     
     try { localStorage.removeItem("orders"); } catch(e){}
 
     const orders = await loadOrdersFromApi();
     renderOrders(orders);
-    // เก็บ locally เพื่อใช้ร่วม tab อื่น (optional)
+
     try {
       localStorage.setItem("orders", JSON.stringify(orders));
       window.dispatchEvent(new Event("orders:changed"));
