@@ -19,7 +19,7 @@ function cartSvg() {
     </svg>`;
 }
 
-/* ===== โหลดสินค้าจริงจาก DB (HOT / NEW) ===== */
+
 
 async function loadPopularProducts() {
   try {
@@ -53,7 +53,7 @@ async function loadNewestProducts() {
   }
 }
 
-/* แปลงข้อมูลจาก DB → format การ์ด */
+
 function mapProduct(p) {
   return {
     id: String(p.id),
@@ -65,19 +65,19 @@ function mapProduct(p) {
   };
 }
 
-/* รวมสินค้าทั้งหมดไว้ใช้ addToCart */
+
 function syncAllProducts() {
   const a = window.__popular || [];
   const b = window.__newest || [];
   window.allProducts = [...a, ...b];
 }
 
-/* เรียกตอนโหลดหน้า */
+
 loadPopularProducts();
 loadNewestProducts();
 
 
-/* ===== Helpers ===== */
+
 const $ = (s) => document.querySelector(s);
 const fmtTHB = (n) =>
   "฿" +
@@ -116,7 +116,7 @@ function buildCategoryTree(flatList) {
       if (parent) {
         parent.children.push(cat);
       } else {
-        // ถ้าหา parent ไม่เจอ (data พัง) ให้ดันขึ้น top level ไปก่อน
+        
         roots.push(cat);
       }
     } else {
@@ -131,7 +131,7 @@ function buildCategoryTree(flatList) {
       const sa = normalize(a.sortOrder);
       const sb = normalize(b.sortOrder);
       if (sa !== sb) return sa - sb;
-      // รองลงมาเรียงตามชื่อกันมึน
+      
       return String(a.name).localeCompare(String(b.name), "th");
     });
     nodes.forEach((n) => {
@@ -150,7 +150,7 @@ function buildCategoryTree(flatList) {
 
 function renderCategoriesTree(rootCategories) {
   
-  /* ===== HOME CATEGORY (DESKTOP + MOBILE) ===== */
+ 
   const desktopRow = $("#category-row-desktop");
   const mobileRow  = $("#category-row");
 
@@ -173,21 +173,21 @@ function renderCategoriesTree(rootCategories) {
   if (desktopRow) desktopRow.innerHTML = html;
   if (mobileRow)  mobileRow.innerHTML  = html;
 
-  /* ===== SIDEBAR ===== */
+
   const sideCats = $("#sideCats");
   if (!sideCats) return;
 
-  // sub = หมวดระดับ 2, rootSlug = slug ของหมวดหลัก
+
   const renderLevel2 = (sub, rootSlug) => {
     const grandchildren = sub.children || [];
 
-    // รูปของหมวดระดับ 2
+
     const subImgUrl = sub.imageUrl ? optimizeImg(sub.imageUrl, 60) : null;
     const subImgStyle = subImgUrl
       ? `style="background-image:url('${subImgUrl}');background-size:contain;background-position:center;background-repeat:no-repeat"`
       : "";
 
-    // ลิงก์หมวดระดับ 2: ส่งทั้ง category(หลัก) + sub
+ 
     const subHref = `category.html?category=${encodeURIComponent(rootSlug)}&sub=${encodeURIComponent(sub.slug)}`;
 
     const grandHTML = grandchildren
@@ -265,7 +265,7 @@ function renderCategoriesTree(rootCategories) {
     }
   });
 
-  // เปิดทุกหมวดตั้งแต่แรก
+ 
   document.querySelectorAll(".catitem").forEach((item) => {
     item.classList.add("open");
   });
@@ -273,7 +273,6 @@ function renderCategoriesTree(rootCategories) {
 
 
 
-/* ===== โหลดหมวดหมู่แบบไม่ทำให้เว็บพัง ===== */
 async function loadCategoriesFromApi() {
   try {
     const res = await fetch(`${API_BASE}/api/categories`, { cache: "no-store" });
@@ -356,7 +355,7 @@ const renderCards = (items) =>
 
 
 
-// ให้คลิกการ์ดทั้งใบไปหน้า product ได้
+
 document.addEventListener("click", (e) => {
   const card = e.target.closest(".card[data-href]");
   if (card) location.href = card.getAttribute("data-href");
