@@ -32,7 +32,7 @@
 
   const money = n => "฿" + Number(n || 0).toLocaleString("th-TH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  // ensure cart/draft ready hook (if fillCartFromServer exists)
+
   (async function ensureDraftReady(){
     try {
       if (window.fillCartFromServer && typeof window.fillCartFromServer === 'function') {
@@ -47,13 +47,12 @@
     }
   })();
 
-  // boot after small delay to let ensureDraftReady run
+
   setTimeout(boot, 100);
 
   async function boot() {
 
-      // ====== SHOW PROMPTPAY QR ======
-// ====== SHOW PROMPTPAY QR (CLEAN VERSION) ======
+
 const qrContainer = document.getElementById("qrContainer");
 if (qrContainer && PROMPTPAY_QR_URL) {
   qrContainer.innerHTML = `
@@ -75,11 +74,10 @@ if (qrContainer && PROMPTPAY_QR_URL) {
 }
 
 
-    // load draft (from localStorage) or build from cart
+
     let draft = null;
     try {
       draft = JSON.parse(localStorage.getItem("orderDraft") || "null");
-      // 🔒 HARD GUARANTEE ADDRESS (กันของเก่า)
       if (!draft.address && draft.customer) {
         draft.address = {
           type: "SHIPPING",
@@ -101,7 +99,7 @@ if (qrContainer && PROMPTPAY_QR_URL) {
     } catch(e) { draft = null; }
 
     if (!draft) {
-      // fallback build from cart
+      
       const cart = JSON.parse(localStorage.getItem("cart") || "[]");
       if (!cart.length) { location.href = "index.html"; return; }
       const subtotal = cart.reduce((a,b)=> a + (Number(b.qty||0) * Number(b.price||0)), 0);
@@ -129,13 +127,13 @@ if (qrContainer && PROMPTPAY_QR_URL) {
         paymentMethod: "promptpay",
         items,
         subtotal,
-        // shipFee removed on purpose; if server requires, client will send 0
+        
         total: subtotal,
         createdAt: new Date().toISOString()
       };
       localStorage.setItem("orderDraft", JSON.stringify(draft));
     } else {
-      // normalize items
+      
       draft.items = (draft.items || []).map(it => {
         return {
           productId: (it.productId != null && !Number.isNaN(Number(it.productId))) ? Number(it.productId) : null,
@@ -157,13 +155,13 @@ if (qrContainer && PROMPTPAY_QR_URL) {
 
         };
       });
-      // ensure numeric totals
+      
       draft.subtotal = Number(draft.subtotal || draft.total || (draft.items || []).reduce((a,b)=>a + (b.lineTotal||0), 0));
       draft.total = Number(draft.total != null ? draft.total : draft.subtotal);
       localStorage.setItem("orderDraft", JSON.stringify(draft));
     }
 
-    // render summary
+    
     const list = document.getElementById("sumItems");
     const sumSubtotal = document.getElementById("sumSubtotal");
     const sumShip = document.getElementById("sumShip");
@@ -200,13 +198,13 @@ list.innerHTML = draft.items.map(i => `
 
     }
 
-    // show subtotal and total; hide or set ship to 0
+   
     if (sumSubtotal) sumSubtotal.textContent = money(draft.subtotal);
     if (sumShip) sumShip.textContent = money(0); 
     if (shipRow) shipRow.style.display = "none";
     if (sumTotal) sumTotal.textContent = money(draft.total);
 
-    // slip preview handler
+
     const slipInput = document.getElementById("slipFile");
     const slipPreview = document.getElementById("slipPreview");
     if (slipInput) {
@@ -232,9 +230,9 @@ btn.addEventListener("click", async () => {
   btn.textContent = "กำลังอัปโหลดสลิป...";
 
   try {
-    // ===== 1) UPLOAD SLIP =====
+  
     const fd = new FormData();
-    fd.append("file", file); // ⚠ ต้องชื่อ "file"
+    fd.append("file", file); 
 
     const uploadRes = await fetch(
       "https://web-med-production.up.railway.app/api/uploads",
@@ -271,7 +269,7 @@ if (!orderJson?.data?.id) {
 }
 const orderId = orderJson.data.id;
 
-    // ===== 3) CREATE PAYMENT =====
+    
     await fetch(
       `https://web-med-production.up.railway.app/api/orders/${orderId}/payments`,
       {
@@ -285,7 +283,7 @@ const orderId = orderJson.data.id;
       }
     );
 
-    // ===== 4) DONE =====
+    
     location.href = `success.html?orderNumber=${orderJson.data.orderNumber}`;
 
   } catch (e) {
@@ -297,5 +295,5 @@ const orderId = orderJson.data.id;
 });
 
 
-  } // end boot
+  } 
 })();
