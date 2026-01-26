@@ -18,7 +18,7 @@ module.exports = function authMiddleware(req, res, next) {
     const token = parts[1];
     try {
       const payload = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = payload;   // เติม req.user ให้ adminGuard ใช้
+      req.user = payload;   
       //console.log("[authMiddleware] token verified, payload:", payload);
     } catch (err) {
       console.warn("[authMiddleware] invalid token:", err.message);
