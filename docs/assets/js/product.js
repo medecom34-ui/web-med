@@ -130,10 +130,6 @@ if (isInboxProduct(p)) {
 }
 
 
-
-  // -------------------------
-  // DESCRIPTION HANDLING
-  // -------------------------
   // prefer longDesc ถ้ามี, ถ้าไม่มี fallback ไป description
   const rawDesc = (p.longDesc ?? p.description ?? "-").toString();
 
