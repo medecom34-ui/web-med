@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const prisma = require('../prisma/client');   
 
-/** แปลง user ให้พร้อมส่งออก (กัน BigInt พัง JSON) */
+
 function toSafeUser(user) {
   if (!user) return null;
   return {
@@ -17,7 +17,7 @@ function toSafeUser(user) {
   };
 }
 
-/** POST /api/auth/register */
+
 async function register(req, res) {
   try {
     const { email, password, fullName, phone } = req.body;
@@ -29,7 +29,7 @@ async function register(req, res) {
       });
     }
 
-    // เช็ค email ซ้ำ
+    
     const existing = await prisma.user.findUnique({
       where: { email },
     });
@@ -41,13 +41,13 @@ async function register(req, res) {
       });
     }
 
-    // hash password
+   
     const hashed = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
       data: {
         email,
-        password: hashed,  // field ชื่อ password (map เป็น password_hash ใน DB)
+        password: hashed,  
         fullName,
         phone: phone || null,
       },
@@ -55,7 +55,7 @@ async function register(req, res) {
 
     const safeUser = toSafeUser(user);
 
-    // สร้าง JWT token (payload มี id, email, role)
+    
     const token = jwt.sign(
       { id: safeUser.id, email: safeUser.email, role: safeUser.role },
       process.env.JWT_SECRET,
@@ -113,7 +113,7 @@ async function login(req, res) {
 
     const safeUser = toSafeUser(user);
 
-    // สร้าง token: include id, email, role
+    
     const token = jwt.sign(
       { id: safeUser.id, email: safeUser.email, role: safeUser.role },
       process.env.JWT_SECRET,
