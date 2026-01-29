@@ -57,7 +57,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const uploadController = require('./controllers/uploadController');
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 // use routes
