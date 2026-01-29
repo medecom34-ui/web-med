@@ -12,6 +12,7 @@ const app = express();
 app.use(cors({
   origin: [
     "https://medecom34-ui.github.io",
+    "https://www.xn--12ca7coduykzdcc8j5bxa4g1h0hh.com"
   ],
   methods: ["GET", "POST", "PATCH", "DELETE"],
   credentials: true
