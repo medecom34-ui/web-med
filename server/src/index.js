@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use(cors({
+const corsOptions = {
   origin: [
     "http://xn--12ca7coduykzdcc8j5bxa4g1h0hh.com",
     "http://www.xn--12ca7coduykzdcc8j5bxa4g1h0hh.com",
@@ -17,10 +17,15 @@ app.use(cors({
     "https://www.xn--12ca7coduykzdcc8j5bxa4g1h0hh.com",
     "https://medecom34-ui.github.io"
   ],
-  methods: ["GET", "POST", "PATCH", "DELETE"],
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); 
 app.use(express.json());
+
 
 // serve client static
 const clientPath = path.join(__dirname, '..', '..', 'Client');
@@ -59,7 +64,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 const uploadController = require('./controllers/uploadController');
-// app.use(cors());
+
 app.use(bodyParser.json({ limit: "5mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 // use routes
