@@ -1895,4 +1895,22 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-link {
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #1f5fa0;
+  transition: background 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #e8f1ff;
+}
 
