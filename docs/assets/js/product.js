@@ -116,12 +116,12 @@ if (isInboxProduct(p)) {
   let btn = buyRow.querySelector(".btn-line");
 
   if (btn) {
-    btn.href = "https://lin.ee/HU3NA1K";
+    btn.href = "https://line.me/R/ti/p/@876sqopb";
   } else {
     // ถ้ายังไม่มี → สร้างใหม่
     const a = document.createElement("a");
     a.className = "btn-line";
-    a.href = "https://lin.ee/HU3NA1K";
+    a.href = "https://line.me/R/ti/p/@876sqopb";
     a.target = "_blank";
     a.rel = "noopener";
     a.textContent = "สอบถาม / สั่งซื้อผ่าน LINE";
