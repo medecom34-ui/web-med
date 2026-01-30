@@ -1934,8 +1934,8 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 .nav-pill.active {
-  background: #3b82f6;
+  background: #ffffff;
   color: #fff;
-  border-color: #3b82f6;
+  border-color: #1f70f3;
   box-shadow: 0 6px 16px rgba(59,130,246,.35);
 }
