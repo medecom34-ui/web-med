@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ติดต่อเรา | ภัทรอุปกรณ์การแพทย์</title>
 
-  <!-- CSS หลักเหมือนหน้า home -->
+  <!-- ใช้ CSS ชุดเดียวกับเว็บ -->
   <link rel="stylesheet" href="./assets/css/main.css" />
   <link rel="stylesheet" href="./assets/css/mobile.css" media="(max-width: 768px)">
   <link rel="stylesheet" href="./assets/css/contract.css" />
 </head>
 <body>
 
-<!-- ===== TOP BAR ===== -->
+<!-- ===== TOPBAR (เหมือนทุกหน้า) ===== -->
 <div class="topbar">
   <div class="container topbar__inner" id="authBar"></div>
 </div>
 
-<!-- ===== HEADER (เหมือนหน้า HOME) ===== -->
+<!-- ===== HEADER (โครงเดียวกับ HOME) ===== -->
 <header class="header container">
 
   <div class="header-left">
@@ -25,6 +25,7 @@
       <div class="logo__box">HOME</div>
     </a>
 
+    <!-- ใช้ logo__box + active เหมือน HOME -->
     <a class="logo" href="contract.html">
       <div class="logo__box active">ติดต่อเรา</div>
     </a>
@@ -38,18 +39,13 @@
       🛒 <span class="badge">0</span>
     </a>
   </div>
+
 </header>
 
-<!-- ===== BANNER (เอามาจากหน้า HOME) ===== -->
-<section class="banner">
-  <div class="container banner-inner">
-    <h1 class="banner__title">ติดต่อเรา</h1>
-  </div>
-</section>
-
-<!-- ===== CONTACT CONTENT ===== -->
+<!-- ===== MAIN ===== -->
 <main class="contact-page">
 
+  <!-- ===== PAGE TITLE (ไม่ใช่ header เว็บ) ===== -->
   <section class="contact-header">
     <h1>ติดต่อเรา</h1>
     <div class="divider">
@@ -58,6 +54,7 @@
     <p class="desc">ติดต่อสอบถามข้อมูลหรือปรึกษาเราได้ที่</p>
   </section>
 
+  <!-- ===== CONTACT CARDS ===== -->
   <section class="contact-container">
 
     <div class="contact-card">
@@ -77,7 +74,7 @@
       <div class="icon blue">📞</div>
       <h3>เบอร์โทร</h3>
       <p class="value">
-        081-234-5678<br>
+        081-234-5678<br />
         02-123-4567
       </p>
     </div>
