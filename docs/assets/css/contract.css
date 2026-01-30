@@ -13,19 +13,19 @@ body {
 .contact-page {
   max-width: 1280px;
   margin: 0 auto;
-  padding-bottom: 160px;
+  padding: 40px 16px 140px;
   position: relative;
   z-index: 2;
 }
 
-/* ===== Header ===== */
+/* ===== Contact Header ===== */
 .contact-header {
   text-align: center;
-  padding: 90px 20px 30px;
+  margin-bottom: 40px;
 }
 
 .contact-header h1 {
-  font-size: 56px;
+  font-size: 42px;
   font-weight: 800;
   color: #1f5fa0;
   margin: 0;
@@ -35,26 +35,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 12px 0 20px;
+  margin: 10px 0 14px;
 }
 
 .divider::before,
 .divider::after {
   content: "";
-  width: 80px;
+  width: 60px;
   height: 2px;
   background: #cfe4ff;
 }
 
 .divider span {
-  margin: 0 14px;
-  font-size: 22px;
+  margin: 0 12px;
+  font-size: 18px;
   font-weight: 600;
   color: #3fa9f5;
 }
 
 .contact-header .desc {
-  font-size: 22px;
+  font-size: 18px;
   color: #1f5fa0;
 }
 
@@ -62,25 +62,24 @@ body {
 .contact-container {
   display: flex;
   justify-content: center;
-  gap: 36px;
-  padding: 60px 24px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 
 /* ===== Card ===== */
 .contact-card {
-  background: #ffffff;
-  width: 320px;
-  padding: 44px 30px;
-  border-radius: 24px;
+  background: #fff;
+  width: 280px;
+  padding: 32px 22px;
+  border-radius: 22px;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(31, 95, 160, 0.15);
+  box-shadow: 0 18px 45px rgba(31, 95, 160, 0.15);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .contact-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 35px 80px rgba(31, 95, 160, 0.28);
+  transform: translateY(-8px);
+  box-shadow: 0 28px 65px rgba(31, 95, 160, 0.25);
 }
 
 .contact-card.clickable {
@@ -89,14 +88,14 @@ body {
 
 /* ===== Icon ===== */
 .icon {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 24px;
-  border-radius: 24px;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 44px;
+  font-size: 34px;
   color: #fff;
 }
 
@@ -114,13 +113,13 @@ body {
 
 /* ===== Text ===== */
 .contact-card h3 {
-  margin: 12px 0;
-  font-size: 22px;
+  margin: 10px 0;
+  font-size: 20px;
   font-weight: 700;
 }
 
 .value {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -130,17 +129,17 @@ body {
 
 small {
   display: block;
-  margin-top: 10px;
+  margin-top: 8px;
   color: #6b7280;
 }
 
-/* ===== Wave Background ===== */
+/* ===== Wave ===== */
 .contact-wave {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 260px;
+  height: 220px;
   background: linear-gradient(
     to top,
     rgba(63, 169, 245, 0.18),
@@ -152,16 +151,8 @@ small {
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .contact-header h1 {
-    font-size: 44px;
-  }
-
-  .divider span {
-    font-size: 20px;
-  }
-
   .contact-card {
     width: 100%;
-    max-width: 360px;
+    max-width: 340px;
   }
 }
