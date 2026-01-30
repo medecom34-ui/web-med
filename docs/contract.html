@@ -1,23 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ติดต่อเรา | ภัทรอุปกรณ์การแพทย์</title>
 
-  <!-- ใช้ CSS ชุดเดียวกับเว็บ -->
+  <!-- CSS ชุดเดียวกับ HOME -->
   <link rel="stylesheet" href="./assets/css/main.css" />
   <link rel="stylesheet" href="./assets/css/mobile.css" media="(max-width: 768px)">
   <link rel="stylesheet" href="./assets/css/contract.css" />
 </head>
 <body>
 
-<!-- ===== TOPBAR (เหมือนทุกหน้า) ===== -->
+<!-- ===== TOPBAR (เหมือน HOME 100%) ===== -->
 <div class="topbar">
   <div class="container topbar__inner" id="authBar"></div>
 </div>
 
-<!-- ===== HEADER (โครงเดียวกับ HOME) ===== -->
+<!-- ===== HEADER (คัดจาก HOME ตรง ๆ) ===== -->
 <header class="header container">
 
   <div class="header-left">
@@ -25,7 +25,7 @@
       <div class="logo__box">HOME</div>
     </a>
 
-    <!-- ใช้ logo__box + active เหมือน HOME -->
+    <!-- เปลี่ยนตรงนี้อย่างเดียว -->
     <a class="logo" href="contract.html">
       <div class="logo__box active">ติดต่อเรา</div>
     </a>
@@ -33,28 +33,27 @@
 
   <div class="header-icons">
     <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
-      🚚 <span class="badge">0</span>
+      <span class="icon-transport">🚚</span>
+      <span id="statusBadge" class="badge">0</span>
     </a>
-    <a id="cartButton" class="header-icon" title="ตะกร้า">
-      🛒 <span class="badge">0</span>
+    <a id="cartButton" class="header-icon" role="button" title="ตะกร้า">
+      🛒 <span id="cartCount" class="badge">0</span>
     </a>
   </div>
-
 </header>
 
-<!-- ===== MAIN ===== -->
+<!-- ===== MAIN CONTENT ===== -->
 <main class="contact-page">
 
-  <!-- ===== PAGE TITLE (ไม่ใช่ header เว็บ) ===== -->
+  <!-- Title ของหน้า (ไม่ใช่ header เว็บ) -->
   <section class="contact-header">
-    <h1>Contract Us</h1>
+    <h1>ติดต่อเรา</h1>
     <div class="divider">
       <span>Contact Us</span>
     </div>
     <p class="desc">ติดต่อสอบถามข้อมูลหรือปรึกษาเราได้ที่</p>
   </section>
 
-  <!-- ===== CONTACT CARDS ===== -->
   <section class="contact-container">
 
     <div class="contact-card">
@@ -84,6 +83,10 @@
 
 <div class="contact-wave"></div>
 
+<!-- ===== JS ต้องมีเหมือน HOME ===== -->
+<script src="./assets/js/cart.js"></script>
+<script src="./assets/js/auth.js"></script>
 <script src="./assets/js/contract.js"></script>
+
 </body>
 </html>
