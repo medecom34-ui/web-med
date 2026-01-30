@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ติดต่อเรา | Contact Us</title>
+  <title>ติดต่อเรา | ภัทรอุปกรณ์การแพทย์</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/docs/assets/css/contract.css" />
+  <link rel="stylesheet" href="assets/css/contract.css" />
 </head>
 <body>
 
@@ -15,19 +15,23 @@
     <!-- ===== Header ===== -->
     <section class="contact-header">
       <h1>ติดต่อเรา</h1>
-      <p class="en">Contact Us</p>
+      <div class="divider">
+        <span>Contact Us</span>
+      </div>
       <p class="desc">ติดต่อสอบถามข้อมูลหรือปรึกษาเราได้ที่</p>
     </section>
 
     <!-- ===== Cards ===== -->
     <section class="contact-container">
 
+      <!-- Shop -->
       <div class="contact-card">
-        <div class="icon green">🧾</div>
+        <div class="icon green">🏥</div>
         <h3>ชื่อร้าน</h3>
         <p class="value">ภัทรอุปกรณ์การแพทย์</p>
       </div>
 
+      <!-- LINE -->
       <div class="contact-card clickable" onclick="openLine()">
         <div class="icon line">💬</div>
         <h3>LINE ID</h3>
@@ -35,6 +39,7 @@
         <small>กดเพื่อแอดไลน์</small>
       </div>
 
+      <!-- Phone -->
       <div class="contact-card">
         <div class="icon blue">📞</div>
         <h3>เบอร์โทร</h3>
@@ -46,12 +51,12 @@
 
     </section>
 
-    <!-- background wave -->
-    <div class="contact-wave"></div>
-
   </main>
 
-  <script src="contract.js"></script>
-</body>
+  <!-- Background -->
+  <div class="contact-wave"></div>
 
+  <!-- JS -->
+  <script src="assets/js/contract.js"></script>
+</body>
 </html>
