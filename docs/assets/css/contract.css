@@ -157,8 +157,7 @@ small {
   }
 }
 
-
-/* ===== Outline Icon Style ===== */
+/* ===== Outline Icon Style (Unified) ===== */
 .icon.outline {
   width: 72px;
   height: 72px;
@@ -169,25 +168,39 @@ small {
   align-items: center;
   justify-content: center;
   position: relative;
+  background: #fff;
 }
 
 /* ===== ICON DRAWING ===== */
 .icon.company::before {
   content: "🏥";
-  font-size: 34px;
+  font-size: 32px;
   color: #1f5fa0;
 }
 
 .icon.line::before {
   content: "LINE";
-  font-size: 18px;
+  font-size: 16px;          
   font-weight: 800;
-  color: #16a34a;
+  letter-spacing: .5px;     
+  color: #1f5fa0;           
 }
 
+/* Phone */
 .icon.phone::before {
   content: "📞";
-  font-size: 30px;
+  font-size: 28px;
   color: #1f5fa0;
 }
 
+/* ===== Text Balance Fix ===== */
+.contact-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contact-card .value {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
