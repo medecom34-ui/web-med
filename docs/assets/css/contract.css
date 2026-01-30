@@ -156,3 +156,38 @@ small {
     max-width: 340px;
   }
 }
+
+
+/* ===== Outline Icon Style ===== */
+.icon.outline {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  border: 3px solid #1f5fa0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ===== ICON DRAWING ===== */
+.icon.company::before {
+  content: "🏥";
+  font-size: 34px;
+  color: #1f5fa0;
+}
+
+.icon.line::before {
+  content: "LINE";
+  font-size: 18px;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.icon.phone::before {
+  content: "📞";
+  font-size: 30px;
+  color: #1f5fa0;
+}
+
