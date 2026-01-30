@@ -1913,4 +1913,8 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 .nav-link:hover {
   background: #e8f1ff;
 }
+.logo__box.active {
+  background: #3fa9f5;
+  color: #fff;
+}
 
