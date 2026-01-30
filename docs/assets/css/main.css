@@ -1901,3 +1901,31 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   gap: 14px;
 }
 
+/* ===== Header Navigation Pills ===== */
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #0f172a;
+  background: #eef2ff;
+  text-decoration: none;
+  border: 1px solid #dbeafe;
+  transition: all .15s ease;
+}
+
+.nav-pill:hover {
+  background: #e0ecff;
+  color: #1d4ed8;
+  box-shadow: 0 4px 10px rgba(37,99,235,.15);
+}
+
+.nav-pill.active {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+  box-shadow: 0 6px 16px rgba(59,130,246,.35);
+}
