@@ -486,25 +486,21 @@ function markActivePill2() {
 function updateTitlesAndBreadcrumb() {
   const mainNode = getCurrentMainNode();
   const subNode = getCurrentSubNode();
-  const sub2Node =
-    getCurrentSub2s().find((s) => s.slug === currentSub2) || null;
+  const sub2List = getCurrentSub2s();
+  const sub2Node = sub2List.find((s) => s.slug === currentSub2) || null;
 
-  const mainName = mainNode?.name || "";
-  const subName = subNode?.name || "";
-  const sub2Name = sub2Node?.name || "";
+  const mainName = mainNode ? mainNode.name : "";
+  const subName = subNode ? subNode.name : "";
+  const sub2Name = sub2Node ? sub2Node.name : "";
 
-  // title กลางหน้า
+  // หัวข้อหลักของหน้า: ถ้ามีชั้น 3 ให้ใช้ชื่อชั้น 3, ไม่งั้นใช้ชั้น 2, ไม่งั้นใช้หลัก
   pageTitle.textContent = sub2Name || subName || mainName;
 
-  // breadcrumb
-  crumbMain.textContent = "หน้าหลัก";
-
-  let path = "";
-  if (mainName) path += " › " + mainName;
-  if (subName) path += " › " + subName;
-  if (sub2Name) path += " › " + sub2Name;
-
-  crumbSub.textContent = path;
+  
+  let crumb = mainName;
+  if (subName) crumb += " › " + subName;
+  crumbMain.textContent = crumb;
+  crumbSub.textContent = sub2Name ? " › " + sub2Name : "";
 }
 
 
