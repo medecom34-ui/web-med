@@ -173,7 +173,7 @@ small {
 
 /* ===== ICON DRAWING ===== */
 .icon.company::before {
-  content: "🏬";
+  content: "🏢";
   font-size: 32px;
   color: #1f5fa0;
 }
