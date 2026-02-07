@@ -140,4 +140,60 @@
     overflow:hidden;
   }
 
+  
+  header.header{
+    min-height:56px;                
+    padding:8px 12px !important;
+    gap:8px;
+  }
+
+  /* ซ้าย: HOME + LINE + PHONE */
+  .header-left{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-wrap:nowrap;             
+    flex:1 1 auto;
+    min-width:0;
+  }
+
+  /* ปุ่ม HOME */
+  .nav-pill{
+    padding:8px 12px;
+    font-size:13px;
+  }
+
+  /* LINE + PHONE */
+  .header-icon{
+    padding:6px 10px;
+    font-size:13px;
+  }
+
+
+  .header-icon span{
+    display:none;
+  }
+
+  /* ขวา: 🚚 + 🛒 */
+  .header-icons{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-shrink:0;                  
+  }
+
+  /* ไอค่อนรถ / ตะกร้า */
+  .header-icons .header-icon{
+    padding:6px 8px;
+    font-size:18px;
+  }
+
+  /* badge (0) */
+  .header-icons .badge{
+    font-size:11px;
+    min-width:18px;
+    height:18px;
+    line-height:18px;
+  }
+
 }
