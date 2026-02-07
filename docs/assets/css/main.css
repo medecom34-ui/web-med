@@ -1939,3 +1939,21 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   border-color: #3b82f6;
   box-shadow: 0 6px 16px rgba(59,130,246,.35);
 }
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-icon img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.85;
+  transition: 0.2s;
+}
+
+.header-icon:hover img {
+  opacity: 1;
+  transform: scale(1.05);
+}
