@@ -109,9 +109,27 @@
   #productGrid .product-card .price{
     font-size:14px;
   }
-    .icon-transport{
-    display:inline-block !important;
-    font-size:20px !important;
-    line-height:1 !important;
-  }
+  
+
+.icon-transport{
+  display:inline-block !important;
+  font-size:20px !important;
+  line-height:1 !important;
+}
+
+
+.category-layout > aside .filter-card{
+  max-height:70vh;
+  overflow-y:auto;
+}
+
+
+#productGrid .cart-fab{
+  width:36px;
+  height:36px;
+  right:8px;
+  bottom:8px;
+}
+
+
 }
