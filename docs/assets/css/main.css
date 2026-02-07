@@ -1957,3 +1957,46 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   opacity: 1;
   transform: scale(1.05);
 }
+
+.header-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  color: #0f172a;
+  transition: all .15s ease;
+}
+
+.header-icon:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+}
+
+/* LINE */
+.header-line {
+  border-color: #86efac;
+}
+.header-line span {
+  color: #059669;
+}
+
+/* PHONE */
+.header-phone {
+  border-color: #bfdbfe;
+}
+.header-phone span {
+  color: #1d4ed8;
+}
+
+/* mobile: ซ่อนตัวอักษร เหลือแต่ไอค่อน */
+@media (max-width: 520px) {
+  .header-icon span {
+    display: none;
+  }
+}
