@@ -139,11 +139,14 @@
     -webkit-box-orient:vertical;
     overflow:hidden;
   }
-
+  
   
   header.header{
-    min-height:56px;                
-    padding:8px 12px !important;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;   /* ⭐ แยกซ้าย-ขวาชัด */
+    min-height:56px;
+    padding:8px 10px !important;
     gap:8px;
   }
 
@@ -152,26 +155,25 @@
     display:flex;
     align-items:center;
     gap:6px;
-    flex-wrap:nowrap;             
-    flex:1 1 auto;
-    min-width:0;
+
+    flex:0 1 auto;                   /* ⭐ สำคัญ: ไม่กินเต็ม */
+    max-width:calc(100% - 96px);     /* ⭐ เผื่อที่ให้รถเข็น */
+    overflow:hidden;
   }
 
-  /* ปุ่ม HOME */
-  .nav-pill{
-    padding:8px 12px;
-    font-size:13px;
-  }
-
-  /* LINE + PHONE */
-  .header-icon{
-    padding:6px 10px;
-    font-size:13px;
-  }
-
-
+  /* ซ่อนข้อความ เหลือไอค่อน */
   .header-icon span{
     display:none;
+  }
+
+  .nav-pill{
+    padding:7px 10px;
+    font-size:13px;
+    white-space:nowrap;
+  }
+
+  .header-icon{
+    padding:6px 8px;
   }
 
   /* ขวา: 🚚 + 🛒 */
@@ -179,20 +181,20 @@
     display:flex;
     align-items:center;
     gap:8px;
-    flex-shrink:0;                  
+
+    flex:0 0 auto;                   /* ⭐ ห้าม shrink */
+    margin-left:auto;                /* ⭐ ดันให้อยู่ขวาสุด */
   }
 
-  /* ไอค่อนรถ / ตะกร้า */
   .header-icons .header-icon{
     padding:6px 8px;
     font-size:18px;
   }
 
-  /* badge (0) */
   .header-icons .badge{
-    font-size:11px;
     min-width:18px;
     height:18px;
+    font-size:11px;
     line-height:18px;
   }
 
