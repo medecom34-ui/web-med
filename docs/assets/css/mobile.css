@@ -197,5 +197,11 @@
     font-size:11px;
     line-height:18px;
   }
+  
+    .icon-transport{
+    display:inline-block !important;
+    font-size:20px !important;
+    line-height:1 !important;
+  }
 
 }
