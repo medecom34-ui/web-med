@@ -124,12 +124,7 @@
     -webkit-box-orient:vertical;
     overflow:hidden;
   }
-/* =========================================
-   MOBILE HEADER FIX (HOME)
-   ========================================= */
-@media (max-width:768px){
 
-  /* HEADER เป็น 2 แถว */
   header.header{
     display:flex;
     flex-wrap:wrap;
@@ -139,46 +134,46 @@
     gap:6px;
   }
 
-  /* แถวบนรวมทุกปุ่ม */
+  /* แถวบนซ้าย */
   .header-left{
     display:flex;
     align-items:center;
     gap:6px;
     flex:0 0 auto;
-  }
-
-  .header-icons{
-    display:flex !important;      /* 🔥 บังคับไม่ให้หาย */
-    align-items:center;
-    gap:6px;
-    flex:0 0 auto;
-  }
-
-  /* ทำให้ header-left + header-icons อยู่บรรทัดเดียว */
-  .header-left{
     order:1;
   }
 
+  /* แถวบนขวา */
   .header-icons{
+    display:flex !important;
+    align-items:center;
+    gap:6px;
+    flex:0 0 auto;
     order:2;
   }
 
-  /* 🔥 ช่องค้นหาลงบรรทัดล่างเต็มความกว้าง */
-  .search{
-    order:3;
+  /* 🔥 ตัวจริงคือ header-search ไม่ใช่ search */
+  .header-search{
+    order:3;              /* ดันลงล่าง */
     width:100%;
     margin-top:8px;
   }
 
-  .search input,
-  .search__input{
+  .header-search .search-box{
+    display:flex;
+    gap:6px;
     width:100%;
+  }
+
+  .header-search input{
+    flex:1;
     height:38px;
     font-size:14px;
   }
 
-  .search button{
+  .header-search button{
     height:38px;
+    padding:0 12px;
   }
 
   /* ซ่อนข้อความเบอร์ เหลือไอคอน */
@@ -201,7 +196,7 @@
     align-items:center;
   }
 
-  /* 🚚 ไอคอนรถ */
+  /* รถ 🚚 */
   .icon-transport{
     display:inline-block !important;
     font-size:20px !important;
@@ -215,7 +210,5 @@
     font-size:11px;
     line-height:18px;
   }
-
-}
 
 }
