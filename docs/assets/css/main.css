@@ -2071,24 +2071,25 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 .search-results .product-card {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px;
-  border-radius: 10px;
-  transition: background .15s ease;
+  gap: 12px;
+  padding: 8px 6px;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
+
 
 .search-results .product-card:hover {
   background: #f3f6ff;
 }
 
-/* รูป */
 .search-results .product-card .img {
   width: 60px !important;
   height: 60px !important;
   flex: 0 0 60px;
+  border-radius: 8px;
 }
 
-/* ชื่อ */
 .search-results .product-card .name {
   font-size: 14px;
   font-weight: 600;
@@ -2097,8 +2098,6 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 
 
 
-
-/* ให้ header มี 3 โซน */
 .header {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -2143,4 +2142,13 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   align-items: center;
   gap: 12px;
   flex-wrap: nowrap;
+}
+
+/* ===== SEARCH DROPDOWN CLEAN ===== */
+.search-results .cart-fab {
+  display: none !important;
+}
+
+.search-results .price {
+  display: none !important;
 }
