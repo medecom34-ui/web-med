@@ -1,3 +1,6 @@
+const API_BASE = "https://web-med-production.up.railway.app";
+
+
 const searchInput = document.getElementById("searchInput");
 const searchBtn   = document.getElementById("searchBtn");
 
