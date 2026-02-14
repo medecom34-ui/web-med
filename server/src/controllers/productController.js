@@ -307,18 +307,33 @@ exports.searchProducts = async (req, res) => {
 
     const products = await prisma.product.findMany({
       where: {
+        isActive: true,
         OR: [
-          { name: { contains: q, mode: "insensitive" } },
-          { code: { contains: q, mode: "insensitive" } },
-          { sku: { contains: q, mode: "insensitive" } }
+          { name: { contains: q, mode: "insensitive" } }
         ]
       },
       include: {
-        images: true
+        variants: {
+          where: { isActive: true },
+          take: 1
+        },
+        media: {
+          where: { type: "IMAGE" },
+          take: 1
+        }
       }
     });
 
-    res.json({ success: true, data: products });
+    const payload = products.map(p => ({
+      id: String(p.id),
+      slug: p.slug,
+      name: p.name,
+      priceTHB: p.variants[0] ? Number(p.variants[0].price) : null,
+      imageUrl: p.media[0] ? p.media[0].url : null
+    }));
+
+    res.json({ success: true, data: payload });
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Search failed" });

@@ -3,6 +3,8 @@ const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/productController");
 
+
+router.get("/search", productController.searchProducts);
 // รายการ 3 endpoints (by-category, detail, batch)
 router.get("/by-category", productController.getProductsByCategory);
 
@@ -14,7 +16,7 @@ router.get("/:slug", productController.getProductDetail);
 // batch: รับ GET หรือ POST => getProductsBatch
 router.get("/", productController.getProductsBatch);
 router.post("/batch", productController.getProductsBatch);
-router.get("/search", productController.searchProducts);
+
 
 
 
