@@ -409,11 +409,20 @@ searchToggle.addEventListener("click", () => {
   }
 });
 
-function doSearch() {
+async function doSearch() {
   const q = searchInput.value.trim();
   if (!q) return;
-  window.location.href = `search.html?q=${encodeURIComponent(q)}`;
+
+  const res = await fetch(`${API_BASE}/api/products/search?q=${encodeURIComponent(q)}`);
+  const json = await res.json();
+
+  if (json.success) {
+    const resultBox = document.getElementById("searchResultsInline");
+    resultBox.innerHTML = renderCards(json.data);
+    resultBox.classList.remove("hidden");
+  }
 }
+
 
 searchBtn.addEventListener("click", doSearch);
 searchInput.addEventListener("keypress", (e) => {
