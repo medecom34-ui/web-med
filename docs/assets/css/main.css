@@ -2009,11 +2009,13 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 .search-box {
-  max-width: 600px;
-  margin: auto;
+  position: relative;   
+  width: 600px;          
+  max-width: 90%;
   display: flex;
   gap: 8px;
 }
+
 
 .search-box input {
   flex: 1;
@@ -2042,17 +2044,16 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 
 .search-bar {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
+
 
 .search-results {
   position: absolute;
-  top: 55px;
-
+  top: 60px;
+  left: 0;
   width: 100%;
-  max-width: 600px;      /* กว้างเท่า search box */
-
-  left: 50%;
-  transform: translateX(-50%);
 
   background: #fff;
   border-radius: 14px;
