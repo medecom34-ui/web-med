@@ -2144,11 +2144,4 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   flex-wrap: nowrap;
 }
 
-/* ===== SEARCH DROPDOWN CLEAN ===== */
-.search-results .cart-fab {
-  display: none !important;
-}
 
-.search-results .price {
-  display: none !important;
-}

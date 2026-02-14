@@ -414,13 +414,56 @@ async function doSearch() {
   const resultBox = document.getElementById("searchResultsInline");
 
   if (json.success && json.data.length > 0) {
-    resultBox.innerHTML = renderCards(json.data);
+
+    resultBox.innerHTML = json.data.map(p => {
+      const href = `product.html?slug=${encodeURIComponent(p.slug || "")}`;
+      const img = p.imageUrl
+        ? `style="background-image:url('${optimizeImg(p.imageUrl, 80)}')"`
+        : "";
+
+      return `
+        <div style="
+          display:flex;
+          align-items:center;
+          gap:12px;
+          padding:10px 8px;
+          border-radius:10px;
+        " onmouseover="this.style.background='#f3f6ff'"
+           onmouseout="this.style.background='transparent'">
+
+          <a href="${href}"
+             style="
+               width:60px;
+               height:60px;
+               background-size:cover;
+               background-position:center;
+               background-repeat:no-repeat;
+               border-radius:8px;
+               flex:0 0 60px;
+               display:block;
+             "
+             ${img}></a>
+
+          <a href="${href}"
+             style="
+               font-size:14px;
+               font-weight:600;
+               color:#0f172a;
+               text-decoration:none;
+             ">
+             ${p.name}
+          </a>
+        </div>
+      `;
+    }).join("");
+
   } else {
     resultBox.innerHTML = "<p style='padding:12px'>ไม่พบสินค้า</p>";
   }
 
   resultBox.classList.remove("hidden");
 }
+
 
 
 
