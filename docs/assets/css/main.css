@@ -2047,11 +2047,16 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 .search-results {
   position: absolute;
   top: 55px;
-  left: 0;
-  right: 0;
+
+  width: 100%;
+  max-width: 600px;      /* กว้างเท่า search box */
+
+  left: 50%;
+  transform: translateX(-50%);
+
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.15);
   max-height: 400px;
   overflow-y: auto;
   z-index: 999;
