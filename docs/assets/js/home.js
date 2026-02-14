@@ -402,12 +402,7 @@ const searchBar = document.getElementById("searchBar");
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 
-searchToggle.addEventListener("click", () => {
-  searchBar.classList.toggle("hidden");
-  if (!searchBar.classList.contains("hidden")) {
-    searchInput.focus();
-  }
-});
+
 
 async function doSearch() {
   const q = searchInput.value.trim();
