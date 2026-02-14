@@ -309,25 +309,30 @@ exports.searchProducts = async (req, res) => {
       where: {
         isActive: true,
         name: {
-          contains: q,
-          mode: "insensitive"
+          contains: q
         }
       },
-      select: {
-        id: true,
-        slug: true,
-        name: true
+      include: {
+        variants: {
+          where: { isActive: true },
+          take: 1
+        },
+        media: {
+          where: { type: "IMAGE" },
+          take: 1
+        }
       }
     });
 
-    res.json({
-      success: true,
-      data: products.map(p => ({
-        id: String(p.id),
-        slug: p.slug,
-        name: p.name
-      }))
-    });
+    const payload = products.map(p => ({
+      id: String(p.id),
+      slug: p.slug,
+      name: p.name,
+      priceTHB: p.variants[0] ? Number(p.variants[0].price) : null,
+      imageUrl: p.media[0] ? p.media[0].url : null
+    }));
+
+    res.json({ success: true, data: payload });
 
   } catch (error) {
     console.error("SEARCH ERROR:", error);
@@ -337,3 +342,4 @@ exports.searchProducts = async (req, res) => {
     });
   }
 };
+
