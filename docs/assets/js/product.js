@@ -342,9 +342,7 @@ $("#addCart").onclick = () => {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   
   const variant = selectedVariant || null;
-  const key = variant
-  ? `${product.slug}__v${variant.id}`
-  : product.slug;
+  const key = product.slug;
 
   const idx = cart.findIndex((c) => c.key === key);
 
