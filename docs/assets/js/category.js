@@ -638,7 +638,9 @@ window.addEventListener("click", (e) => {
   const img = ds.img || null;
 
   // build cart item key (prefer sku, then code, then slug/id)
-  const key = sku ? `${slug}:${sku}` : (code ? `${slug}:${code}` : (slug || id || `k:${Date.now()}`));
+  const key = slug || id;
+
+  // const key = sku ? `${slug}:${sku}` : (code ? `${slug}:${code}` : (slug || id || `k:${Date.now()}`));
 
   // try to find product object in loaded products
   const prod = products.find(p => (p.slug && String(p.slug) === String(slug)))
