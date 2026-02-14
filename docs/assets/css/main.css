@@ -2178,26 +2178,3 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   text-decoration: none;
 }
 
-/* ===== FORCE HEADER SEARCH SIZE SAME EVERY PAGE ===== */
-
-.header {
-  display: grid !important;
-  grid-template-columns: auto 1fr auto !important;
-  align-items: center;
-  gap: 20px;
-}
-
-.header-search {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.search-box {
-  width: 100%;
-  max-width: 600px;
-}
-
-.search-box input {
-  width: 100%;
-}
