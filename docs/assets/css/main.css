@@ -2068,48 +2068,35 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   z-index: 999;
 }
 
-
-.search-results .product-card {
-  display: flex;
-  gap: 12px;
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-}
-
-.search-results .product-card:last-child {
-  border-bottom: none;
-}
-
-/* ===== SEARCH DROPDOWN FIX ===== */
 .search-results .product-card {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   padding: 10px;
   border-radius: 10px;
-  border: none;
-  box-shadow: none;
+  transition: background .15s ease;
 }
 
-/* ทำให้รูปเล็กลง */
+.search-results .product-card:hover {
+  background: #f3f6ff;
+}
+
+/* รูป */
 .search-results .product-card .img {
-  width: 70px !important;
-  height: 70px !important;
-  aspect-ratio: 1 / 1 !important;
-  flex: 0 0 70px;
-  margin: 0;
+  width: 60px !important;
+  height: 60px !important;
+  flex: 0 0 60px;
 }
 
-/* ยกเลิก layout grid ปกติ */
+/* ชื่อ */
 .search-results .product-card .name {
-  min-height: unset;
   font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
 }
 
-.search-results .product-card .price {
-  font-size: 14px;
-  margin-left: auto;
-}
+
+
 
 /* ให้ header มี 3 โซน */
 .header {
@@ -2146,4 +2133,14 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   overflow-y: auto;
   padding: 12px;
   z-index: 999;
+}
+.header-phone span {
+  white-space: nowrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
 }
