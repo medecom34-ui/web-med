@@ -708,6 +708,67 @@ window.addEventListener("click", (e) => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
+/* =========================
+   SEARCH (HEADER)
+========================= */
+
+const searchInput = document.getElementById("searchInput");
+const searchBtn   = document.getElementById("searchBtn");
+const resultBox   = document.getElementById("searchResultsInline");
+
+if (searchInput && searchBtn && resultBox) {
+
+  async function doSearch() {
+    const q = searchInput.value.trim();
+    if (!q) return;
+
+    try {
+      const res = await fetch(`${API_BASE}/api/products/search?q=${encodeURIComponent(q)}`);
+      const json = await res.json();
+
+      if (json.success && json.data.length > 0) {
+        resultBox.innerHTML = json.data.map(p => {
+          const href = `product.html?slug=${encodeURIComponent(p.slug || "")}`;
+          const imgStyle = p.imageUrl
+            ? `style="background-image:url('${optimizeImg(p.imageUrl, 80)}')"`
+            : "";
+
+          return `
+            <div class="search-item">
+              <a href="${href}" class="search-thumb" ${imgStyle}></a>
+              <a href="${href}" class="search-name">${p.name}</a>
+            </div>
+          `;
+        }).join("");
+      } else {
+        resultBox.innerHTML = "<p style='padding:12px'>ไม่พบสินค้า</p>";
+      }
+
+      resultBox.classList.remove("hidden");
+
+    } catch (err) {
+      console.error("Search error:", err);
+    }
+  }
+
+  searchBtn.addEventListener("click", doSearch);
+
+  searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") doSearch();
+  });
+
+  // คลิกที่อื่นให้ปิด dropdown
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-box")) {
+      resultBox.classList.add("hidden");
+    }
+  });
+
+}
+
+
+
+
 loadCategoriesFromApi().catch((err) => {
   console.error("โหลดหมวดหมู่ไม่สำเร็จ:", err);
 });
