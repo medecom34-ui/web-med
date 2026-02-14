@@ -1,0 +1,82 @@
+/* =========================================
+   ORDERS PAGE — MOBILE ONLY
+   แก้เฉพาะ header มือถือ
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  /* -------------------------------
+     RESET กันล้น
+  -------------------------------- */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* -------------------------------
+     HEADER 2 แถว
+  -------------------------------- */
+  header.header {
+    display: flex;
+    flex-wrap: wrap;                /* ให้ขึ้นบรรทัดใหม่ */
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 12px !important;
+  }
+
+  /* แถวบนซ้าย: HOME + LINE + PHONE */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    order: 1;
+  }
+
+  /* แถวบนขวา: 🚚 + 🛒 */
+  .header-icons {
+    display: flex !important;       /* บังคับไม่ให้หาย */
+    align-items: center;
+    gap: 8px;
+    order: 2;
+  }
+
+  /* -------------------------------
+     ปรับขนาดปุ่ม
+  -------------------------------- */
+
+  .nav-pill {
+    padding: 6px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .header-icon {
+    padding: 6px 8px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ซ่อนข้อความเบอร์ เหลือไอคอน */
+  .header-phone span {
+    display: none;
+  }
+
+  /* ไอคอนรถ */
+  .icon-transport {
+    display: inline-block !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+  }
+
+  /* badge */
+  .header-icons .badge {
+    min-width: 18px;
+    height: 18px;
+    font-size: 11px;
+    line-height: 18px;
+  }
+
+}
