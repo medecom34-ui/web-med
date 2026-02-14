@@ -339,7 +339,6 @@ $("#addCart").onclick = () => {
     return;
   }
   const qty = Number($("#qty").value || 1);
-  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   
   const variant = selectedVariant || null;
   const key = variant
@@ -374,11 +373,9 @@ $("#addCart").onclick = () => {
     image: firstImg,
   };
 
-  if (idx > -1) { cart[idx].qty += qty; }
-  else cart.push(item);
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  window.dispatchEvent(new Event("cart:changed"));
+  if (window.Cart && typeof Cart.add === "function") {
+    Cart.add(item);
+  }
   alert("เพิ่มสินค้าในตะกร้าแล้ว");
 };
 

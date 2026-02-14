@@ -23,11 +23,29 @@
     count() { return this.load().reduce((a, i) => a + (i.qty||0), 0); },
     total() { return this.load().reduce((a, i) => a + (i.qty||0) * (i.price||0), 0); },
     add(item) {
-      const c = this.load();
-      const idx = c.findIndex(x => x.key === item.key);
-      if (idx > -1) c[idx].qty += item.qty; else c.push(item);
-      this.save(c);
-    },
+  const c = this.load();
+
+  // ถ้าไม่มี key ให้สร้างจาก slug + variantId
+  if (!item.key) {
+    item.key = item.variantId
+      ? `${item.slug}__v${item.variantId}`
+      : item.slug;
+  }
+
+  const idx = c.findIndex(x => x.key === item.key);
+
+  if (idx > -1) {
+    c[idx].qty += item.qty || 1;
+  } else {
+    c.push({
+      ...item,
+      qty: item.qty || 1
+    });
+  }
+
+  this.save(c);
+}
+,
     update(key, qty) {
       const c = this.load();
       const i = c.findIndex(x => x.key === key);
