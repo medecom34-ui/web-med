@@ -1,6 +1,6 @@
 /* =================================================
-   PRODUCT DETAIL — MOBILE ONLY (HEADER FIXED)
-   ไม่กระทบ desktop
+   PRODUCT DETAIL — MOBILE ONLY (FINAL TUNED)
+   ไม่กระทบ desktop / หน้าอื่น
    ================================================= */
 @media (max-width: 768px) {
 
@@ -12,89 +12,8 @@
     overflow-x: hidden;
   }
 
-  /* =========================================
-     🔥 MOBILE HEADER (เหมือน HOME)
-     ========================================= */
-
-  header.header{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    justify-content:space-between;
-    padding:8px 10px !important;
-    gap:6px;
-  }
-
-  .header-left{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    order:1;
-  }
-
-  .header-icons{
-    display:flex !important;
-    align-items:center;
-    gap:6px;
-    order:2;
-  }
-
-  /* ดัน search ลงล่าง */
-  .header-search{
-    order:3;
-    width:100%;
-    margin-top:8px;
-  }
-
-  .header-search .search-box{
-    display:flex;
-    gap:6px;
-    width:100%;
-  }
-
-  .header-search input{
-    flex:1;
-    height:38px;
-    font-size:14px;
-  }
-
-  .header-search button{
-    height:38px;
-    padding:0 12px;
-  }
-
-  .header-phone span{
-    display:none;
-  }
-
-  .nav-pill{
-    padding:6px 10px;
-    font-size:13px;
-    white-space:nowrap;
-  }
-
-  .header-icon{
-    padding:6px 8px;
-    font-size:18px;
-    display:flex;
-    align-items:center;
-  }
-
-  .icon-transport{
-    display:inline-block !important;
-    font-size:20px !important;
-    line-height:1 !important;
-  }
-
-  .header-icons .badge{
-    min-width:18px;
-    height:18px;
-    font-size:11px;
-    line-height:18px;
-  }
-
   /* ===============================
-     BREADCRUMB
+     BREADCRUMB — 1 บรรทัด / เล็ก
      =============================== */
   .breadcrumb {
     margin-bottom: 6px;
@@ -148,7 +67,7 @@
   }
 
   /* ===============================
-     PRODUCT INFO
+     PRODUCT INFO CARD
      =============================== */
   .product-info .info-card {
     padding: 16px;
@@ -156,9 +75,9 @@
   }
 
   .product-info .prod-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
-    line-height: 1.3;
+    line-height: 1.25;
     color: #2563eb;
     margin-bottom: 6px;
   }
@@ -169,36 +88,43 @@
   }
 
   .product-info .prod-price {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
     margin: 8px 0 12px;
   }
 
-  /* VARIANTS */
+  /* ===============================
+     VARIANT OPTIONS — ชิดขึ้นจริง
+     =============================== */
   .product-info .option-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 8px;
-    row-gap: 6px;
+    column-gap: 8px;  
+    row-gap: 4px;      
     margin-top: 6px;
   }
 
   .product-info .variant-label {
     font-size: 12px;
-    padding: 6px 8px;
+    padding: 5px 8px;  
     border-radius: 8px;
     text-align: center;
   }
 
-  /* BUY ROW */
+  /* ===============================
+     BUY ROW — qty + ปุ่ม อยู่ติดกัน
+     =============================== */
   .product-info .buy-row {
-    display: inline-flex;
+    display: inline-flex;     
     align-items: center;
-    gap: 8px;
+    gap: 8px;                 
     margin-top: 14px;
-    flex-wrap:wrap;
+    width: auto;
   }
 
+  /* ===============================
+     QTY
+     =============================== */
   .product-info .qty-group {
     display: inline-flex;
     align-items: center;
@@ -227,22 +153,31 @@
     outline: none;
   }
 
+  /* ===============================
+     ADD TO CART — สั้น + ชิด qty
+     =============================== */
   .product-info #addCart {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     height: 34px;
     padding: 0 14px;
     font-size: 13px;
     font-weight: 700;
+
     background: #3b82f6;
     color: #fff;
     border: none;
     border-radius: 999px;
+
+    width: auto;
     white-space: nowrap;
   }
 
-  /* DESCRIPTION */
+  /* ===============================
+     DESCRIPTION
+     =============================== */
   .product-desc-box {
     padding: 14px;
     border-radius: 16px;
@@ -258,5 +193,110 @@
     font-size: 14px;
     line-height: 1.6;
   }
+
+  .icon-transport{
+  display:inline-block !important;
+  font-size:20px !important;
+  line-height:1 !important;
+}
+
+
+.category-layout > aside .filter-card{
+  max-height:70vh;
+  overflow-y:auto;
+}
+
+
+#productGrid .cart-fab{
+  width:36px;
+  height:36px;
+  right:8px;
+  bottom:8px;
+}
+
+
+
+header.header{
+  display:flex;
+  flex-wrap:wrap;                 /* ให้ขึ้นบรรทัดใหม่ได้ */
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 10px !important;
+  gap:6px;
+}
+
+/* แถวบน: HOME / LINE / PHONE */
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  order:1;
+}
+
+/* แถวบนขวา: 🚚 / 🛒 */
+.header-icons{
+  display:flex !important;
+  align-items:center;
+  gap:6px;
+  order:2;
+}
+
+/* 🔥 ดันช่องค้นหาลงแถวล่าง */
+.header-search{
+  order:3;
+  width:100%;
+  margin-top:8px;
+}
+
+.header-search .search-box{
+  display:flex;
+  gap:6px;
+  width:100%;
+}
+
+.header-search input{
+  flex:1;
+  height:38px;
+  font-size:14px;
+}
+
+.header-search button{
+  height:38px;
+  padding:0 12px;
+}
+
+/* ซ่อนข้อความเบอร์ เหลือไอคอน */
+.header-phone span{
+  display:none;
+}
+
+/* ปรับขนาดปุ่ม */
+.nav-pill{
+  padding:6px 10px;
+  font-size:13px;
+  white-space:nowrap;
+}
+
+.header-icon{
+  padding:6px 8px;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+}
+
+/* 🚚 ไอคอนรถ */
+.icon-transport{
+  display:inline-block !important;
+  font-size:20px !important;
+  line-height:1 !important;
+}
+
+/* badge */
+.header-icons .badge{
+  min-width:18px;
+  height:18px;
+  font-size:11px;
+  line-height:18px;
+}
 
 }
