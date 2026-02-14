@@ -62,7 +62,6 @@ function mapProduct(p) {
     sku: p.sku || p.code || null,
     priceTHB: p.defaultPrice ?? p.price ?? 0,
     imageUrl: p.imageUrl || null,
-    variantId: p.defaultVariantId || p.variantId || null,
   };
 }
 
@@ -361,7 +360,6 @@ document.addEventListener("click", (e) => {
 });
 
 
-
 window.addToCart = (slug) => {
   const products = window.allProducts || [];
   const item = products.find((p) => p.slug === slug);
@@ -369,12 +367,7 @@ window.addToCart = (slug) => {
 
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-  // ⭐ ใช้ variantId ถ้ามี
-  const variantId = item.variantId || null;
-
-  const key = variantId
-    ? `${slug}__v${variantId}`
-    : slug;
+  const key = slug; // ต้องตรงกับ product.js กรณีไม่มี variant
 
   const idx = cart.findIndex((c) => c.key === key);
 
@@ -382,7 +375,7 @@ window.addToCart = (slug) => {
     key,
     id: item.id,
     productId: item.id,
-    variantId: variantId,
+    variantId: null,
     slug: item.slug,
     name: item.name,
     option: null,
@@ -393,10 +386,15 @@ window.addToCart = (slug) => {
     image: item.imageUrl || null,
   };
 
-  if (idx > -1) cart[idx].qty += 1;
-  else cart.push(cartItem);
+  if (idx > -1) {
+    cart[idx].qty += 1;
+  } else {
+    cart.push(cartItem);
+  }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   window.dispatchEvent(new Event("cart:changed"));
   alert("เพิ่มลงตะกร้าแล้ว");
 };
+
+
