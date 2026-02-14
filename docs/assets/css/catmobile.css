@@ -14,6 +14,90 @@
   }
 
   /* =========================
+     🔥 MOBILE HEADER FIX
+     ========================= */
+
+  header.header{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 10px !important;
+    gap:6px;
+  }
+
+  /* แถวบนซ้าย */
+  .header-left{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    order:1;
+  }
+
+  /* แถวบนขวา */
+  .header-icons{
+    display:flex !important;
+    align-items:center;
+    gap:6px;
+    order:2;
+  }
+
+  /* 🔥 ดันช่องค้นหาลงล่าง */
+  .header-search{
+    order:3;
+    width:100%;
+    margin-top:8px;
+  }
+
+  .header-search .search-box{
+    display:flex;
+    gap:6px;
+    width:100%;
+  }
+
+  .header-search input{
+    flex:1;
+    height:38px;
+    font-size:14px;
+  }
+
+  .header-search button{
+    height:38px;
+    padding:0 12px;
+  }
+
+  /* ซ่อนข้อความเบอร์ */
+  .header-phone span{
+    display:none;
+  }
+
+  .nav-pill{
+    padding:6px 10px;
+    font-size:13px;
+    white-space:nowrap;
+  }
+
+  .header-icon{
+    padding:6px 8px;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+  }
+
+  .icon-transport{
+    display:inline-block !important;
+    font-size:20px !important;
+    line-height:1 !important;
+  }
+
+  .header-icons .badge{
+    min-width:18px;
+    height:18px;
+    font-size:11px;
+    line-height:18px;
+  }
+
+  /* =========================
      BREADCRUMB
      ========================= */
   .breadcrumb .container{
@@ -23,30 +107,28 @@
   }
 
   /* =========================
-     LAYOUT (CRITICAL FIX)
+     LAYOUT FIX
      ========================= */
 
-  /* ฆ่า grid desktop */
   .category-layout{
     display:block !important;
   }
 
-  /* 🔥 บังคับเปิด aside กลับมา */
   .category-layout > aside{
-    display:block !important;      /* ⭐ สำคัญสุด */
+    display:block !important;
     width:100% !important;
     padding:0 16px;
     margin:0 0 16px;
   }
 
-  /* filter card แบบ mobile */
   .category-layout > aside .filter-card{
     display:block !important;
     padding:14px;
     border-radius:16px;
+    max-height:70vh;
+    overflow-y:auto;
   }
 
-  /* content */
   .category-layout > section{
     width:100%;
     padding:0 16px;
@@ -73,7 +155,7 @@
   }
 
   /* =========================
-     PRODUCT GRID (เหมือน HOME)
+     PRODUCT GRID
      ========================= */
 
   #productGrid{
@@ -84,10 +166,8 @@
   }
 
   #productGrid > .product-card{
-    display:block !important;
     width:100% !important;
     max-width:none !important;
-    flex:none !important;
   }
 
   #productGrid .product-card{
@@ -109,27 +189,12 @@
   #productGrid .product-card .price{
     font-size:14px;
   }
-  
 
-.icon-transport{
-  display:inline-block !important;
-  font-size:20px !important;
-  line-height:1 !important;
-}
-
-
-.category-layout > aside .filter-card{
-  max-height:70vh;
-  overflow-y:auto;
-}
-
-
-#productGrid .cart-fab{
-  width:36px;
-  height:36px;
-  right:8px;
-  bottom:8px;
-}
-
+  #productGrid .cart-fab{
+    width:36px;
+    height:36px;
+    right:8px;
+    bottom:8px;
+  }
 
 }
