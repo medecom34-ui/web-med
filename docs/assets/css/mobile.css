@@ -80,7 +80,6 @@
 
   .category-scroll{
     overflow-x:auto;
-    overflow-y:visible;
     -webkit-overflow-scrolling:touch;
   }
 
@@ -96,7 +95,6 @@
     gap:12px;
     padding:12px 16px;
     width:max-content;
-    height:auto !important;
   }
 
   #category-row .cat{
@@ -105,7 +103,6 @@
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:flex-start;
     padding:8px 6px;
     background:#fff;
     border-radius:14px;
@@ -116,7 +113,6 @@
     width:40px !important;
     height:40px !important;
     margin-bottom:6px;
-    flex-shrink:0;
   }
 
   #category-row .cat__name{
@@ -130,27 +126,46 @@
   }
 
   /* =========================================
-     🔥 MOBILE HEADER FIX (ปุ่มไม่หายแน่นอน)
+     🔥 MOBILE HEADER — ALL BUTTONS ONE ROW
      ========================================= */
 
   header.header{
     display:flex;
-    flex-direction:column;   /* แยกเป็น 2 แถว */
-    align-items:stretch;
-    padding:8px 12px !important;
-    gap:8px;
+    align-items:center;
+    justify-content:flex-start;
+    gap:6px;
+    padding:8px 10px !important;
+    flex-wrap:nowrap;
+    overflow:hidden;
   }
 
-  /* แถวบน: HOME + LINE + PHONE */
+  /* รวม HOME + LINE + PHONE */
   .header-left{
     display:flex;
     align-items:center;
     gap:6px;
-    width:100%;
-    max-width:none;          /* เอาการบีบออก */
-    overflow:visible;        /* ไม่ตัดปุ่ม */
+    flex:0 0 auto;
   }
 
+  /* เอารถ + ตะกร้า มาอยู่แถวเดียวกัน */
+  .header-icons{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex:0 0 auto;
+  }
+
+  /* ทำให้ทุกปุ่มเรียงต่อกัน */
+  header.header > *{
+    flex-shrink:0;
+  }
+
+  /* ซ่อนข้อความโทร เหลือไอคอน */
+  .header-phone span{
+    display:none;
+  }
+
+  /* ปรับขนาดปุ่ม */
   .nav-pill{
     padding:6px 10px;
     font-size:13px;
@@ -159,40 +174,18 @@
 
   .header-icon{
     padding:6px 8px;
+    font-size:18px;
     display:flex;
     align-items:center;
     gap:4px;
   }
 
-  /* ซ่อนเฉพาะข้อความโทรศัพท์ */
-  .header-phone span{
-    display:none;
-  }
-
-  /* แถวล่าง: 🚚 + 🛒 */
-  .header-icons{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-    width:100%;
-  }
-
-  .header-icons .header-icon{
-    font-size:20px;
-    padding:6px 8px;
-  }
-
+  /* badge */
   .header-icons .badge{
     min-width:18px;
     height:18px;
     font-size:11px;
     line-height:18px;
-  }
-
-  .icon-transport{
-    display:inline-block !important;
-    font-size:20px !important;
-    line-height:1 !important;
   }
 
 }
