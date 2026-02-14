@@ -370,15 +370,25 @@ window.addToCart = (keyOrSlug) => {
   const price = item.priceTHB;
   const sku = item.sku || item.code || null;
 
-  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const idx = cart.findIndex((x) => x.key === key);
+  const cartItem = {
+    key,
+    id: item.id,
+    slug: item.slug,
+    name: item.name,
+    option: null,
+    variantId: null,
+    qty: 1,
+    price,
+    code: sku,
+    sku,
+    image: item.imageUrl || null,
+  };
 
-  if (idx > -1) cart[idx].qty += 1;
-  else cart.push({ key, id: key, name: item.name, option: null, qty: 1, price,code: sku || null,
-  sku: sku,});
+  if (window.Cart && typeof Cart.add === "function") {
+    Cart.add(cartItem);
+  }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
-  window.dispatchEvent(new Event("cart:changed"));
   alert("เพิ่มลงตะกร้าแล้ว");
 };
+
 
