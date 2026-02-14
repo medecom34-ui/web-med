@@ -360,43 +360,40 @@ document.addEventListener("click", (e) => {
 });
 
 
-window.addToCart = (keyOrSlug) => {
+window.addToCart = (slug) => {
   const products = window.allProducts || [];
-  const item = products.find((p) => p.slug === keyOrSlug || p.id === keyOrSlug);
+  const item = products.find((p) => p.slug === slug);
   if (!item) return;
 
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-  // ใช้ slug เป็น key เหมือน product.js
-  const key = item.slug;
+  const key = slug; // ต้องตรงกับ product.js กรณีไม่มี variant
 
   const idx = cart.findIndex((c) => c.key === key);
 
-  const price = Number(item.priceTHB) || 0;
-  const sku = item.sku || null;
+  const cartItem = {
+    key,
+    id: item.id,
+    productId: item.id,
+    variantId: null,
+    slug: item.slug,
+    name: item.name,
+    option: null,
+    qty: 1,
+    price: Number(item.priceTHB) || 0,
+    code: item.sku || null,
+    sku: item.sku || null,
+    image: item.imageUrl || null,
+  };
 
   if (idx > -1) {
     cart[idx].qty += 1;
   } else {
-    cart.push({
-      key,
-      id: item.id,
-      productId: item.id,
-      variantId: null,
-      slug: item.slug,
-      name: item.name,
-      option: null,
-      qty: 1,
-      price,
-      code: sku,
-      sku,
-      image: item.imageUrl || null,
-    });
+    cart.push(cartItem);
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
   window.dispatchEvent(new Event("cart:changed"));
-
   alert("เพิ่มลงตะกร้าแล้ว");
 };
 
