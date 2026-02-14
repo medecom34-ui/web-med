@@ -416,17 +416,31 @@ async function doSearch() {
   const res = await fetch(`${API_BASE}/api/products/search?q=${encodeURIComponent(q)}`);
   const json = await res.json();
 
-  if (json.success) {
-    const resultBox = document.getElementById("searchResultsInline");
+  const resultBox = document.getElementById("searchResultsInline");
+
+  if (json.success && json.data.length > 0) {
     resultBox.innerHTML = renderCards(json.data);
-    resultBox.classList.remove("hidden");
+  } else {
+    resultBox.innerHTML = "<p style='padding:12px'>ไม่พบสินค้า</p>";
   }
+
+  resultBox.classList.remove("hidden");
 }
+
 
 
 searchBtn.addEventListener("click", doSearch);
 searchInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") doSearch();
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("#searchBar") &&
+      !e.target.closest("#searchToggle")) {
+    document
+      .getElementById("searchResultsInline")
+      .classList.add("hidden");
+  }
 });
 
 
