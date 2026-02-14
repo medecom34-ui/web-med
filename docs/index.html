@@ -163,8 +163,14 @@
       <input type="text" class="search__input" placeholder="ค้นหาสินค้า อุปกรณ์การแพทย์..." />
       <span class="search__icon">🔍</span>
     </div> -->
+    
 
     <div class="header-icons">
+
+      <button id="searchToggle" class="header-icon" title="ค้นหา">
+        🔍
+      </button>
+
       <a class="header-icon" href="orders.html" title="สถานะคำสั่งซื้อ">
         <span class="icon-transport">🚚</span>
         <span id="statusBadge" class="badge">0</span>
@@ -176,6 +182,12 @@
     </div>
 </header>
 
+<div id="searchBar" class="search-bar hidden">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="ค้นหาสินค้า..." />
+    <button id="searchBtn">ค้นหา</button>
+  </div>
+</div>
 
  
   <section class="banner">

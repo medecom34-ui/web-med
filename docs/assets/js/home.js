@@ -397,4 +397,28 @@ window.addToCart = (slug) => {
   alert("เพิ่มลงตะกร้าแล้ว");
 };
 
+const searchToggle = document.getElementById("searchToggle");
+const searchBar = document.getElementById("searchBar");
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+searchToggle.addEventListener("click", () => {
+  searchBar.classList.toggle("hidden");
+  if (!searchBar.classList.contains("hidden")) {
+    searchInput.focus();
+  }
+});
+
+function doSearch() {
+  const q = searchInput.value.trim();
+  if (!q) return;
+  window.location.href = `search.html?q=${encodeURIComponent(q)}`;
+}
+
+searchBtn.addEventListener("click", doSearch);
+searchInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") doSearch();
+});
+
+
 
