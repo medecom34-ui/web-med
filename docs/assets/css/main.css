@@ -2068,3 +2068,34 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 .search-results .product-card:last-child {
   border-bottom: none;
 }
+
+/* ===== SEARCH DROPDOWN FIX ===== */
+.search-results .product-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: none;
+}
+
+/* ทำให้รูปเล็กลง */
+.search-results .product-card .img {
+  width: 70px !important;
+  height: 70px !important;
+  aspect-ratio: 1 / 1 !important;
+  flex: 0 0 70px;
+  margin: 0;
+}
+
+/* ยกเลิก layout grid ปกติ */
+.search-results .product-card .name {
+  min-height: unset;
+  font-size: 14px;
+}
+
+.search-results .product-card .price {
+  font-size: 14px;
+  margin-left: auto;
+}
