@@ -422,39 +422,18 @@ async function doSearch() {
         : "";
 
       return `
-        <div style="
-          display:flex;
-          align-items:center;
-          gap:12px;
-          padding:10px 8px;
-          border-radius:10px;
-        " onmouseover="this.style.background='#f3f6ff'"
-           onmouseout="this.style.background='transparent'">
+  <div class="search-item">
+    <a href="${href}"
+       class="search-thumb"
+       style="background-image:url('${optimizeImg(p.imageUrl, 80)}')">
+    </a>
 
-          <a href="${href}"
-             style="
-               width:60px;
-               height:60px;
-               background-size:cover;
-               background-position:center;
-               background-repeat:no-repeat;
-               border-radius:8px;
-               flex:0 0 60px;
-               display:block;
-             "
-             ${img}></a>
+    <a href="${href}" class="search-name">
+      ${p.name}
+    </a>
+  </div>
+`;
 
-          <a href="${href}"
-             style="
-               font-size:14px;
-               font-weight:600;
-               color:#0f172a;
-               text-decoration:none;
-             ">
-             ${p.name}
-          </a>
-        </div>
-      `;
     }).join("");
 
   } else {
