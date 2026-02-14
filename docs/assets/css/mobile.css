@@ -69,7 +69,7 @@
   }
 
   /* =========================
-     CATEGORY STRIP (HOME) ✅ FIX
+     CATEGORY STRIP (HOME)
      ========================= */
 
   .category-strip{
@@ -88,39 +88,30 @@
     display:none;
   }
 
-  /* 🔒 ล็อกโครง grid ให้เสถียร */
   #category-row{
     display:grid !important;
     grid-auto-flow:column;
-
-    /* 🔑 สำคัญ: ล็อกความสูงแถว */
     grid-template-rows:repeat(2, auto);
     grid-auto-columns:84px;
-
     gap:12px;
     padding:12px 16px;
-
     width:max-content;
-    height:auto !important; /* 96*2 + gap */
+    height:auto !important;
   }
 
-  /* การ์ดหมวดหมู่ */
   #category-row .cat{
     width:84px;
     min-height:96px;
-
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:flex-start;
-
     padding:8px 6px;
     background:#fff;
     border-radius:14px;
     box-shadow:0 2px 8px rgba(0,0,0,.06);
   }
 
-  /* รูป */
   #category-row .cat__img{
     width:40px !important;
     height:40px !important;
@@ -128,67 +119,67 @@
     flex-shrink:0;
   }
 
-  /* ชื่อ */
   #category-row .cat__name{
     font-size:11px;
     line-height:1.25;
     text-align:center;
-
     display:-webkit-box;
     -webkit-line-clamp:2;
     -webkit-box-orient:vertical;
     overflow:hidden;
   }
-  
-  
+
+  /* =========================================
+     🔥 MOBILE HEADER FIX (ปุ่มไม่หายแน่นอน)
+     ========================================= */
+
   header.header{
     display:flex;
-    align-items:center;
-    justify-content:space-between;   /* ⭐ แยกซ้าย-ขวาชัด */
-    min-height:56px;
-    padding:8px 10px !important;
+    flex-direction:column;   /* แยกเป็น 2 แถว */
+    align-items:stretch;
+    padding:8px 12px !important;
     gap:8px;
   }
 
-  /* ซ้าย: HOME + LINE + PHONE */
+  /* แถวบน: HOME + LINE + PHONE */
   .header-left{
     display:flex;
     align-items:center;
     gap:6px;
-
-    flex:0 1 auto;                   /* ⭐ สำคัญ: ไม่กินเต็ม */
-    max-width:calc(100% - 96px);     /* ⭐ เผื่อที่ให้รถเข็น */
-    overflow:hidden;
-  }
-
-  /* ซ่อนข้อความ เหลือไอค่อน */
-  .header-icon span{
-    display:none;
+    width:100%;
+    max-width:none;          /* เอาการบีบออก */
+    overflow:visible;        /* ไม่ตัดปุ่ม */
   }
 
   .nav-pill{
-    padding:7px 10px;
+    padding:6px 10px;
     font-size:13px;
     white-space:nowrap;
   }
 
   .header-icon{
     padding:6px 8px;
-  }
-
-  /* ขวา: 🚚 + 🛒 */
-  .header-icons{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:4px;
+  }
 
-    flex:0 0 auto;                  
-    margin-left:auto;             
+  /* ซ่อนเฉพาะข้อความโทรศัพท์ */
+  .header-phone span{
+    display:none;
+  }
+
+  /* แถวล่าง: 🚚 + 🛒 */
+  .header-icons{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    width:100%;
   }
 
   .header-icons .header-icon{
+    font-size:20px;
     padding:6px 8px;
-    font-size:18px;
   }
 
   .header-icons .badge{
@@ -198,7 +189,7 @@
     line-height:18px;
   }
 
-    .icon-transport{
+  .icon-transport{
     display:inline-block !important;
     font-size:20px !important;
     line-height:1 !important;
