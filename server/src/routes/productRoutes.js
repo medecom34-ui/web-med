@@ -14,6 +14,8 @@ router.get("/:slug", productController.getProductDetail);
 // batch: รับ GET หรือ POST => getProductsBatch
 router.get("/", productController.getProductsBatch);
 router.post("/batch", productController.getProductsBatch);
+router.get("/search", productController.searchProducts);
+
 
 
 

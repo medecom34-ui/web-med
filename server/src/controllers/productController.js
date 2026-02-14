@@ -295,3 +295,33 @@ exports.getNewestProducts = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
+
+
+exports.searchProducts = async (req, res) => {
+  try {
+    const { q } = req.query;
+
+    if (!q || !q.trim()) {
+      return res.json({ success: true, data: [] });
+    }
+
+    const products = await prisma.product.findMany({
+      where: {
+        OR: [
+          { name: { contains: q, mode: "insensitive" } },
+          { code: { contains: q, mode: "insensitive" } },
+          { sku: { contains: q, mode: "insensitive" } }
+        ]
+      },
+      include: {
+        images: true
+      }
+    });
+
+    res.json({ success: true, data: products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Search failed" });
+  }
+};
+
