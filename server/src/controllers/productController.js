@@ -309,7 +309,14 @@ exports.searchProducts = async (req, res) => {
       where: {
         isActive: true,
         OR: [
-          { name: { contains: q, mode: "insensitive" } }
+          { name: { contains: q, mode: "insensitive" } },
+          {
+            variants: {
+              some: {
+                sku: { contains: q, mode: "insensitive" }
+              }
+            }
+          }
         ]
       },
       include: {
