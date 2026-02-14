@@ -125,29 +125,36 @@
     overflow:hidden;
   }
 /* =========================================
-   MOBILE HEADER — SEARCH DOWN
+   MOBILE HEADER FIX (HOME)
    ========================================= */
 @media (max-width:768px){
 
-  /* จัด header เป็น 2 แถว */
+  /* HEADER เป็น 2 แถว */
   header.header{
     display:flex;
-    flex-wrap:wrap;           /* ให้ขึ้นบรรทัดใหม่ได้ */
+    flex-wrap:wrap;
     align-items:center;
-    gap:8px;
+    justify-content:space-between;
     padding:8px 10px !important;
+    gap:6px;
   }
 
-  /* แถวบน: ปุ่มทั้งหมด */
-  .header-left,
-  .header-icons{
+  /* แถวบนรวมทุกปุ่ม */
+  .header-left{
     display:flex;
     align-items:center;
     gap:6px;
     flex:0 0 auto;
   }
 
-  /* ทำให้ทุกปุ่มอยู่แถวบน */
+  .header-icons{
+    display:flex !important;      /* 🔥 บังคับไม่ให้หาย */
+    align-items:center;
+    gap:6px;
+    flex:0 0 auto;
+  }
+
+  /* ทำให้ header-left + header-icons อยู่บรรทัดเดียว */
   .header-left{
     order:1;
   }
@@ -156,11 +163,11 @@
     order:2;
   }
 
-  /* ช่องค้นหาอยู่แถวล่างเต็มความกว้าง */
+  /* 🔥 ช่องค้นหาลงบรรทัดล่างเต็มความกว้าง */
   .search{
-    order:3;                 /* ดันลงล่าง */
+    order:3;
     width:100%;
-    margin-top:6px;
+    margin-top:8px;
   }
 
   .search input,
@@ -179,19 +186,26 @@
     display:none;
   }
 
-  /* ปรับขนาดปุ่ม */
+  /* ปุ่ม HOME */
   .nav-pill{
     padding:6px 10px;
     font-size:13px;
     white-space:nowrap;
   }
 
+  /* ปุ่มทั่วไป */
   .header-icon{
     padding:6px 8px;
     font-size:18px;
     display:flex;
     align-items:center;
-    gap:4px;
+  }
+
+  /* 🚚 ไอคอนรถ */
+  .icon-transport{
+    display:inline-block !important;
+    font-size:20px !important;
+    line-height:1 !important;
   }
 
   /* badge */
@@ -203,4 +217,5 @@
   }
 
 }
+
 }
