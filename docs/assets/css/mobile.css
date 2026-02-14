@@ -124,30 +124,22 @@
     -webkit-box-orient:vertical;
     overflow:hidden;
   }
+/* =========================================
+   MOBILE HEADER — SEARCH DOWN
+   ========================================= */
+@media (max-width:768px){
 
-  /* =========================================
-     🔥 MOBILE HEADER — ALL BUTTONS ONE ROW
-     ========================================= */
-
+  /* จัด header เป็น 2 แถว */
   header.header{
     display:flex;
+    flex-wrap:wrap;           /* ให้ขึ้นบรรทัดใหม่ได้ */
     align-items:center;
-    justify-content:flex-start;
-    gap:6px;
+    gap:8px;
     padding:8px 10px !important;
-    flex-wrap:nowrap;
-    overflow:hidden;
   }
 
-  /* รวม HOME + LINE + PHONE */
-  .header-left{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    flex:0 0 auto;
-  }
-
-  /* เอารถ + ตะกร้า มาอยู่แถวเดียวกัน */
+  /* แถวบน: ปุ่มทั้งหมด */
+  .header-left,
   .header-icons{
     display:flex;
     align-items:center;
@@ -155,12 +147,34 @@
     flex:0 0 auto;
   }
 
-  /* ทำให้ทุกปุ่มเรียงต่อกัน */
-  header.header > *{
-    flex-shrink:0;
+  /* ทำให้ทุกปุ่มอยู่แถวบน */
+  .header-left{
+    order:1;
   }
 
-  /* ซ่อนข้อความโทร เหลือไอคอน */
+  .header-icons{
+    order:2;
+  }
+
+  /* ช่องค้นหาอยู่แถวล่างเต็มความกว้าง */
+  .search{
+    order:3;                 /* ดันลงล่าง */
+    width:100%;
+    margin-top:6px;
+  }
+
+  .search input,
+  .search__input{
+    width:100%;
+    height:38px;
+    font-size:14px;
+  }
+
+  .search button{
+    height:38px;
+  }
+
+  /* ซ่อนข้อความเบอร์ เหลือไอคอน */
   .header-phone span{
     display:none;
   }
@@ -188,4 +202,5 @@
     line-height:18px;
   }
 
+}
 }
