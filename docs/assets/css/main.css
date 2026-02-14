@@ -2055,9 +2055,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   left: 0;
   width: 100%;
 
-  display: flex;             
-  flex-direction: column;     
-  align-items: center;        
+  
 
   background: #fff;
   border-radius: 14px;
@@ -2088,8 +2086,6 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
   border-radius: 10px;
   border: none;
   box-shadow: none;
-  width: 95%;            
-  max-width: 560px;
 }
 
 /* ทำให้รูปเล็กลง */
