@@ -2208,3 +2208,20 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 
+.category-intro {
+  margin-bottom: 20px;
+}
+
+.category-intro h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.category-intro p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #374151;
+}
