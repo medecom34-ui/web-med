@@ -2213,9 +2213,9 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 .category-intro h1 {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 800;
-  color: #1e3a8a;
+  color: #2350cd;
   margin-bottom: 10px;
   line-height: 1.3;
 }
