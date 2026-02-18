@@ -2221,7 +2221,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 .category-intro p {
-  font-size: 17px;
+  font-size: 19px;
   line-height: 1.7;
   color: #374151;
 }
