@@ -503,14 +503,13 @@ function updateTitlesAndBreadcrumb() {
   crumbSub.textContent = sub2Name ? " › " + sub2Name : "";
 
 
-// ===== แสดงคำเปรยเฉพาะหมวดหลัก =====
+// ===== แสดงคำเปรยของหมวดหลักเสมอ =====
 const introBox = document.getElementById("categoryIntro");
 
 if (introBox) {
   const mainNode = getCurrentMainNode();
 
-  // แสดงเฉพาะตอนอยู่หมวดหลัก (ไม่มี sub และ sub2)
-  if (!currentSub && !currentSub2 && mainNode?.description) {
+  if (mainNode?.description) {
     introBox.innerHTML = `
       <h1>${mainNode.name}</h1>
       <p>${mainNode.description}</p>
@@ -519,6 +518,7 @@ if (introBox) {
     introBox.innerHTML = "";
   }
 }
+
 
 
 }
