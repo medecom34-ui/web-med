@@ -462,3 +462,17 @@ document.addEventListener("click", (e) => {
 
 
 
+// FAQ Toggle
+document.addEventListener("click", function (e) {
+  const question = e.target.closest(".faq-question");
+  if (!question) return;
+
+  const item = question.closest(".faq-item");
+
+  // ปิดอันอื่นก่อน (ถ้าต้องการเปิดทีละอัน)
+  document.querySelectorAll(".faq-item").forEach(i => {
+    if (i !== item) i.classList.remove("active");
+  });
+
+  item.classList.toggle("active");
+});
