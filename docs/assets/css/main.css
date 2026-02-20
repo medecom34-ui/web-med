@@ -2202,7 +2202,7 @@ html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,S
 }
 
 .faq-answer {
-  font-size: 18px;
+  font-size: 16px;
   color: #475569;
   line-height: 1.6;
 }
