@@ -1,100 +1,104 @@
-/* =========================================================
-   MOBILE.CSS – CLEAN HEADER + CHECKOUT STEPPER (FULL FILE)
-   ใช้แทนทั้งไฟล์ได้เลย
-   ========================================================= */
+/* =========================
+   CHECKOUT – MOBILE FIX (NEW HEADER VERSION)
+   ========================= */
 
 @media (max-width: 768px) {
 
+  /* กันล้น */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
   /* ================= HEADER ================= */
 
-  header {
-    padding: 10px 14px !important;
-    border-bottom: 1px solid #eee;
+  header.header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px !important;
+    gap: 8px;
   }
 
-  /* แถวบน: สวัสดี + ออกจากระบบ */
-  header .header-top,
-  header .top-row,
-  header > .container:first-child {
+  /* ซ้าย: HOME + LINE + โทร */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    order: 1;
+  }
+
+  /* ขวา: รถ + ตะกร้า */
+  .header-icons {
     display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    margin-bottom: 8px;
+    align-items: center;
+    gap: 10px;
+    order: 2;
   }
 
-  .header-user {
-    font-size: 12px;
-  }
-
-  /* แถวล่าง: HOME + ไอคอนทั้งหมด */
-  .header-left,
-  .header-icons,
-  header > .container:last-child {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    flex-wrap: nowrap !important;
+  /* ❌ ซ่อน search ทั้งหมด */
+  .header-search,
+  .search,
+  #searchBar {
+    display: none !important;
   }
 
   /* HOME */
   .nav-pill {
-    padding: 6px 16px !important;
-    font-size: 13px !important;
-    border-radius: 20px !important;
+    padding: 6px 12px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 
   /* ปุ่มวงกลม LINE / โทร */
   .circle-btn,
   .contact-btn {
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* รถ / ตะกร้า */
+  /* ไอคอนรถ / ตะกร้า */
   .header-icon {
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    position: relative !important;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
   }
 
   /* badge */
-  .badge {
-    position: absolute !important;
-    top: -4px !important;
-    right: -4px !important;
-    font-size: 10px !important;
-    min-width: 16px !important;
-    height: 16px !important;
-    line-height: 16px !important;
-    border-radius: 50% !important;
-  }
-
-  /* ซ่อน search บนมือถือ */
-  .search,
-  #searchBar,
-  .header-search {
-    display: none !important;
+  .header-icons .badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 50%;
   }
 
   /* ================= STEPPER ================= */
 
   .container.stepper {
     max-width: 100%;
-    padding: 0 8px;
+    padding: 0 6px;
   }
 
   .container.stepper.stepper {
     display: flex !important;
     justify-content: center !important;
-    gap: 14px !important;
+    gap: 12px !important;
     margin: 12px 0 !important;
   }
 
