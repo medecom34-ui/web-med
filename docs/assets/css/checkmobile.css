@@ -50,66 +50,72 @@
   }
 
 
-  /* กล่อง header บนสุด */
-  .top-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
+  /* reset */
+  *, *::before, *::after{
+    box-sizing:border-box;
   }
 
-  /* ชื่อ + logout */
-  .top-header .user-info {
-    font-size: 13px;
-    font-weight: 500;
+  html, body{
+    width:100%;
+    overflow-x:hidden;
   }
 
-  .top-header .logout-link {
-    font-size: 12px;
-    color: #007bff;
-    text-decoration: none;
+  /* 🔥 รวม header ทั้งหมดเป็น flex แบบเดียวกับ category */
+  .top-header,
+  .header-actions{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 10px !important;
+    gap:6px;
   }
 
-  /* แถวปุ่มด้านล่าง */
-  .header-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    gap: 10px;
+  /* แถวบน */
+  .top-header{
+    order:1;
   }
 
-  /* กลุ่มซ้าย (Home / Chat / Phone) */
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  /* ซ้าย */
+  .header-left{
+    display:flex;
+    align-items:center;
+    gap:6px;
   }
 
-  /* กลุ่มขวา (Truck / Cart) */
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  /* ขวา (รถ + ตะกร้า) */
+  .header-right{
+    display:flex;
+    align-items:center;
+    gap:6px; /* 🔥 ลดจาก 12 ให้แน่นเหมือนภาพสอง */
   }
 
-  /* ปุ่มวงกลมไอคอน */
-  .icon-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* ปุ่ม HOME */
+  .nav-pill{
+    padding:6px 10px;
+    font-size:13px;
+    white-space:nowrap;
   }
 
-  /* badge ตัวเลข */
-  .icon-btn .badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    font-size: 10px;
-    padding: 2px 5px;
+  /* ปุ่มไอคอน */
+  .icon-btn{
+    position:relative; /* 🔥 สำคัญมาก */
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* badge */
+  .icon-btn .badge{
+    position:absolute;
+    top:-4px;
+    right:-4px;
+    min-width:18px;
+    height:18px;
+    font-size:11px;
+    line-height:18px;
   }
 
 
