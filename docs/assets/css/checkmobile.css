@@ -1,5 +1,5 @@
 /* =========================
-   CHECKOUT – MOBILE HEADER FIX (ROW VERSION)
+   CHECKOUT – MOBILE HEADER CLEAN FIX
    ========================= */
 
 @media (max-width: 768px) {
@@ -8,81 +8,36 @@
     overflow-x: hidden;
   }
 
-  /* ===== HEADER STRUCTURE ===== */
+  /* ===== HEADER ===== */
 
   header.header {
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: column;
     padding: 6px 12px !important;
     gap: 6px;
   }
 
-  /* แถวบน (สวัสดี) */
-  .header-user,
+  /* topbar อยู่บน */
   .topbar {
-    width: 100%;
-    text-align: right;
     font-size: 13px;
   }
 
-  /* ===== แถวล่าง = ปุ่มทั้งหมดแถวเดียว ===== */
-
-  .header-left {
+  /* แถวปุ่มทั้งหมด */
+  .header-left,
+  .header-icons {
     display: flex !important;
     align-items: center;
+  }
+
+  /* รวมให้อยู่แถวเดียว */
+  .header-left {
     gap: 10px;
     width: 100%;
-    flex-wrap: nowrap;
   }
 
-  /* ยกเลิก layout ฝั่งขวา */
   .header-icons {
-    display: contents !important;   /* 🔥 รวมเข้าแถวเดียว */
-  }
-
-  /* ===== HOME ===== */
-  .nav-pill {
-    padding: 6px 14px;
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-  /* ===== ไอคอนวงกลมทั้งหมดให้ขนาดเท่ากัน ===== */
-
-  .circle-btn,
-  .contact-btn,
-  .header-icon {
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    min-height: 40px !important;
-
-    border-radius: 50%;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 0 !important;
-  }
-
-  /* ไอคอนรูปภาพด้านใน */
-  .header-icon img,
-  .circle-btn img,
-  .contact-btn img {
-    width: 20px !important;
-    height: 20px !important;
-    object-fit: contain;
-  }
-
-  /* badge */
-  .badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    min-width: 18px;
-    height: 18px;
-    font-size: 11px;
-    line-height: 18px;
-    border-radius: 50%;
+    margin-left: auto;
+    gap: 10px;
   }
 
   /* ปิด search */
@@ -92,32 +47,50 @@
     display: none !important;
   }
 
-  /* ===== STEPPER ===== */
-
-  .container.stepper {
-    padding: 0 8px;
-    margin: 6px auto 4px !important;
+  /* ===== HOME ===== */
+  .nav-pill {
+    padding: 6px 14px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 
-  .container.stepper.stepper {
+  /* ===== ICON SIZE FIX ===== */
+
+  .header-icon {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    min-height: 40px;
+
+    border-radius: 50%;
     display: flex !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    margin: 4px 0 !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    position: relative;
   }
 
-  .container.stepper .step {
-    font-size: 13px !important;
+  /* SVG ไอคอน */
+  .header-icon svg {
+    width: 20px !important;
+    height: 20px !important;
   }
 
-  .container.stepper .step::before {
-    width: 26px !important;
-    height: 26px !important;
-    font-size: 13px !important;
+  /* emoji ไอคอน */
+  .header-icon span.icon-transport {
+    font-size: 18px;
   }
 
-  .checkout-grid {
-    margin-top: 8px !important;
+  /* badge */
+  .header-icon .badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 50%;
   }
 
 }
