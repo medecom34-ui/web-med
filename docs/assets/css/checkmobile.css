@@ -1,66 +1,11 @@
 /* =========================
-   CHECKOUT – MOBILE FIX (FINAL v2)
-   Stepper 1-2-3 mobile only
+   CHECKOUT – MOBILE FIX COMPLETE
    ========================= */
 
-@media (max-width: 768px) {
+@media (max-width:768px){
 
-  /* container ของ stepper */
-  .container.stepper {
-    max-width: 100%;
-    padding: 0 6px;
-    overflow: hidden;
-  }
+  /* ================= HEADER ================= */
 
-  /* override stepper desktop */
-  .container.stepper.stepper {
-    display: flex !important;
-    justify-content: center !important; /* 🔹 รวมเข้าหากัน */
-    gap: 10px !important;               /* 🔹 ระยะห่างใหม่ */
-    margin: 10px 0 !important;
-  }
-
-  /* step แต่ละอัน */
-  .container.stepper .step {
-    flex: 0 0 auto;                     /* ❌ ไม่ให้ถูกบีบ */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 6px !important;
-    font-size: 12px !important;
-    font-weight: 600;
-
-    padding: 4px 6px;
-    white-space: nowrap;
-  }
-
-  /* วงกลมตัวเลข */
-  .container.stepper .step::before {
-    width: 24px !important;
-    height: 24px !important;
-    min-width: 24px;                    /* 🔹 กันเลขถูกบีบ */
-    min-height: 24px;
-
-    font-size: 12px !important;
-    line-height: 24px;
-    text-align: center;
-
-    flex-shrink: 0;
-  }
-
-
-  /* reset */
-  *, *::before, *::after{
-    box-sizing:border-box;
-  }
-
-  html, body{
-    width:100%;
-    overflow-x:hidden;
-  }
-
-  /* 🔥 รวม header ทั้งหมดเป็น flex แบบเดียวกับ category */
   .top-header,
   .header-actions{
     display:flex;
@@ -70,35 +15,20 @@
     gap:6px;
   }
 
-  /* แถวบน */
-  .top-header{
-    order:1;
-  }
-
-  /* ซ้าย */
   .header-left{
     display:flex;
     align-items:center;
     gap:6px;
   }
 
-  /* ขวา (รถ + ตะกร้า) */
   .header-right{
     display:flex;
     align-items:center;
-    gap:6px; /* 🔥 ลดจาก 12 ให้แน่นเหมือนภาพสอง */
+    gap:6px;
   }
 
-  /* ปุ่ม HOME */
-  .nav-pill{
-    padding:6px 10px;
-    font-size:13px;
-    white-space:nowrap;
-  }
-
-  /* ปุ่มไอคอน */
   .icon-btn{
-    position:relative; /* 🔥 สำคัญมาก */
+    position:relative;
     width:34px;
     height:34px;
     border-radius:50%;
@@ -107,7 +37,6 @@
     justify-content:center;
   }
 
-  /* badge */
   .icon-btn .badge{
     position:absolute;
     top:-4px;
@@ -118,6 +47,34 @@
     line-height:18px;
   }
 
+  /* ================= STEPPER ================= */
 
-  
+  .container.stepper{
+    display:flex !important;
+    justify-content:center !important;
+    gap:12px !important;
+    margin:14px 0 !important;
+    padding:0 10px;
+  }
+
+  .container.stepper .step{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+
+  .container.stepper .step::before{
+    width:26px;
+    height:26px;
+    min-width:26px;
+    min-height:26px;
+    font-size:13px;
+    line-height:26px;
+    text-align:center;
+    flex-shrink:0;
+  }
+
 }
