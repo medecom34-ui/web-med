@@ -1,6 +1,13 @@
 // assets/js/success.js
 (function(){
   const $ = s => document.querySelector(s);
+
+    if (window.Cart && Cart.clear) {
+    Cart.clear();
+  } else {
+    localStorage.removeItem("cart");
+  }
+
   const params = new URLSearchParams(location.search);
 
   const orderNumber =
