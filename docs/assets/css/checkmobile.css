@@ -1,5 +1,5 @@
 /* =========================
-   CHECKOUT – MOBILE FIX (NEW HEADER VERSION)
+   CHECKOUT – MOBILE FIX (TIGHT VERSION)
    ========================= */
 
 @media (max-width: 768px) {
@@ -20,11 +20,10 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 12px !important;
-    gap: 8px;
+    padding: 6px 12px !important;   /* ลด padding */
+    gap: 6px;
   }
 
-  /* ซ้าย: HOME + LINE + โทร */
   .header-left {
     display: flex;
     align-items: center;
@@ -32,7 +31,6 @@
     order: 1;
   }
 
-  /* ขวา: รถ + ตะกร้า */
   .header-icons {
     display: flex !important;
     align-items: center;
@@ -40,21 +38,18 @@
     order: 2;
   }
 
-  /* ❌ ซ่อน search ทั้งหมด */
   .header-search,
   .search,
   #searchBar {
     display: none !important;
   }
 
-  /* HOME */
   .nav-pill {
     padding: 6px 12px;
     font-size: 13px;
     white-space: nowrap;
   }
 
-  /* ปุ่มวงกลม LINE / โทร */
   .circle-btn,
   .contact-btn {
     width: 36px;
@@ -65,7 +60,6 @@
     justify-content: center;
   }
 
-  /* ไอคอนรถ / ตะกร้า */
   .header-icon {
     width: 38px;
     height: 38px;
@@ -76,7 +70,6 @@
     position: relative;
   }
 
-  /* badge */
   .header-icons .badge {
     position: absolute;
     top: -4px;
@@ -92,33 +85,46 @@
 
   .container.stepper {
     max-width: 100%;
-    padding: 0 6px;
+    padding: 0 8px;
+    margin: 6px auto 4px !important;  /* 🔥 บีบระยะบนล่าง */
   }
 
   .container.stepper.stepper {
     display: flex !important;
     justify-content: center !important;
-    gap: 12px !important;
-    margin: 12px 0 !important;
+    gap: 10px !important;
+    margin: 4px 0 !important;          /* 🔥 จาก 12px → 4px */
   }
 
   .container.stepper .step {
     display: flex;
     align-items: center;
     gap: 6px !important;
-    font-size: 12px !important;
+    font-size: 13px !important;
     font-weight: 600;
     white-space: nowrap;
   }
 
   .container.stepper .step::before {
-    width: 24px !important;
-    height: 24px !important;
-    min-width: 24px;
-    min-height: 24px;
-    font-size: 12px !important;
-    line-height: 24px;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px;
+    min-height: 26px;
+    font-size: 13px !important;
+    line-height: 26px;
     text-align: center;
+  }
+
+  /* ================= FIX GAP BEFORE FORM ================= */
+
+  /* บีบระยะก่อนหัวข้อรายละเอียด */
+  .checkout-grid {
+    margin-top: 8px !important;
+  }
+
+  .form-card h1,
+  .form-card h2 {
+    margin-top: 6px !important;
   }
 
 }
