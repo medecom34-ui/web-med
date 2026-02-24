@@ -1,112 +1,111 @@
 /* =========================
-   CHECKOUT – MOBILE FIX (FINAL v2)
-   Stepper 1-2-3 mobile only
+   MOBILE HEADER – CLEAN VERSION
    ========================= */
 
 @media (max-width: 768px) {
 
-  /* container ของ stepper */
-  .container.stepper {
-    max-width: 100%;
-    padding: 0 6px;
-    overflow: hidden;
-  }
-
-  /* override stepper desktop */
-  .container.stepper.stepper {
-    display: flex !important;
-    justify-content: center !important; /* 🔹 รวมเข้าหากัน */
-    gap: 10px !important;               /* 🔹 ระยะห่างใหม่ */
-    margin: 10px 0 !important;
-  }
-
-  /* step แต่ละอัน */
-  .container.stepper .step {
-    flex: 0 0 auto;                     /* ❌ ไม่ให้ถูกบีบ */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 6px !important;
-    font-size: 12px !important;
-    font-weight: 600;
-
-    padding: 4px 6px;
-    white-space: nowrap;
-  }
-
-  /* วงกลมตัวเลข */
-  .container.stepper .step::before {
-    width: 24px !important;
-    height: 24px !important;
-    min-width: 24px;                    /* 🔹 กันเลขถูกบีบ */
-    min-height: 24px;
-
-    font-size: 12px !important;
-    line-height: 24px;
-    text-align: center;
-
-    flex-shrink: 0;
-  }
-
-
-
+  /* ===== HEADER LAYOUT ===== */
   header {
-    padding: 10px 12px !important;
+    padding: 10px 14px !important;
   }
 
-  /* จัด layout หลัก */
   .header-inner {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
-  /* แถวบน */
+  /* แถวบน: HOME + ไอคอน */
   .header-left {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  /* แถวขวา (ไอคอน) */
+  /* HOME */
+  .nav-pill {
+    padding: 6px 16px !important;
+    font-size: 13px !important;
+    border-radius: 20px;
+  }
+
+  /* กลุ่มไอคอนด้านขวา */
   .header-icons {
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
   }
 
-  /* ปุ่ม HOME */
-  .nav-pill {
-    padding: 6px 14px !important;
-    font-size: 13px !important;
-  }
-
-  /* ปุ่มวงกลม LINE / โทร */
+  /* ปุ่ม LINE / โทร */
   .circle-btn,
   .contact-btn {
     width: 36px;
     height: 36px;
-    font-size: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* ไอคอนรถ / ตะกร้า */
+  /* รถ + ตะกร้า */
   .header-icon {
     width: 38px;
     height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
   }
 
-  /* badge ให้เล็กลง */
+  /* badge ตัวเลข */
   .badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
     font-size: 11px !important;
     min-width: 18px;
     height: 18px;
     line-height: 18px;
+    border-radius: 50%;
   }
 
-  /* ซ่อนข้อความสวัสดีบนมือถือ (กันแน่น) */
+  /* ข้อความสวัสดี */
   .header-user {
     font-size: 12px;
+    text-align: right;
+  }
+
+  /* ===== STEPPER MOBILE ===== */
+
+  .container.stepper {
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .container.stepper.stepper {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin: 12px 0 !important;
+  }
+
+  .container.stepper .step {
+    display: flex;
+    align-items: center;
+    gap: 6px !important;
+    font-size: 12px !important;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .container.stepper .step::before {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px;
+    min-height: 24px;
+    font-size: 12px !important;
+    line-height: 24px;
+    text-align: center;
   }
 }
