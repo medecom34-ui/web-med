@@ -97,7 +97,9 @@ function toNumberIfPossible(v) {
       return {
         productId: productId,
         slug: slug,
-        variantId: (i.variantId != null && !isNaN(Number(i.variantId))) ? Number(i.variantId) : null,
+        variantId: (i.variantId && Number(i.variantId) > 0)
+  ? Number(i.variantId)
+  : undefined,
         nameSnapshot: i.name || i.title || "",
         skuSnapshot: i.sku || i.code || null,
         optionSnapshot: i.option || null,
