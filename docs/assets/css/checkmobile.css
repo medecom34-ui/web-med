@@ -49,4 +49,64 @@
     flex-shrink: 0;
   }
 
+
+
+  header {
+    padding: 10px 12px !important;
+  }
+
+  /* จัด layout หลัก */
+  .header-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* แถวบน */
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  /* แถวขวา (ไอคอน) */
+  .header-icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  /* ปุ่ม HOME */
+  .nav-pill {
+    padding: 6px 14px !important;
+    font-size: 13px !important;
+  }
+
+  /* ปุ่มวงกลม LINE / โทร */
+  .circle-btn,
+  .contact-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  /* ไอคอนรถ / ตะกร้า */
+  .header-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* badge ให้เล็กลง */
+  .badge {
+    font-size: 11px !important;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+  }
+
+  /* ซ่อนข้อความสวัสดีบนมือถือ (กันแน่น) */
+  .header-user {
+    font-size: 12px;
+  }
 }
