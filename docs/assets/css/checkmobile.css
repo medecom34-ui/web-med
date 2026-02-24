@@ -1,5 +1,5 @@
 /* =========================
-   CHECKOUT – MOBILE FIX (FINAL HEADER FIX)
+   CHECKOUT – MOBILE HEADER FIX (ROW VERSION)
    ========================= */
 
 @media (max-width: 768px) {
@@ -8,78 +8,73 @@
     overflow-x: hidden;
   }
 
-  /* ===== HEADER STRUCTURE FIX ===== */
+  /* ===== HEADER STRUCTURE ===== */
 
   header.header {
     display: flex !important;
     flex-direction: column !important;
-    align-items: stretch;
     padding: 6px 12px !important;
     gap: 6px;
   }
 
-  /* แถวบน: สวัสดี */
-  .topbar,
-  .header-user {
+  /* แถวบน (สวัสดี) */
+  .header-user,
+  .topbar {
     width: 100%;
     text-align: right;
     font-size: 13px;
   }
 
-  /* แถวล่าง: ปุ่มทั้งหมด */
-  .header-left,
-  .header-icons {
+  /* ===== แถวล่าง = ปุ่มทั้งหมดแถวเดียว ===== */
+
+  .header-left {
     display: flex !important;
     align-items: center;
-  }
-
-  /* รวมซ้าย+ขวาให้อยู่บรรทัดเดียว */
-  .header-left {
-    gap: 8px;
-  }
-
-  .header-icons {
-    margin-left: auto;   /* ดันไอคอนไปขวาสุด */
     gap: 10px;
+    width: 100%;
+    flex-wrap: nowrap;
   }
 
-  /* ปิด search */
-  .header-search,
-  .search,
-  #searchBar {
-    display: none !important;
+  /* ยกเลิก layout ฝั่งขวา */
+  .header-icons {
+    display: contents !important;   /* 🔥 รวมเข้าแถวเดียว */
   }
 
-  /* HOME */
+  /* ===== HOME ===== */
   .nav-pill {
-    padding: 6px 12px;
+    padding: 6px 14px;
     font-size: 13px;
     white-space: nowrap;
   }
 
-  /* ปุ่มวงกลม */
+  /* ===== ไอคอนวงกลมทั้งหมดให้ขนาดเท่ากัน ===== */
+
   .circle-btn,
-  .contact-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* รถ + ตะกร้า */
+  .contact-btn,
   .header-icon {
-    width: 38px;
-    height: 38px;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+
     border-radius: 50%;
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
-    position: relative;
+    padding: 0 !important;
   }
 
-  .header-icons .badge {
+  /* ไอคอนรูปภาพด้านใน */
+  .header-icon img,
+  .circle-btn img,
+  .contact-btn img {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain;
+  }
+
+  /* badge */
+  .badge {
     position: absolute;
     top: -4px;
     right: -4px;
@@ -88,6 +83,13 @@
     font-size: 11px;
     line-height: 18px;
     border-radius: 50%;
+  }
+
+  /* ปิด search */
+  .header-search,
+  .search,
+  #searchBar {
+    display: none !important;
   }
 
   /* ===== STEPPER ===== */
@@ -114,7 +116,6 @@
     font-size: 13px !important;
   }
 
-  /* ลดช่องว่างก่อน form */
   .checkout-grid {
     margin-top: 8px !important;
   }
