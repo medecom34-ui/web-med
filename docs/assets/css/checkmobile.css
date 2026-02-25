@@ -87,8 +87,9 @@
     display:flex !important;
     justify-content:center !important;
     gap:10px !important;
-    margin:6px 0 6px !important;
-    padding:0 6px;
+
+   margin:10px 0 2px !important;  /* 👈 บนมากขึ้น ล่างน้อยลง */
+  padding:0 6px;
   }
 
   .container.stepper .step{
@@ -131,7 +132,7 @@
 }
 
 .form-card h2{
-  margin-top:12px !important;
+  margin-top:8px !important;
 }
 
 .container.stepper{
