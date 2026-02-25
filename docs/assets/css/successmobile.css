@@ -56,4 +56,78 @@
     color: #ffffff;
   }
 
+  /* HEADER SAME AS CHECKOUT */
+
+body .header{
+  display:flex !important;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 12px !important;
+  gap:8px;
+}
+
+body .header-left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+body .header-icons{
+  display:flex !important;
+  align-items:center;
+  gap:10px;
+}
+
+body .nav-pill{
+  padding:6px 12px;
+  font-size:14px;
+  border-radius:12px;
+}
+
+body .header-icon{
+  position:relative;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid #e5e7eb;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body .header-icon{
+  font-size:0;
+}
+
+body .header-icon .icon-transport{
+  font-size:20px;
+  display:block;
+  line-height:1;
+}
+
+body #cartButton{
+  font-size:20px;
+  line-height:1;
+}
+
+body .header-icon .badge{
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  min-width:18px;
+  height:18px;
+  font-size:11px;
+  border-radius:999px;
+  background:#ef4444;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body .header-phone span{
+  display:none;
+}
+
 }
