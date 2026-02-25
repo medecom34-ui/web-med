@@ -49,6 +49,24 @@
     flex-shrink: 0;
   }
 
+  /* ลดช่องว่างใต้ stepper */
+.container.stepper {
+  margin-bottom: 8px !important;
+}
+
+/* ถ้าใช้ class .steps */
+.steps {
+  margin: 12px 0 8px !important;
+}
+
+/* ลดช่องว่างก่อนหัวข้อ */
+.checkout-grid,
+.form-card,
+.section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
   
   /* override grid desktop */
   .header {
@@ -82,17 +100,17 @@
     border-radius: 12px;
   }
 
-  /* ปุ่ม icon กลม */
-  .header-icon {
-    position: relative;
-    padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid #e5e7eb;
-    background: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
+.header-icon {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;              
+  justify-content: flex-start;  
+}
 
   /* badge มุมขวาบน */
   .header-icon .badge {
