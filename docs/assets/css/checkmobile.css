@@ -102,16 +102,26 @@
 
 .header-icon {
   position: relative;
-  padding: 8px 12px;
-  border-radius: 999px;
+  width: 40px;        
+  height: 40px;       
+  padding: 0;         
+  border-radius: 50%; 
   border: 1px solid #e5e7eb;
   background: #fff;
-  display: inline-flex;
+  display: flex;      
   align-items: center;
-  gap: 6px;              
-  justify-content: flex-start;  
+  justify-content: center;  
 }
 
+.header-icon svg,
+.header-icon img,
+.header-icon i,
+.icon-transport {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+}
   /* badge มุมขวาบน */
   .header-icon .badge {
     position: absolute;
