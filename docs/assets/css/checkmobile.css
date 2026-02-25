@@ -115,8 +115,7 @@
 
 .header-icon svg,
 .header-icon img,
-.header-icon i,
-.icon-transport {
+.header-icon i {
   width: 18px;
   height: 18px;
   display: block;
@@ -143,13 +142,12 @@
     background: #ef4444;
     color: #fff;
   }
-
-  /* ไอคอนรถให้ชัด */
-  .icon-transport {
-    font-size: 20px;
-    line-height: 1;
-  }
-
+  
+.icon-transport {
+  font-size: 20px;
+  line-height: 1;
+  display: block;
+}
   /* ซ่อนข้อความเบอร์โทรบนจอเล็ก */
   .header-phone span {
     display: none;
