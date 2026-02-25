@@ -114,15 +114,19 @@
 
 }
 
-.header-icons .header-icon{
-  font-size:0;
-}
+
 
 .header-icons .icon-transport{
   display:inline-block !important;
   font-size:20px !important;
   line-height:1 !important;
 }
+
+.header-icons #cartButton{
+  font-size:20px;     
+  line-height:1;
+}
+
 
 .header-icon svg,
 .header-icon img,
