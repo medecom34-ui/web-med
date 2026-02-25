@@ -115,4 +115,27 @@
     margin-top:0 !important;
   }
 
+  .header-icon{
+  font-size:0;
+}
+
+.header-icon .icon-transport{
+  display:block;
+  font-size:20px;
+  line-height:1;
+}
+
+#cartButton{
+  font-size:20px;
+  line-height:1;
+}
+
+.form-card h2{
+  margin-top:12px !important;
+}
+
+.container.stepper{
+  margin:4px 0 4px !important;
+}
+
 }
