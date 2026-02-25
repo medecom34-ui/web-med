@@ -88,7 +88,7 @@
     justify-content:center !important;
     gap:10px !important;
 
-   margin:10px 0 2px !important;  /* 👈 บนมากขึ้น ล่างน้อยลง */
+   margin:16px 0 2px !important;  
   padding:0 6px;
   }
 
@@ -135,8 +135,6 @@
   margin-top:8px !important;
 }
 
-.container.stepper{
-  margin:4px 0 4px !important;
-}
+
 
 }
