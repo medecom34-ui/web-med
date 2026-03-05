@@ -11,10 +11,9 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    "http://xn--12ca7coduykzdcc8j5bxa4g1h0hh.com",
-    "http://www.xn--12ca7coduykzdcc8j5bxa4g1h0hh.com",
-    "https://xn--12ca7coduykzdcc8j5bxa4g1h0hh.com",
-    "https://www.xn--12ca7coduykzdcc8j5bxa4g1h0hh.com",
+    "http://homecarethai.com",
+    "https://homecarethai.com",
+    "https://www.homecarethai.com",
     "https://medecom34-ui.github.io"
   ],
   methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
