@@ -13,6 +13,7 @@ const corsOptions = {
   origin: [
     "http://homecarethai.com",
     "https://homecarethai.com",
+    "http://www.homecarethai.com",
     "https://www.homecarethai.com",
     "https://medecom34-ui.github.io"
   ],
